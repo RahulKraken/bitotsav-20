@@ -21,44 +21,143 @@ class MainActivityViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main + mainActivityViewModelJob)
 
     private var event = MutableLiveData<Event>()
+    private var allEvents = MutableLiveData<List<Event>>()
+    private var allEventsForDay = MutableLiveData<List<Event>>()
+    private var allFlagshipEvents = MutableLiveData<List<Event>>()
 
     init {
-        initializeEvent()
+        initializeEvents()
     }
 
-    private fun initializeEvent() {
+    private fun initializeEvents() {
         uiScope.launch {
-            event.value = getEvent()
+            allEvents.value = getAllEventsAsync()
+            allEventsForDay.value = getAllEventsForDayAsync("1")
+            event.value = getEventAsync(1)
+            allFlagshipEvents.value = getAllEventsAsync()
         }
     }
 
-    private suspend fun getEvent(): Event? {
-        return withContext(Dispatchers.IO) {
-            repository.getEvent(1)
-        }
-    }
-
-    private fun addEvent(event: Event) {
+    /**
+     * add event @param "event" to DB
+     */
+    fun addEvent(event: Event) {
         uiScope.launch {
-            addEventAsync(event)
+            repository.insertEvent(event)
+            println("INSERTED EVENT: $event")
         }
     }
 
+    /*
     private suspend fun addEventAsync(event: Event) {
         repository.insertEvent(event)
         println("INSERTED EVENT: $event")
     }
+     */
 
-    override fun onCleared() {
-        super.onCleared()
-        mainActivityViewModelJob.cancel()
+    /**
+     * update event @param "event"
+     */
+    fun updateEvent(event: Event) {
+        uiScope.launch {
+            repository.updateEvent(event)
+            println("UPDATED EVENT: $event")
+        }
     }
 
+    /**
+     * delete event @param "event"
+     */
+    fun deleteEvent(event: Event) {
+        uiScope.launch {
+            repository.deleteEvent(event)
+            println("DELETED EVENT: $event")
+        }
+    }
+
+    /**
+     * delete all events
+     */
+    fun deleteAllEvents() {
+        uiScope.launch {
+            repository.deleteAllEvents()
+            println("DELETED ALL EVENTS")
+        }
+    }
+
+    /**
+     * fetch event from DB with id @param: "id"
+     */
+    fun getEventFromDb(id: Int) {
+        uiScope.launch {
+            event.value = getEventAsync(id)
+        }
+    }
+
+    private suspend fun getEventAsync(id: Int): Event? {
+        return withContext(Dispatchers.IO) {
+            repository.getEvent(id)
+        }
+    }
+
+    /**
+     * get all events
+     */
+    fun getAllEvents(): MutableLiveData<List<Event>> {
+        uiScope.launch {
+            allEvents.value = getAllEventsAsync()
+        }
+        return allEvents
+    }
+
+    private suspend fun getAllEventsAsync(): List<Event> {
+        return withContext(Dispatchers.IO) {
+            repository.getAllEvents()
+        }
+    }
+
+    /**
+     * get all events for day @param "day"
+     */
+    fun getAllEventsForDay(day: String): MutableLiveData<List<Event>> {
+        uiScope.launch {
+            allEventsForDay.value = getAllEventsForDayAsync(day)
+        }
+        return allEventsForDay
+    }
+
+    private suspend fun getAllEventsForDayAsync(day: String): List<Event> {
+        return withContext(Dispatchers.IO) {
+            repository.getAllEventsForDay(day)
+        }
+    }
+
+    fun getAllFlagshipEvents(): MutableLiveData<List<Event>> {
+        uiScope.launch {
+            allFlagshipEvents.value = getAllFlagshipEventsAsync()
+        }
+        return allFlagshipEvents
+    }
+    
+    private suspend fun getAllFlagshipEventsAsync(): List<Event> {
+        return withContext(Dispatchers.IO) {
+            repository.getAllFlagshipEvents()
+        }
+    }
+
+/*
     fun insertEvent(event: Event) {
         addEvent(event)
     }
 
     fun getEvent(id: Int): MutableLiveData<Event> {
+        getEventFromDb(1)
         return event
+    }
+*/
+
+    override fun onCleared() {
+        super.onCleared()
+        mainActivityViewModelJob.cancel()
     }
 }
