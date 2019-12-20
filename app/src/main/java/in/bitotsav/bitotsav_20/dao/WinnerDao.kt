@@ -13,17 +13,17 @@ import androidx.room.Update
 interface WinnerDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(winner: Winner)
+    suspend fun insert(winner: Winner)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(winner: Winner)
+    suspend fun update(winner: Winner)
 
     @Delete
-    fun delete(winner: Winner)
+    suspend fun delete(winner: Winner)
 
     @Query("DELETE FROM winners")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Query("SELECT * FROM winners WHERE event_id = :id")
-    fun getWinners(id: Int) : Winner?
+    suspend fun getWinners(id: Int) : Winner?
 }

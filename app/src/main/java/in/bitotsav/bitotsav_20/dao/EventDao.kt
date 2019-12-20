@@ -13,7 +13,7 @@ import androidx.room.Update
 interface EventDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(event: Event)
+    suspend fun insert(event: Event)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(event: Event)
@@ -22,17 +22,17 @@ interface EventDao {
     suspend fun delete(event: Event)
 
     @Query("DELETE FROM events")
-    fun deleteAll()
+    suspend fun deleteAll()
 
     @Query("SELECT * FROM events")
-    fun getAllEvents() : LiveData<List<Event>>
+    suspend fun getAllEvents() : List<Event>
 
     @Query("SELECT * FROM events WHERE day = :day")
-    fun getEventsForDay(day: String) : LiveData<List<Event>>
+    suspend fun getEventsForDay(day: String) : List<Event>
 
     @Query("SELECT * FROM events WHERE id = :id")
-    fun getEvent(id: Int) : Event?
+    suspend fun getEvent(id: Int) : Event?
 
     @Query("SELECT * FROM events WHERE tag = 'flagship'")
-    fun getAllFlagshipEvents() : LiveData<List<Event>>
+    suspend fun getAllFlagshipEvents() : List<Event>
 }
