@@ -10,7 +10,7 @@ import androidx.room.PrimaryKey
 data class Winner(
     @PrimaryKey
     @ColumnInfo(name = "event_id")
-    val eventId: String,
+    val eventId: Int,
     val first: String,
     val second: String,
     val third: String

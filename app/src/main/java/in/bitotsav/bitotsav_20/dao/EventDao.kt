@@ -16,10 +16,10 @@ interface EventDao {
     fun insert(event: Event)
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(event: Event)
+    suspend fun update(event: Event)
 
     @Delete
-    fun delete(event: Event)
+    suspend fun delete(event: Event)
 
     @Query("DELETE FROM events")
     fun deleteAll()
@@ -28,10 +28,10 @@ interface EventDao {
     fun getAllEvents() : LiveData<List<Event>>
 
     @Query("SELECT * FROM events WHERE day = :day")
-    fun getEventsForDay(day: Int) : LiveData<List<Event>>
+    fun getEventsForDay(day: String) : LiveData<List<Event>>
 
     @Query("SELECT * FROM events WHERE id = :id")
-    fun getEvent(id: Int) : LiveData<Event>
+    fun getEvent(id: Int) : Event?
 
     @Query("SELECT * FROM events WHERE tag = 'flagship'")
     fun getAllFlagshipEvents() : LiveData<List<Event>>

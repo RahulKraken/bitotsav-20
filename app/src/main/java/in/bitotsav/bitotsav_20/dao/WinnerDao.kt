@@ -25,5 +25,5 @@ interface WinnerDao {
     fun deleteAll()
 
     @Query("SELECT * FROM winners WHERE event_id = :id")
-    fun getWinners(id: Int) : LiveData<Winner>
+    fun getWinners(id: Int) : Winner?
 }
