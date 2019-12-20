@@ -1,13 +1,10 @@
-package `in`.bitotsav.bitotsav_20
+package `in`.bitotsav.bitotsav_20.db
 
 import `in`.bitotsav.bitotsav_20.dao.EventDao
 import `in`.bitotsav.bitotsav_20.dao.WinnerDao
-import `in`.bitotsav.bitotsav_20.db.EventDatabase
 import `in`.bitotsav.bitotsav_20.entity.Event
 import `in`.bitotsav.bitotsav_20.entity.Winner
 import android.content.Context
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
