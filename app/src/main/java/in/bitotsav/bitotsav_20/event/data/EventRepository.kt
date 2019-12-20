@@ -1,7 +1,5 @@
-package `in`.bitotsav.bitotsav_20.repository
+package `in`.bitotsav.bitotsav_20.event.data
 
-import `in`.bitotsav.bitotsav_20.dao.EventDao
-import `in`.bitotsav.bitotsav_20.entity.Event
 import androidx.annotation.WorkerThread
 
 class EventRepository(private val eventDao: EventDao) {

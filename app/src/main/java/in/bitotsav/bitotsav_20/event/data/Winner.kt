@@ -1,5 +1,6 @@
-package `in`.bitotsav.bitotsav_20.entity
+package `in`.bitotsav.bitotsav_20.event.data
 
+import `in`.bitotsav.bitotsav_20.event.data.Event
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey

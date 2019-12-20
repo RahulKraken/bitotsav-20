@@ -1,7 +1,5 @@
-package `in`.bitotsav.bitotsav_20.repository
+package `in`.bitotsav.bitotsav_20.profile.data
 
-import `in`.bitotsav.bitotsav_20.dao.UserDao
-import `in`.bitotsav.bitotsav_20.entity.User
 import androidx.annotation.WorkerThread
 
 class UserRepository(private val userDao: UserDao) {

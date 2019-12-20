@@ -1,9 +1,9 @@
 package `in`.bitotsav.bitotsav_20
 
-import `in`.bitotsav.bitotsav_20.dao.EventDao
+import `in`.bitotsav.bitotsav_20.event.data.EventDao
 import `in`.bitotsav.bitotsav_20.db.AppDatabase
-import `in`.bitotsav.bitotsav_20.entity.Event
-import `in`.bitotsav.bitotsav_20.repository.EventRepository
+import `in`.bitotsav.bitotsav_20.event.data.Event
+import `in`.bitotsav.bitotsav_20.event.data.EventRepository
 import android.content.Context
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -34,16 +34,60 @@ class MainActivityViewModelTest {
 
         runBlocking {
             val event1 = Event(
-                1, "event", "desc", "status", "timing", "venue", "1", "2", "coordinators", "category", "tag", "duration"
+                1,
+                "event",
+                "desc",
+                "status",
+                "timing",
+                "venue",
+                "1",
+                "2",
+                "coordinators",
+                "category",
+                "tag",
+                "duration"
             )
             val event2 = Event(
-                2, "event", "desc", "status", "timing", "venue", "1", "2", "coordinators", "category", "tag", "duration"
+                2,
+                "event",
+                "desc",
+                "status",
+                "timing",
+                "venue",
+                "1",
+                "2",
+                "coordinators",
+                "category",
+                "tag",
+                "duration"
             )
             val event3 = Event(
-                3, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+                3,
+                "event",
+                "desc",
+                "status",
+                "timing",
+                "venue",
+                "2",
+                "2",
+                "coordinators",
+                "category",
+                "tag",
+                "duration"
             )
             val event4 = Event(
-                4, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+                4,
+                "event",
+                "desc",
+                "status",
+                "timing",
+                "venue",
+                "2",
+                "2",
+                "coordinators",
+                "category",
+                "tag",
+                "duration"
             )
 
             eventDao.insert(event1)
@@ -52,7 +96,8 @@ class MainActivityViewModelTest {
             eventDao.insert(event4)
         }
 
-        eventRepository = EventRepository(eventDao)
+        eventRepository =
+            EventRepository(eventDao)
     }
 
     @After
@@ -65,7 +110,18 @@ class MainActivityViewModelTest {
     @Throws(Exception::class)
     fun insertRetrieveTest() = runBlocking {
         val event5 = Event(
-            5, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+            5,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         eventRepository.insertEvent(event5)
 

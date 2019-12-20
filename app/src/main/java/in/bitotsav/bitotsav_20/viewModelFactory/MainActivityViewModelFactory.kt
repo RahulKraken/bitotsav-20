@@ -1,6 +1,6 @@
 package `in`.bitotsav.bitotsav_20.viewModelFactory
 
-import `in`.bitotsav.bitotsav_20.repository.EventRepository
+import `in`.bitotsav.bitotsav_20.event.data.EventRepository
 import `in`.bitotsav.bitotsav_20.viewModel.MainActivityViewModel
 import android.app.Application
 import androidx.lifecycle.ViewModel

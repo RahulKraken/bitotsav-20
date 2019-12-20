@@ -1,10 +1,10 @@
 package `in`.bitotsav.bitotsav_20
 
-import `in`.bitotsav.bitotsav_20.dao.EventDao
-import `in`.bitotsav.bitotsav_20.dao.WinnerDao
+import `in`.bitotsav.bitotsav_20.event.data.EventDao
+import `in`.bitotsav.bitotsav_20.event.data.WinnerDao
 import `in`.bitotsav.bitotsav_20.db.AppDatabase
-import `in`.bitotsav.bitotsav_20.entity.Event
-import `in`.bitotsav.bitotsav_20.entity.Winner
+import `in`.bitotsav.bitotsav_20.event.data.Event
+import `in`.bitotsav.bitotsav_20.event.data.Winner
 import android.content.Context
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry
@@ -77,16 +77,60 @@ class DatabaseInstrumentedTest {
     @Throws(Exception::class)
     fun runAllEventsTest() = runBlocking {
         val event1 = Event(
-            1, "event", "desc", "status", "timing", "venue", "1", "2", "coordinators", "category", "tag", "duration"
+            1,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "1",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         val event2 = Event(
-            2, "event", "desc", "status", "timing", "venue", "1", "2", "coordinators", "category", "tag", "duration"
+            2,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "1",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         val event3 = Event(
-            3, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+            3,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         val event4 = Event(
-            4, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+            4,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
 
         eventDao.insert(event1)
@@ -108,16 +152,60 @@ class DatabaseInstrumentedTest {
     fun runEventForDayTest() = runBlocking {
 
         val event1 = Event(
-            1, "event", "desc", "status", "timing", "venue", "1", "2", "coordinators", "category", "tag", "duration"
+            1,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "1",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         val event2 = Event(
-            2, "event", "desc", "status", "timing", "venue", "1", "2", "coordinators", "category", "tag", "duration"
+            2,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "1",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         val event3 = Event(
-            3, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+            3,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
         val event4 = Event(
-            4, "event", "desc", "status", "timing", "venue", "2", "2", "coordinators", "category", "tag", "duration"
+            4,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
         )
 
         eventDao.insert(event1)
@@ -150,7 +238,12 @@ class DatabaseInstrumentedTest {
             "duration"
         )
         eventDao.insert(event)
-        val winner = Winner(2, "first", "second", "third")
+        val winner = Winner(
+            2,
+            "first",
+            "second",
+            "third"
+        )
         winnerDao.insert(winner)
         val w = winnerDao.getWinners(2)
         assertEquals(w?.eventId, 2)

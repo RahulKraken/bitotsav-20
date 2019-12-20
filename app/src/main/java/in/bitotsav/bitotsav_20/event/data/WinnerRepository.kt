@@ -1,7 +1,5 @@
-package `in`.bitotsav.bitotsav_20.repository
+package `in`.bitotsav.bitotsav_20.event.data
 
-import `in`.bitotsav.bitotsav_20.dao.WinnerDao
-import `in`.bitotsav.bitotsav_20.entity.Winner
 import androidx.annotation.WorkerThread
 
 class WinnerRepository(private val winnerDao: WinnerDao) {

@@ -1,4 +1,4 @@
-package `in`.bitotsav.bitotsav_20.entity
+package `in`.bitotsav.bitotsav_20.leaderboard.data
 
 import java.io.Serializable
 

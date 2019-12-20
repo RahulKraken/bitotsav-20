@@ -1,7 +1,5 @@
-package `in`.bitotsav.bitotsav_20.dao
+package `in`.bitotsav.bitotsav_20.event.data
 
-import `in`.bitotsav.bitotsav_20.entity.Event
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

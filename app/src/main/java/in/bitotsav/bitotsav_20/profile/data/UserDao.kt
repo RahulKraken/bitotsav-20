@@ -1,6 +1,6 @@
-package `in`.bitotsav.bitotsav_20.dao
+package `in`.bitotsav.bitotsav_20.profile.data
 
-import `in`.bitotsav.bitotsav_20.entity.User
+import `in`.bitotsav.bitotsav_20.profile.data.User
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
