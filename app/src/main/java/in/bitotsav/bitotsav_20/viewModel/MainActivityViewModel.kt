@@ -88,10 +88,11 @@ class MainActivityViewModel(
     /**
      * fetch event from DB with id @param: "id"
      */
-    fun getEventFromDb(id: Int) {
+    fun getEvent(id: Int): MutableLiveData<Event> {
         uiScope.launch {
             event.value = getEventAsync(id)
         }
+        return event
     }
 
     private suspend fun getEventAsync(id: Int): Event? {
@@ -138,7 +139,7 @@ class MainActivityViewModel(
         }
         return allFlagshipEvents
     }
-    
+
     private suspend fun getAllFlagshipEventsAsync(): List<Event> {
         return withContext(Dispatchers.IO) {
             repository.getAllFlagshipEvents()
