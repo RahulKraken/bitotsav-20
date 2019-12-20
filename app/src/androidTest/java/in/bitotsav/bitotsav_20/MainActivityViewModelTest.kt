@@ -1,7 +1,7 @@
 package `in`.bitotsav.bitotsav_20
 
 import `in`.bitotsav.bitotsav_20.dao.EventDao
-import `in`.bitotsav.bitotsav_20.db.EventDatabase
+import `in`.bitotsav.bitotsav_20.db.AppDatabase
 import `in`.bitotsav.bitotsav_20.entity.Event
 import `in`.bitotsav.bitotsav_20.repository.EventRepository
 import android.content.Context
@@ -19,7 +19,7 @@ import java.lang.Exception
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityViewModelTest {
-    private lateinit var db: EventDatabase
+    private lateinit var db: AppDatabase
     private lateinit var eventDao: EventDao
     private lateinit var eventRepository: EventRepository
     private lateinit var context: Context
@@ -27,7 +27,7 @@ class MainActivityViewModelTest {
     @Before
     fun init() {
         context = InstrumentationRegistry.getInstrumentation().targetContext
-        db = Room.inMemoryDatabaseBuilder(context, EventDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
             .allowMainThreadQueries()
             .build()
         eventDao = db.eventDao()

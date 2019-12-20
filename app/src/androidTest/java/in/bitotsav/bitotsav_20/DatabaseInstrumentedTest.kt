@@ -2,7 +2,7 @@ package `in`.bitotsav.bitotsav_20
 
 import `in`.bitotsav.bitotsav_20.dao.EventDao
 import `in`.bitotsav.bitotsav_20.dao.WinnerDao
-import `in`.bitotsav.bitotsav_20.db.EventDatabase
+import `in`.bitotsav.bitotsav_20.db.AppDatabase
 import `in`.bitotsav.bitotsav_20.entity.Event
 import `in`.bitotsav.bitotsav_20.entity.Winner
 import android.content.Context
@@ -30,14 +30,14 @@ class DatabaseInstrumentedTest {
     private lateinit var eventDao: EventDao
     private lateinit var winnerDao: WinnerDao
 
-    private lateinit var db: EventDatabase
+    private lateinit var db: AppDatabase
     private lateinit var context: Context
 
     @Before
     fun createDb() {
         context = InstrumentationRegistry.getInstrumentation().targetContext
 
-        db = Room.inMemoryDatabaseBuilder(context, EventDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(context, AppDatabase::class.java)
             .allowMainThreadQueries()
             .build()
 

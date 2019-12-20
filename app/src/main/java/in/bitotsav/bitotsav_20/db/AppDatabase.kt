@@ -3,15 +3,18 @@ package `in`.bitotsav.bitotsav_20.db
 import `in`.bitotsav.bitotsav_20.dao.EventDao
 import `in`.bitotsav.bitotsav_20.dao.WinnerDao
 import `in`.bitotsav.bitotsav_20.entity.Event
+import `in`.bitotsav.bitotsav_20.entity.User
 import `in`.bitotsav.bitotsav_20.entity.Winner
 import android.content.Context
-import android.util.Log
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Event::class, Winner::class], version = 1, exportSchema = false)
-abstract class EventDatabase : RoomDatabase() {
+@Database(
+    entities = [Event::class, Winner::class, User::class],
+    version = 1,
+    exportSchema = false)
+abstract class AppDatabase : RoomDatabase() {
 
     abstract fun eventDao() : EventDao
     abstract fun winnerDao() : WinnerDao
@@ -19,7 +22,7 @@ abstract class EventDatabase : RoomDatabase() {
     companion object {
         private const val TAG = "EventDatabase"
 
-        @Volatile private var instance : EventDatabase? = null
+        @Volatile private var instance : AppDatabase? = null
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
@@ -30,7 +33,7 @@ abstract class EventDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
-            EventDatabase::class.java,
+            AppDatabase::class.java,
             "event_db.db"
         ).build()
     }
