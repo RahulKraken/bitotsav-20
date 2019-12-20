@@ -1,7 +1,8 @@
-package `in`.bitotsav.bitotsav_20.db
+package `in`.bitotsav.bitotsav_20
 
 import `in`.bitotsav.bitotsav_20.dao.EventDao
 import `in`.bitotsav.bitotsav_20.dao.WinnerDao
+import `in`.bitotsav.bitotsav_20.db.EventDatabase
 import `in`.bitotsav.bitotsav_20.entity.Event
 import `in`.bitotsav.bitotsav_20.entity.Winner
 import android.content.Context
