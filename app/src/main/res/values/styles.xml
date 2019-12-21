@@ -8,4 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- font styles -->
+    <style name="font_regular_black_20">
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:color">@color/md_black_1000</item>
+    </style>
+
+    <style name="font_regular_grey_20">
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:color">@color/md_grey_500</item>
+    </style>
+
 </resources>

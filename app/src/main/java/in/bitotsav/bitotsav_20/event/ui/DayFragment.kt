@@ -8,12 +8,73 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.event.data.Event
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_day.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class DayFragment(private val day: Int) : Fragment() {
+
+    private val events = listOf(
+        Event(
+            1,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "1",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
+        ),
+        Event(
+            2,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "1",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
+        ),
+        Event(
+            3,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
+        ),
+        Event(
+            4,
+            "event",
+            "desc",
+            "status",
+            "timing",
+            "venue",
+            "2",
+            "2",
+            "coordinators",
+            "category",
+            "tag",
+            "duration"
+        )
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +86,9 @@ class DayFragment(private val day: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        labeled.text = "Current day: $day"
+        schedule_rv.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = DayAdapter(events)
+        }
     }
 }

@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
             }
             false
         })
+        bottom_navigation.selectedItemId = R.id.action_schedule
     }
 
     private fun setFragment(fragment: Fragment) {
