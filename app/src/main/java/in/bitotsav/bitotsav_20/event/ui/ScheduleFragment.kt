@@ -1,18 +1,12 @@
 package `in`.bitotsav.bitotsav_20.event.ui
 
 
-import `in`.bitotsav.bitotsav_20.BitotsavFragment
 import `in`.bitotsav.bitotsav_20.R
-import `in`.bitotsav.bitotsav_20.event.ui.days.DayOneFragment
-import `in`.bitotsav.bitotsav_20.event.ui.days.DayThreeFragment
-import `in`.bitotsav.bitotsav_20.event.ui.days.DayTwoFragment
-import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
-import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import kotlinx.android.synthetic.main.fragment_schedule.*
@@ -38,10 +32,10 @@ class ScheduleFragment : Fragment() {
     class DayPagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager) {
         override fun getItem(position: Int): Fragment {
             return when(position) {
-                0 -> DayOneFragment()
-                1 -> DayTwoFragment()
-                2 -> DayThreeFragment()
-                else -> DayOneFragment()
+                0 -> DayFragment(1)
+                1 -> DayFragment(2)
+                2 -> DayFragment(3)
+                else -> DayFragment(1)
             }
         }
 

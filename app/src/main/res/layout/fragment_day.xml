@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".event.ui.days.DayOneFragment">
+    tools:context=".event.ui.DayFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/labeled"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="day one" />
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>
