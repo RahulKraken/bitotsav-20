@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bitotsav-20</string>
+    <string name="splash_screen_image_desc">Splash screen image</string>
+    <string name="splash_screen">Splash screen</string>
 </resources>
