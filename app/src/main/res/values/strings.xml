@@ -2,4 +2,8 @@
     <string name="app_name">Bitotsav-20</string>
     <string name="splash_screen_image_desc">Splash screen image</string>
     <string name="splash_screen">Splash screen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_icon_desc">search icon</string>
 </resources>
