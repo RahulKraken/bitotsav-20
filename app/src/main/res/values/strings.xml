@@ -8,4 +8,5 @@
     <string name="search_icon_desc">search icon</string>
     <string name="grade_icon_desc">grade icon</string>
     <string name="user_avatar_desc">user avatar</string>
+    <string name="item_avatar_desc">item avatar</string>
 </resources>
