@@ -21,4 +21,13 @@
         <item name="android:color">@color/md_grey_500</item>
     </style>
 
+    <style name="time_headers">
+        <item name="android:width">64dp</item>
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:textColor">?colorPrimary</item>
+        <item name="timeTextSize">20dp</item>
+        <item name="meridiemTextSize">14dp</item>
+    </style>
+
 </resources>
