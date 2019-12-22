@@ -17,21 +17,21 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_guide_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="48dp"
+        app:layout_constraintGuide_begin="64dp"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/start_guide_points"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="64dp"
+        app:layout_constraintGuide_end="48dp"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/end_guide"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="16dp"
+        app:layout_constraintGuide_end="0dp"
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
@@ -59,7 +59,7 @@
     <TextView
         android:id="@+id/item_name"
         android:text="Team Name not huge"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
