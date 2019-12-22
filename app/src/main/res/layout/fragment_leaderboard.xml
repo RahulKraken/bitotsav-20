@@ -21,10 +21,16 @@
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
-    <androidx.cardview.widget.CardView
+    <!-- TODO: Use nested scroll view -->
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/user_score_card"
         app:cardCornerRadius="10dp"
         android:layout_marginTop="16dp"
+        app:strokeColor="@color/md_purple_300"
+        app:cardBackgroundColor="@color/md_purple_50"
+        app:cardElevation="0dp"
+        app:strokeWidth="2dp"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,6 +61,7 @@
                 android:layout_marginEnd="16dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="@color/md_grey_800"
                 app:layout_constraintStart_toEndOf="@id/user_avatar"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +82,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboard_rv"

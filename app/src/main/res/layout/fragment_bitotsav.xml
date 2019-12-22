@@ -1,14 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BitotsavFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Bitotsav" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="42dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="42dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guide"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="120dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_guide_higher"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="264dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/rate_card"
+        app:strokeColor="@color/md_light_blue_300"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="@color/md_light_blue_50"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintTop_toBottomOf="@id/top_guide"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/star"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/contact_card"
+        app:strokeColor="#02C70F"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#3800FF11"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@id/rate_card"
+        app:layout_constraintEnd_toStartOf="@id/info_card"
+        app:layout_constraintTop_toBottomOf="@id/top_guide"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/chat"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/info_card"
+        app:strokeColor="#02AD63"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#4000FF90"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintTop_toBottomOf="@id/top_guide"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/info"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/sponsor_card"
+        app:strokeColor="#7800FF19"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#857FFF76"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintTop_toBottomOf="@id/rate_card"
+        app:layout_constraintBottom_toTopOf="@id/bitotsav_card"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/money_bag"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/faq_card"
+        app:strokeColor="#D4C502"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#73F7FF00"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toBottomOf="@id/contact_card"
+        app:layout_constraintStart_toEndOf="@id/sponsor_card"
+        app:layout_constraintEnd_toStartOf="@id/night_card"
+        app:layout_constraintBottom_toTopOf="@id/web_card"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/question"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/night_card"
+        app:strokeColor="#00B9C6"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#6300EEFF"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintTop_toBottomOf="@id/info_card"
+        app:layout_constraintBottom_toTopOf="@id/share_card"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/disco_ball"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bitotsav_card"
+        app:strokeColor="#10A4BC"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#2E01D8FA"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guide_higher"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/lotus_flower_color"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/web_card"
+        app:strokeColor="#39FA00"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#2939FA00"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toEndOf="@id/bitotsav_card"
+        app:layout_constraintEnd_toStartOf="@id/share_card"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guide_higher"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/domain"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/share_card"
+        app:strokeColor="#A208FA"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#5CA200FF"
+        app:cardCornerRadius="28dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintBottom_toTopOf="@id/bottom_guide_higher"
+        android:layout_width="56dp"
+        android:layout_height="56dp">
+
+        <ImageView
+            android:src="@drawable/share"
+            android:layout_gravity="center"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            tools:ignore="ContentDescription" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_start"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="206dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_end"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="150dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintTop_toBottomOf="@id/bottom_start"
+        app:layout_constraintBottom_toTopOf="@id/bottom_end"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/menu_user_avatar"
+            android:src="@color/md_grey_500"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="56dp"
+            android:layout_height="56dp" />
+
+        <TextView
+            android:id="@+id/menu_username"
+            android:text="RahulKraken"
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/md_grey_800"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/menu_team_name"
+            app:layout_constraintStart_toEndOf="@id/menu_user_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/menu_team_name"
+            android:text="Team with long team name"
+            android:layout_marginStart="16dp"
+            style="@style/font_regular_black_20"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:textColor="@color/md_grey_600"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@id/menu_user_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/menu_username"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottom_footer_guide"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="60dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <ImageView
+        android:id="@+id/ic_facebook"
+        android:src="@drawable/facebook"
+        app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ic_instagram"
+        android:src="@drawable/instagram"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
+        app:layout_constraintStart_toEndOf="@id/ic_facebook"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ic_twitter"
+        android:src="@drawable/twitter"
+        android:layout_marginStart="24dp"
+        app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
+        app:layout_constraintStart_toEndOf="@id/ic_instagram"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
