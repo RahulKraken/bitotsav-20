@@ -28,17 +28,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/end_guide"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="0dp"
-        android:layout_width="0dp"
-        android:layout_height="0dp" />
-
     <TextView
         android:id="@+id/item_rank"
         android:text="00"
         android:textSize="28sp"
+        android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/start_guide_rank"
         app:layout_constraintEnd_toStartOf="@id/start_guide_content"
@@ -61,6 +55,7 @@
         android:text="Team Name not huge"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/md_grey_700"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintStart_toEndOf="@id/item_avatar"
@@ -80,7 +75,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/start_guide_points"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 </androidx.constraintlayout.widget.ConstraintLayout>

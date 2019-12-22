@@ -79,7 +79,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboard_rv"
-        android:background="@color/md_grey_200"
+        android:background="@color/md_grey_100"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
