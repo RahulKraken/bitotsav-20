@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class DayAdapter(private val events: List<Event>) : RecyclerView.Adapter<DayAdapter.DayViewHolder>() {
+class ScheduleDayAdapter(private val events: List<Event>) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
         val inflater = LayoutInflater.from(parent.context)

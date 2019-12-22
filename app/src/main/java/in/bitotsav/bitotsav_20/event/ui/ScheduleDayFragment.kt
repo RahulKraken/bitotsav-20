@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_day.*
 /**
  * A simple [Fragment] subclass.
  */
-class DayFragment(private val day: Int) : Fragment() {
+class ScheduleDayFragment(private val day: Int) : Fragment() {
 
     private var events = listOf(
         Event(1, "event", "desc", "status", "10:00 AM", "venue", "1", "2", "coordinators", "category", "tag", "duration"),
@@ -58,7 +58,7 @@ class DayFragment(private val day: Int) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         schedule_rv.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = DayAdapter(events)
+            adapter = ScheduleDayAdapter(events)
             addItemDecoration(ScheduleTimeHeaderDecoration(activity!!, events))
         }
     }

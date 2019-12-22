@@ -32,10 +32,10 @@ class ScheduleFragment : Fragment() {
     class DayPagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager) {
         override fun getItem(position: Int): Fragment {
             return when(position) {
-                0 -> DayFragment(1)
-                1 -> DayFragment(2)
-                2 -> DayFragment(3)
-                else -> DayFragment(1)
+                0 -> ScheduleDayFragment(1)
+                1 -> ScheduleDayFragment(2)
+                2 -> ScheduleDayFragment(3)
+                else -> ScheduleDayFragment(1)
             }
         }
 

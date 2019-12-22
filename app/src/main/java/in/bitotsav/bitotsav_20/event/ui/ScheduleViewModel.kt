@@ -1,4 +1,4 @@
-package `in`.bitotsav.bitotsav_20.viewModel
+package `in`.bitotsav.bitotsav_20.event.ui
 
 import `in`.bitotsav.bitotsav_20.event.data.Event
 import `in`.bitotsav.bitotsav_20.event.data.EventRepository
@@ -11,14 +11,14 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainActivityViewModel(
+class ScheduleViewModel(
     private val repository: EventRepository,
     application: Application
 ) : AndroidViewModel(application) {
 
-    private var mainActivityViewModelJob = Job()
+    private var scheduleJob = Job()
 
-    private val uiScope = CoroutineScope(Dispatchers.Main + mainActivityViewModelJob)
+    private val uiScope = CoroutineScope(Dispatchers.Main + scheduleJob)
 
     private var event = MutableLiveData<Event>()
     private var allEvents = MutableLiveData<List<Event>>()
@@ -159,6 +159,6 @@ class MainActivityViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        mainActivityViewModelJob.cancel()
+        scheduleJob.cancel()
     }
 }
