@@ -18,7 +18,7 @@ import java.io.IOException
 import java.lang.Exception
 
 @RunWith(AndroidJUnit4::class)
-class MainActivityViewModelTest {
+class EventRepositoryTest {
     private lateinit var db: AppDatabase
     private lateinit var eventDao: EventDao
     private lateinit var eventRepository: EventRepository

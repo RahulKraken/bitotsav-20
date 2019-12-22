@@ -20,5 +20,5 @@ class FeedRepository(private val feedDao: FeedDao) {
     fun getAll() = feedDao.getAll()
 
     @WorkerThread
-    suspend fun getFeed(id: Long) = feedDao.get(id)
+    suspend fun getFeed(id: Int) = feedDao.get(id)
 }

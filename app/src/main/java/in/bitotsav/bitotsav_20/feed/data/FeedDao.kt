@@ -26,5 +26,5 @@ interface FeedDao {
     fun getAll(): LiveData<List<Feed>>
 
     @Query("SELECT * FROM feed WHERE id = :id LIMIT 1")
-    suspend fun get(id: Long): Feed
+    suspend fun get(id: Int): Feed?
 }

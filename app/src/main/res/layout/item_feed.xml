@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/pre_end_guide"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="48dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:id="@+id/announcement_title"
+        android:text="Announcement title, hope your enjoying you time"
+        style="@style/font_regular_black_20"
+        android:textColor="@color/md_grey_800"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/pre_end_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/announcement_details"
+        android:text="This is some random description: lkjasdk fjlksjadfoi wejfksdlkjkdj fkasdklsdkl cjlkdjfjsdoifjw aejfosdlkcsdk jfskdjfsdj sjdaf ksdjfl safj sadjf ksjdf jsakfdkljop ias flksjadioj safkld klafsjdoi fasdfkwalkejops oisajfd jsadfoijwoe ifsdfj iof sjf kj oij fojwefj oisdfjods fkdsjfoipwej fojsofij fjwoejo"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintTop_toBottomOf="@id/announcement_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/announcement_type"
+        android:text="Announcement"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/announcement_details"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:layout_marginTop="4dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/announcement_timestamp"
+        android:text="12:39 PM on 15th Feb, 2020"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/announcement_type"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/share_btn"
+        android:src="@drawable/ic_share_black_24dp"
+        android:alpha="0.5"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@id/pre_end_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>
