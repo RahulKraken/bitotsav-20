@@ -1,5 +1,6 @@
 package `in`.bitotsav.bitotsav_20.event.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -23,14 +24,14 @@ interface EventDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM events")
-    suspend fun getAllEvents() : List<Event>
+    fun getAllEvents() : LiveData<List<Event>>
 
-    @Query("SELECT * FROM events WHERE day = :day")
-    suspend fun getEventsForDay(day: String) : List<Event>
+    @Query("SELECT * FROM events WHERE day LIKE :day")
+    fun getEventsForDay(day: String) : LiveData<List<Event>>
 
     @Query("SELECT * FROM events WHERE id = :id")
     suspend fun getEvent(id: Int) : Event?
 
     @Query("SELECT * FROM events WHERE tag = 'flagship'")
-    suspend fun getAllFlagshipEvents() : List<Event>
+    fun getAllFlagshipEvents() : LiveData<List<Event>>
 }

@@ -4,6 +4,7 @@ import `in`.bitotsav.bitotsav_20.event.data.Event
 import `in`.bitotsav.bitotsav_20.event.data.EventRepository
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,20 +22,23 @@ class ScheduleViewModel(
     private val uiScope = CoroutineScope(Dispatchers.Main + scheduleJob)
 
     private var event = MutableLiveData<Event>()
-    private var allEvents = MutableLiveData<List<Event>>()
-    private var allEventsForDay = MutableLiveData<List<Event>>()
-    private var allFlagshipEvents = MutableLiveData<List<Event>>()
+    private var allEvents = repository.getAllEvents()
+    private var allEventsForDay = repository.getAllEventsForDay("1")
+    private var allFlagshipEvents = repository.getAllFlagshipEvents()
 
     init {
+        println("viewModel init: ${allEvents.value}")
+        println("viewModel init: ${allEventsForDay.value}")
+        println("viewModel init: ${allFlagshipEvents.value}")
         initializeEvents()
     }
 
     private fun initializeEvents() {
         uiScope.launch {
-            allEvents.value = getAllEventsAsync()
-            allEventsForDay.value = getAllEventsForDayAsync("1")
+            allEvents = repository.getAllEvents()
+            allEventsForDay= repository.getAllEventsForDay("1")
             event.value = getEventAsync(1)
-            allFlagshipEvents.value = getAllEventsAsync()
+            allFlagshipEvents = repository.getAllFlagshipEvents()
         }
     }
 
@@ -104,47 +108,43 @@ class ScheduleViewModel(
     /**
      * get all events
      */
-    fun getAllEvents(): MutableLiveData<List<Event>> {
-        uiScope.launch {
-            allEvents.value = getAllEventsAsync()
-        }
+    fun getAllEvents(): LiveData<List<Event>> {
         return allEvents
     }
-
+/*
     private suspend fun getAllEventsAsync(): List<Event> {
         return withContext(Dispatchers.IO) {
             repository.getAllEvents()
         }
-    }
+    }*/
 
     /**
      * get all events for day @param "day"
      */
-    fun getAllEventsForDay(day: String): MutableLiveData<List<Event>> {
+    fun getAllEventsForDay(day: String): LiveData<List<Event>> {
         uiScope.launch {
-            allEventsForDay.value = getAllEventsForDayAsync(day)
+            allEventsForDay = getAllEventsForDayAsync(day)
         }
+        println("viewModel: ${allEventsForDay.value}")
         return allEventsForDay
     }
 
-    private suspend fun getAllEventsForDayAsync(day: String): List<Event> {
+    private suspend fun getAllEventsForDayAsync(day: String): LiveData<List<Event>> {
         return withContext(Dispatchers.IO) {
             repository.getAllEventsForDay(day)
         }
     }
 
-    fun getAllFlagshipEvents(): MutableLiveData<List<Event>> {
-        uiScope.launch {
-            allFlagshipEvents.value = getAllFlagshipEventsAsync()
-        }
+    fun getAllFlagshipEvents(): LiveData<List<Event>> {
+        allFlagshipEvents = repository.getAllFlagshipEvents()
         return allFlagshipEvents
     }
-
+/*
     private suspend fun getAllFlagshipEventsAsync(): List<Event> {
         return withContext(Dispatchers.IO) {
             repository.getAllFlagshipEvents()
         }
-    }
+    }*/
 
 /*
     fun insertEvent(event: Event) {

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ScheduleDayAdapter(private val events: List<Event>) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
+class ScheduleDayAdapter(private var events: List<Event>?) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -15,12 +15,16 @@ class ScheduleDayAdapter(private val events: List<Event>) : RecyclerView.Adapter
     }
 
     override fun getItemCount(): Int {
-        return events.size
+        return if (events.isNullOrEmpty()) 0 else events!!.size
     }
 
     override fun onBindViewHolder(holder: DayViewHolder, position: Int) {
-        val event = events[position]
-        holder.bind(event)
+        val event = events?.get(position)
+        holder.bind(event!!)
+    }
+
+    fun setData(events: List<Event>) {
+        this.events = events
     }
 
     class DayViewHolder(

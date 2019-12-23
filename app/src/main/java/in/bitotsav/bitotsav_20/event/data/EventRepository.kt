@@ -20,11 +20,11 @@ class EventRepository(private val eventDao: EventDao) {
     suspend fun getEvent(id: Int) = eventDao.getEvent(id)
 
     @WorkerThread
-    suspend fun getAllEvents() = eventDao.getAllEvents()
+    fun getAllEvents() = eventDao.getAllEvents()
 
     @WorkerThread
-    suspend fun getAllEventsForDay(day: String) = eventDao.getEventsForDay(day)
+    fun getAllEventsForDay(day: String) = eventDao.getEventsForDay(day)
 
     @WorkerThread
-    suspend fun getAllFlagshipEvents() = eventDao.getAllFlagshipEvents()
+    fun getAllFlagshipEvents() = eventDao.getAllFlagshipEvents()
 }
