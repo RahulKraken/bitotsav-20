@@ -21,6 +21,39 @@
         <item name="android:color">@color/md_grey_500</item>
     </style>
 
+    <style name="font_semi_bold_24_black">
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_grey_800</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="font_semi_bold_14_dark_grey">
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_grey_600</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="font_semi_bold_12_dark_grey">
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_grey_600</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <style name="font_semi_bold_14_black">
+        <item name="android:fontFamily">@font/product_sans_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/md_grey_800</item>
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+
+    <!-- decoration -->
     <style name="time_headers">
         <item name="android:width">64dp</item>
         <item name="android:fontFamily">@font/product_sans_regular</item>
