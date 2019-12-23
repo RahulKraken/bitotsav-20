@@ -1,16 +1,21 @@
 package `in`.bitotsav.bitotsav_20.db
 
-import `in`.bitotsav.bitotsav_20.event.data.EventDao
-import `in`.bitotsav.bitotsav_20.event.data.WinnerDao
 import `in`.bitotsav.bitotsav_20.event.data.Event
-import `in`.bitotsav.bitotsav_20.profile.data.User
+import `in`.bitotsav.bitotsav_20.event.data.EventDao
 import `in`.bitotsav.bitotsav_20.event.data.Winner
+import `in`.bitotsav.bitotsav_20.event.data.WinnerDao
 import `in`.bitotsav.bitotsav_20.feed.data.Feed
 import `in`.bitotsav.bitotsav_20.feed.data.FeedDao
+import `in`.bitotsav.bitotsav_20.profile.data.User
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
 
 @Database(
     entities = [Event::class, Winner::class, User::class, Feed::class],
@@ -23,8 +28,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun feedDao() : FeedDao
 
     companion object {
-        private const val TAG = "EventDatabase"
-
         @Volatile private var instance : AppDatabase? = null
         private val LOCK = Any()
 
@@ -38,6 +41,47 @@ abstract class AppDatabase : RoomDatabase() {
             context.applicationContext,
             AppDatabase::class.java,
             "event_db.db"
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .addCallback(eventDbCallback)
+            .build()
+
+        private val eventDbCallback: Callback = object : Callback() {
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+                CoroutineScope(Dispatchers.IO).launch {
+                    insertDummyData()
+                }
+            }
+        }
+
+        private suspend fun insertDummyData() {
+            val eventDao = instance?.eventDao()
+            var i = 1
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "10:00 AM", "IC Arena", "1", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Formal", "40 min"))
+                i++
+            }
+            for (j in  0 until 4) {
+                eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "12:00 PM", "Somewhere else", "1", "2-3", "coordinators with phone separated by comma", "Sports,Action", "Informal", "40 min"))
+                i++
+            }
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "3:00 PM", "Sports Complex", "1", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
+                i++
+            }
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "10:00 AM", "IC Arena", "2", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Formal", "40 min"))
+                i++
+            }
+            for (j in  0 until 4) {
+                eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "12:00 PM", "Somewhere else", "2", "2-3", "coordinators with phone separated by comma", "Sports,Action", "Informal", "40 min"))
+                i++
+            }
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "3:00 PM", "Sports Complex", "2", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
+                i++
+            }
+        }
     }
 }
