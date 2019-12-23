@@ -40,7 +40,7 @@ class ScheduleDayFragment(private val day: String) : Fragment() {
                 updateRecyclerView()
             })
 
-        adapter = ScheduleDayAdapter(events.value)
+        adapter = ScheduleDayAdapter(events.value, activity!!)
 
         println("dayFragment: ${events.value}")
         // Inflate the layout for this fragment

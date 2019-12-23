@@ -6,7 +6,9 @@
     android:id="@+id/event_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".event.ui.EventDetailFragment">
+    tools:context=".event.ui.EventDetailActivity">
+
+    <!-- TODO: Use collapsing toolbar to encapsulate header -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

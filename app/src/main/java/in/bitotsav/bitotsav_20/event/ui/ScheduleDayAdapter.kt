@@ -2,15 +2,20 @@ package `in`.bitotsav.bitotsav_20.event.ui
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.event.data.Event
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ScheduleDayAdapter(private var events: List<Event>?) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
+class ScheduleDayAdapter(
+    private var events: List<Event>?,
+    private var context: Context) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
+        val inflater = LayoutInflater.from(context)
         return DayViewHolder(inflater, parent)
     }
 
@@ -27,15 +32,20 @@ class ScheduleDayAdapter(private var events: List<Event>?) : RecyclerView.Adapte
         this.events = events
     }
 
-    class DayViewHolder(
-        inflater: LayoutInflater, parent: ViewGroup
-    ): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_schedule, parent, false)) {
+    inner class DayViewHolder(
+        inflater: LayoutInflater, val parent: ViewGroup
+    ): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_schedule, parent, false)), View.OnClickListener {
         private var eventName: TextView? = null
         private var eventVenueDuration: TextView? = null
 
         init {
             eventName = itemView.findViewById(R.id.event_name)
             eventVenueDuration = itemView.findViewById(R.id.event_venue_duration)
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            context.startActivity(Intent(context, EventDetailActivity::class.java))
         }
 
         fun bind(event: Event) {
