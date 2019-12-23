@@ -45,7 +45,10 @@ class ScheduleDayAdapter(
         }
 
         override fun onClick(v: View?) {
-            context.startActivity(Intent(context, EventDetailActivity::class.java))
+            val event = events?.get(adapterPosition)
+            val intent = Intent(context, EventDetailActivity::class.java)
+            intent.putExtra(context.getString(R.string.event_intent_pass_key), event)
+            context.startActivity(intent)
         }
 
         fun bind(event: Event) {

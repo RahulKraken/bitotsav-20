@@ -9,4 +9,5 @@
     <string name="grade_icon_desc">grade icon</string>
     <string name="user_avatar_desc">user avatar</string>
     <string name="item_avatar_desc">item avatar</string>
+    <string name="event_intent_pass_key">EVENT_EXTRA_PASS</string>
 </resources>
