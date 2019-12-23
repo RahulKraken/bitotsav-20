@@ -4,9 +4,9 @@ import `in`.bitotsav.bitotsav_20.event.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View
-import android.widget.GridLayout
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -16,11 +16,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_generic.*
 
-class MainActivity : AppCompatActivity(), DrawerListener {
 
-    lateinit var drawerLayout: DrawerLayout
+class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
 
-    var lastSelectedNavigationItem: Int = R.id.action_schedule
+    private lateinit var drawerLayout: DrawerLayout
+
+    private var lastSelectedNavigationItem: Int = R.id.action_schedule
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,22 @@ class MainActivity : AppCompatActivity(), DrawerListener {
         setSupportActionBar(app_bar)
         setupBottomNavigation()
 
+        app_bar_search_btn.setOnClickListener(this)
+        app_bar_back_arrow.setOnClickListener(this)
+
+        setKeyboardModeOnSearch()
+
         drawerLayout.addDrawerListener(this)
+    }
+
+    private fun setKeyboardModeOnSearch() {
+        app_bar_search_box.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                println("Action Search: Triggered")
+                return@OnEditorActionListener true
+            }
+            false
+        })
     }
 
     private fun setupBottomNavigation() {
@@ -64,6 +80,24 @@ class MainActivity : AppCompatActivity(), DrawerListener {
             false
         })
         bottom_navigation.selectedItemId = lastSelectedNavigationItem
+    }
+
+    override fun onClick(v: View?) {
+        return when(v?.id) {
+            R.id.app_bar_search_btn -> {
+                app_bar_search_btn.visibility = View.GONE
+                app_bar_title.visibility = View.GONE
+                app_bar_search_box.visibility = View.VISIBLE
+                app_bar_back_arrow.visibility = View.VISIBLE
+            }
+            R.id.app_bar_back_arrow -> {
+                app_bar_back_arrow.visibility = View.GONE
+                app_bar_search_box.visibility = View.GONE
+                app_bar_title.visibility = View.VISIBLE
+                app_bar_search_btn.visibility = View.VISIBLE
+            }
+            else -> Unit
+        }
     }
 
     override fun onBackPressed() {
