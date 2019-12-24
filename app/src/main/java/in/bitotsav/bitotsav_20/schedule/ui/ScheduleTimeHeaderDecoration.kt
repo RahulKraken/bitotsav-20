@@ -55,7 +55,7 @@ class ScheduleTimeHeaderDecoration (
 
         width = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_android_width)
         padding = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_android_padding)
-        textSize = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_meridiemTextSize)
+        textSize = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_timeTextSize)
         meridiemTextSize = attrs.getDimensionPixelSizeOrThrow(R.styleable.TimeHeader_meridiemTextSize)
         // recycle attributes
         attrs.recycle()

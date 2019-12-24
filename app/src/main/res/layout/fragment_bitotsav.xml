@@ -37,9 +37,9 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/rate_card"
-        app:strokeColor="@color/md_light_blue_300"
+        app:strokeColor="#0087C0"
         app:strokeWidth="1dp"
-        app:cardBackgroundColor="@color/md_light_blue_50"
+        app:cardBackgroundColor="#5200B2FF"
         app:cardCornerRadius="28dp"
         app:cardElevation="0dp"
         app:layout_constraintStart_toEndOf="@id/start_guide"
