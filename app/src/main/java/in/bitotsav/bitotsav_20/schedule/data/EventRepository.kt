@@ -1,4 +1,4 @@
-package `in`.bitotsav.bitotsav_20.event.data
+package `in`.bitotsav.bitotsav_20.schedule.data
 
 import androidx.annotation.WorkerThread
 

@@ -6,7 +6,7 @@
     android:id="@+id/event_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".event.ui.EventDetailActivity">
+    tools:context=".schedule.ui.EventDetailActivity">
 
     <!-- TODO: Use collapsing toolbar to encapsulate header -->
 

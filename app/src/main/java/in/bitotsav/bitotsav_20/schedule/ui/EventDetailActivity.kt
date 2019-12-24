@@ -1,7 +1,7 @@
-package `in`.bitotsav.bitotsav_20.event.ui
+package `in`.bitotsav.bitotsav_20.schedule.ui
 
 import `in`.bitotsav.bitotsav_20.R
-import `in`.bitotsav.bitotsav_20.event.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_event_detail.*

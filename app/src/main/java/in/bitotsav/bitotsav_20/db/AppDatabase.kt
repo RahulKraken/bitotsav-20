@@ -1,9 +1,9 @@
 package `in`.bitotsav.bitotsav_20.db
 
-import `in`.bitotsav.bitotsav_20.event.data.Event
-import `in`.bitotsav.bitotsav_20.event.data.EventDao
-import `in`.bitotsav.bitotsav_20.event.data.Winner
-import `in`.bitotsav.bitotsav_20.event.data.WinnerDao
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.EventDao
+import `in`.bitotsav.bitotsav_20.schedule.data.Winner
+import `in`.bitotsav.bitotsav_20.schedule.data.WinnerDao
 import `in`.bitotsav.bitotsav_20.feed.data.Feed
 import `in`.bitotsav.bitotsav_20.feed.data.FeedDao
 import `in`.bitotsav.bitotsav_20.profile.data.User

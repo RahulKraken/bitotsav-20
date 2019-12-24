@@ -1,9 +1,9 @@
 package `in`.bitotsav.bitotsav_20
 
-import `in`.bitotsav.bitotsav_20.event.data.EventDao
+import `in`.bitotsav.bitotsav_20.schedule.data.EventDao
 import `in`.bitotsav.bitotsav_20.db.AppDatabase
-import `in`.bitotsav.bitotsav_20.event.data.Event
-import `in`.bitotsav.bitotsav_20.event.data.EventRepository
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.EventRepository
 import android.content.Context
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4

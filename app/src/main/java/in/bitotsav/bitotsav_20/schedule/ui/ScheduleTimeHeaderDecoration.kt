@@ -1,11 +1,9 @@
-package `in`.bitotsav.bitotsav_20.event.ui
+package `in`.bitotsav.bitotsav_20.schedule.ui
 
 import `in`.bitotsav.bitotsav_20.R
-import `in`.bitotsav.bitotsav_20.event.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
 import android.graphics.Paint.ANTI_ALIAS_FLAG
 import android.os.Build
 import android.text.Layout
@@ -14,18 +12,15 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import android.text.style.AbsoluteSizeSpan
 import android.view.View
-import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.content.res.getColorOrThrow
 import androidx.core.content.res.getDimensionPixelSizeOrThrow
 import androidx.core.content.res.getResourceIdOrThrow
 import androidx.core.graphics.withTranslation
 import androidx.core.text.inSpans
-import androidx.core.view.get
 import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import org.w3c.dom.Text
 import java.lang.Exception
 
 class ScheduleTimeHeaderDecoration (

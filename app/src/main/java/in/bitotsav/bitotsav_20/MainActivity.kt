@@ -1,6 +1,6 @@
 package `in`.bitotsav.bitotsav_20
 
-import `in`.bitotsav.bitotsav_20.event.ui.ScheduleFragment
+import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package `in`.bitotsav.bitotsav_20.event.ui
+package `in`.bitotsav.bitotsav_20.schedule.ui
 
 
 import android.os.Bundle
@@ -9,10 +9,9 @@ import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.db.AppDatabase
-import `in`.bitotsav.bitotsav_20.event.data.Event
-import `in`.bitotsav.bitotsav_20.event.data.EventRepository
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.EventRepository
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_day.*

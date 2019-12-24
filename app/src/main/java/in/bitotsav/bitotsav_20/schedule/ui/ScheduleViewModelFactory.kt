@@ -1,6 +1,6 @@
-package `in`.bitotsav.bitotsav_20.event.ui
+package `in`.bitotsav.bitotsav_20.schedule.ui
 
-import `in`.bitotsav.bitotsav_20.event.data.EventRepository
+import `in`.bitotsav.bitotsav_20.schedule.data.EventRepository
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

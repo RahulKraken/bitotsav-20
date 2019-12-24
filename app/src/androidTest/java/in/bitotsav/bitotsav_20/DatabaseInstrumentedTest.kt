@@ -1,10 +1,10 @@
 package `in`.bitotsav.bitotsav_20
 
-import `in`.bitotsav.bitotsav_20.event.data.EventDao
-import `in`.bitotsav.bitotsav_20.event.data.WinnerDao
+import `in`.bitotsav.bitotsav_20.schedule.data.EventDao
+import `in`.bitotsav.bitotsav_20.schedule.data.WinnerDao
 import `in`.bitotsav.bitotsav_20.db.AppDatabase
-import `in`.bitotsav.bitotsav_20.event.data.Event
-import `in`.bitotsav.bitotsav_20.event.data.Winner
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.Winner
 import android.content.Context
 import androidx.room.Room
 import androidx.test.platform.app.InstrumentationRegistry

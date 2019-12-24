@@ -1,6 +1,5 @@
-package `in`.bitotsav.bitotsav_20.event.data
+package `in`.bitotsav.bitotsav_20.schedule.data
 
-import `in`.bitotsav.bitotsav_20.event.data.Winner
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert

@@ -1,7 +1,7 @@
-package `in`.bitotsav.bitotsav_20.event.ui
+package `in`.bitotsav.bitotsav_20.schedule.ui
 
 import `in`.bitotsav.bitotsav_20.R
-import `in`.bitotsav.bitotsav_20.event.data.Event
+import `in`.bitotsav.bitotsav_20.schedule.data.Event
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
