@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.feed.ui.ItemDividerDecoration
 import `in`.bitotsav.bitotsav_20.leaderboard.data.Team
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
@@ -18,6 +19,16 @@ import kotlinx.android.synthetic.main.fragment_leaderboard.*
 class LeaderboardFragment : Fragment() {
 
     private val teams = listOf(
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
+        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
         Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
         Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
         Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
@@ -48,6 +59,7 @@ class LeaderboardFragment : Fragment() {
         leaderboard_rv.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = LeaderboardAdapter(teams)
+            addItemDecoration(ItemDividerDecoration(context, 32, 32))
         }
     }
 }

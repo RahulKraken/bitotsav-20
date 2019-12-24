@@ -13,6 +13,7 @@ import `in`.bitotsav.bitotsav_20.feed.data.Feed
 import `in`.bitotsav.bitotsav_20.feed.data.FeedRepository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_feed.*
 
@@ -48,6 +49,7 @@ class FeedFragment : Fragment() {
         feed_recycler_view.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = FeedAdapter(feeds.value)
+            addItemDecoration(ItemDividerDecoration(context!!, 64, 48))
         }
     }
 
