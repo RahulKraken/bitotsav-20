@@ -37,9 +37,10 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
         setSupportActionBar(app_bar)
         setupBottomNavigation()
 
-        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "FEED").hide(feedFragment).commit()
-        supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "LEADERBOARD").hide(leaderboardFragment).commit()
-        supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "SCHEDULE").commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "Leaderboard").hide(leaderboardFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "Schedule").commit()
+        supportActionBar?.let { app_bar_title.text = "Schedule" }
 
         app_bar_search_btn.setOnClickListener(this)
         app_bar_back_arrow.setOnClickListener(this)
@@ -115,6 +116,9 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
     }
 
     private fun setFragment(fragment: Fragment) {
+        supportActionBar?.let {
+            app_bar_title.text = fragment.tag
+        }
         supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
         activeFragment = fragment
     }
