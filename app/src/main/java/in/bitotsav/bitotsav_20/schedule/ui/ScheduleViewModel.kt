@@ -23,12 +23,18 @@ class ScheduleViewModel(
 
     private var event = MutableLiveData<Event>()
     private var allEvents = repository.getAllEvents()
-    private var allEventsForDay = repository.getAllEventsForDay("1")
+    private var allEventsForDay = arrayOf(
+        repository.getAllEventsForDay("1"),
+        repository.getAllEventsForDay("2"),
+        repository.getAllEventsForDay("3")
+    )
     private var allFlagshipEvents = repository.getAllFlagshipEvents()
 
     init {
         println("viewModel init: ${allEvents.value}")
-        println("viewModel init: ${allEventsForDay.value}")
+        println("viewModel init: ${allEventsForDay[0].value}")
+        println("viewModel init: ${allEventsForDay[1].value}")
+        println("viewModel init: ${allEventsForDay[2].value}")
         println("viewModel init: ${allFlagshipEvents.value}")
         initializeEvents()
     }
@@ -36,7 +42,11 @@ class ScheduleViewModel(
     private fun initializeEvents() {
         uiScope.launch {
             allEvents = repository.getAllEvents()
-            allEventsForDay= repository.getAllEventsForDay("1")
+            allEventsForDay = arrayOf(
+                repository.getAllEventsForDay("1"),
+                repository.getAllEventsForDay("2"),
+                repository.getAllEventsForDay("3")
+            )
             event.value = getEventAsync(1)
             allFlagshipEvents = repository.getAllFlagshipEvents()
         }
@@ -121,17 +131,23 @@ class ScheduleViewModel(
     /**
      * get all events for day @param "day"
      */
-    fun getAllEventsForDay(day: String): LiveData<List<Event>> {
+    fun getAllEventsForDay(): Array<LiveData<List<Event>>> {
         uiScope.launch {
-            allEventsForDay = getAllEventsForDayAsync(day)
+            allEventsForDay = getAllEventsForDayAsync()
         }
-        println("viewModel: ${allEventsForDay.value}")
+        println("viewModel: ${allEventsForDay[0].value}")
+        println("viewModel: ${allEventsForDay[1].value}")
+        println("viewModel: ${allEventsForDay[2].value}")
         return allEventsForDay
     }
 
-    private suspend fun getAllEventsForDayAsync(day: String): LiveData<List<Event>> {
+    private suspend fun getAllEventsForDayAsync(): Array<LiveData<List<Event>>> {
         return withContext(Dispatchers.IO) {
-            repository.getAllEventsForDay(day)
+            arrayOf(
+                repository.getAllEventsForDay("1"),
+                repository.getAllEventsForDay("2"),
+                repository.getAllEventsForDay("3")
+            )
         }
     }
 

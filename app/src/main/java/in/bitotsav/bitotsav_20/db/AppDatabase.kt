@@ -91,6 +91,22 @@ abstract class AppDatabase : RoomDatabase() {
                 eventDao?.insert(Event(i, "A decent event two", "a brief description", "not completed", "4:00 PM", "Sports Complex", "2", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
                 i++
             }
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event three", "a brief description", "not completed", "10:00 AM", "IC Arena", "3", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Formal", "40 min"))
+                i++
+            }
+            for (j in  0 until 4) {
+                eventDao?.insert(Event(i, "A decent event three", "a brief description", "not completed", "12:00 PM", "Somewhere else", "3", "2-3", "coordinators with phone separated by comma", "Sports,Action", "Informal", "40 min"))
+                i++
+            }
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event three", "a brief description", "not completed", "3:00 PM", "Sports Complex", "3", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
+                i++
+            }
+            for (j in 0 until 4) {
+                eventDao?.insert(Event(i, "A decent event three", "a brief description", "not completed", "4:00 PM", "Sports Complex", "3", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
+                i++
+            }
 
             // feeds
             val feedDao = instance?.feedDao()
