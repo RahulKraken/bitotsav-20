@@ -248,7 +248,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/menu_user_avatar"
             android:src="@color/md_grey_500"
             app:layout_constraintStart_toStartOf="parent"
