@@ -21,6 +21,11 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
 
     private lateinit var drawerLayout: DrawerLayout
 
+    private var activeFragment = Fragment()
+    private val scheduleFragment = ScheduleFragment()
+    private val feedFragment = FeedFragment()
+    private val leaderboardFragment = LeaderboardFragment()
+
     private var lastSelectedNavigationItem: Int = R.id.action_schedule
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +36,10 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
 
         setSupportActionBar(app_bar)
         setupBottomNavigation()
+
+        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "FEED").hide(feedFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "LEADERBOARD").hide(leaderboardFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "SCHEDULE").commit()
 
         app_bar_search_btn.setOnClickListener(this)
         app_bar_back_arrow.setOnClickListener(this)
@@ -61,19 +70,19 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
                 R.id.action_schedule -> {
                     println("Schedule selected")
                     lastSelectedNavigationItem = R.id.action_schedule
-                    setFragment(ScheduleFragment())
+                    setFragment(scheduleFragment)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.action_feed -> {
                     println("Feed selected")
                     lastSelectedNavigationItem = R.id.action_feed
-                    setFragment(FeedFragment())
+                    setFragment(feedFragment)
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.action_leaderboard -> {
                     println("Leaderboard selected")
                     lastSelectedNavigationItem = R.id.action_leaderboard
-                    setFragment(LeaderboardFragment())
+                    setFragment(leaderboardFragment)
                     return@OnNavigationItemSelectedListener true
                 }
             }
@@ -106,7 +115,8 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
     }
 
     private fun setFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction().replace(container.id, fragment).commit()
+        supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
+        activeFragment = fragment
     }
 
     override fun onDrawerStateChanged(newState: Int) {
@@ -119,6 +129,7 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
 
     override fun onDrawerClosed(drawerView: View) {
         bottom_navigation.selectedItemId = lastSelectedNavigationItem
+
     }
 
     override fun onDrawerOpened(drawerView: View) {
