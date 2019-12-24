@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FeedAdapter (private val feeds: List<Feed>) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
+class FeedAdapter (private var feeds: List<Feed>?) : RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -15,12 +15,16 @@ class FeedAdapter (private val feeds: List<Feed>) : RecyclerView.Adapter<FeedAda
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        val feed = feeds[position]
-        holder.bind(feed)
+        val feed = feeds?.get(position)
+        feed?.let { holder.bind(it) }
     }
 
     override fun getItemCount(): Int {
-        return feeds.size
+        return if (feeds.isNullOrEmpty()) 0 else return feeds?.size!!
+    }
+
+    fun setData(feeds: List<Feed>) {
+        this.feeds = feeds
     }
 
     class FeedViewHolder(

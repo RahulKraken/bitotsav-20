@@ -88,7 +88,7 @@ abstract class AppDatabase : RoomDatabase() {
             val feedDao = instance?.feedDao()
             i = 1
             for (j in 0 until 20) {
-                feedDao?.insert(Feed(i, "Very Important announcement", "Some serious detail about the very important announcement", "Announcement", 9392381001))
+                feedDao?.insert(Feed(i++, "Very Important announcement", "Some serious detail about the very important announcement", "Announcement", 4578123))
             }
         }
     }

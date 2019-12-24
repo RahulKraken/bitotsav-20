@@ -20,10 +20,11 @@ class FeedViewModel(
     private var feedFragmentJob = Job()
 
     private var uiScope = CoroutineScope(Dispatchers.Main + feedFragmentJob)
-    private var allFeeds: LiveData<List<Feed>> = feedRepository.getAll()
+    private var allFeeds = feedRepository.getAll()
     private var feed = MutableLiveData<Feed>()
 
     init {
+        println("feed view model: ${allFeeds.value}")
         initializeFeeds()
     }
 
