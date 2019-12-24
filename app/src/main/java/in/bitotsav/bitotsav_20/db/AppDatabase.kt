@@ -57,6 +57,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         private suspend fun insertDummyData() {
             val eventDao = instance?.eventDao()
+            // events
             var i = 1
             for (j in 0 until 4) {
                 eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "10:00 AM", "IC Arena", "1", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Formal", "40 min"))
@@ -81,6 +82,13 @@ abstract class AppDatabase : RoomDatabase() {
             for (j in 0 until 4) {
                 eventDao?.insert(Event(i, "A decent event name", "a brief description", "not completed", "3:00 PM", "Sports Complex", "2", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
                 i++
+            }
+
+            // feeds
+            val feedDao = instance?.feedDao()
+            i = 1
+            for (j in 0 until 20) {
+                feedDao?.insert(Feed(i, "Very Important announcement", "Some serious detail about the very important announcement", "Announcement", 9392381001))
             }
         }
     }
