@@ -31,23 +31,23 @@
 
     <style name="font_semi_bold_14_dark_grey">
         <item name="android:fontFamily">@font/product_sans_regular</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/md_grey_600</item>
         <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="font_semi_bold_12_dark_grey">
         <item name="android:fontFamily">@font/product_sans_regular</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/md_grey_600</item>
         <item name="android:textAlignment">viewStart</item>
     </style>
 
     <style name="font_semi_bold_14_black">
         <item name="android:fontFamily">@font/product_sans_regular</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/md_grey_800</item>
         <item name="android:textAlignment">viewStart</item>
