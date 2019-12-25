@@ -4,6 +4,8 @@ import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.schedule.data.Event
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_event_detail.*
 
 class EventDetailActivity : AppCompatActivity() {
@@ -24,5 +26,18 @@ class EventDetailActivity : AppCompatActivity() {
         event_detail_rules.text = event.description
         event_detail_day_time.text = "Day ${event.day}, ${event.timing}"
         event_detail_venue.text = event.venue
+
+        populateRecyclerView(event)
+    }
+
+    private fun populateRecyclerView(event: Event) {
+        val categories = event.categories.split(",")
+        if (categories.isNullOrEmpty()) event_detail_category_rv.visibility = View.GONE
+        else event_detail_category_rv?.let {
+            it.apply {
+                adapter = CategoriesListAdapter(context, categories)
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            }
+        }
     }
 }
