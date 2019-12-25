@@ -23,7 +23,7 @@ class EventDetailActivity : AppCompatActivity() {
     // TODO: bind more views
     private fun bindData(event: Event) {
         event_detail_title.text = event.eventName
-        event_detail_rules.text = event.description
+//        event_detail_rules.text = event.description
         event_detail_day_time.text = "Day ${event.day}, ${event.timing}"
         event_detail_venue.text = event.venue
 

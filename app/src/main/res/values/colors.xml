@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#E60066FF</color>
     <color name="colorPrimaryDark">#DFDFDF</color>
-    <color name="colorAccent">#FF9100</color>
+    <color name="colorAccent">@color/md_cyan_600</color>
 
     <!-- Category chip colors -->
     <color name="music">@color/md_orange_200</color>
