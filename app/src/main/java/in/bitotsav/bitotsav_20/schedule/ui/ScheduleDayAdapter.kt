@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class ScheduleDayAdapter(
     private var events: List<Event>?,
@@ -40,12 +42,14 @@ class ScheduleDayAdapter(
         private var eventVenueDuration: TextView? = null
         private var registerLabelIcon: ImageView? = null
         private var registerLabel: TextView? = null
+        private var categoryList: RecyclerView? = null
 
         init {
             eventName = itemView.findViewById(R.id.event_name)
             eventVenueDuration = itemView.findViewById(R.id.event_venue_duration)
             registerLabelIcon = itemView.findViewById(R.id.register_icon)
             registerLabel = itemView.findViewById(R.id.register_label)
+            categoryList = itemView.findViewById(R.id.rv_categories)
             itemView.setOnClickListener(this)
         }
 
@@ -65,6 +69,17 @@ class ScheduleDayAdapter(
             } else {
                 registerLabel?.visibility = View.VISIBLE
                 registerLabelIcon?.visibility = View.VISIBLE
+            }
+
+            // populate categories list
+            val categories = event.categories.split(",")
+            if (categories.isNotEmpty()) {
+                categoryList?.apply {
+                    layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                    adapter = CategoriesListAdapter(context, categories)
+                }
+            } else {
+                categoryList?.visibility = View.GONE
             }
         }
     }

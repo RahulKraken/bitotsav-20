@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#DFDFDF</color>
     <color name="colorAccent">#FF9100</color>
 
+    <!-- Category chip colors -->
+    <color name="music">@color/md_orange_300</color>
+    <color name="dance">@color/md_purple_A200</color>
+    <color name="sports">@color/md_light_blue_300</color>
+    <color name="action">@color/md_light_green_300</color>
+
     <!-- google's material design colours from http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
 
     <!--reds-->

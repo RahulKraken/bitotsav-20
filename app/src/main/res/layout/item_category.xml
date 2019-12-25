@@ -4,5 +4,6 @@
     android:id="@+id/item_category"
     android:text="Cultural Arts"
     android:textSize="14sp"
+    android:layout_margin="4dp"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content" />
