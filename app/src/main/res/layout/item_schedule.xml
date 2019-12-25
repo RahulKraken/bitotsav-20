@@ -41,26 +41,48 @@
         android:layout_height="wrap_content" />
 
     <ImageView
-        android:id="@+id/location_icon"
-        android:src="@drawable/location"
+        android:id="@+id/register_icon"
+        android:src="@drawable/ticket"
         android:alpha="0.6"
+        app:layout_constraintTop_toTopOf="@id/register_label"
+        app:layout_constraintBottom_toBottomOf="@id/register_label"
         app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintTop_toTopOf="@id/event_venue_duration"
-        app:layout_constraintBottom_toBottomOf="@id/event_venue_duration"
-        app:layout_constraintEnd_toStartOf="@id/event_venue_duration"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:contentDescription="@string/location_icon_desc" />
+        android:contentDescription="@string/register_icon_desc" />
+
+    <TextView
+        android:id="@+id/register_label"
+        android:text="REGISTER"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toBottomOf="@id/event_name"
+        app:layout_constraintStart_toEndOf="@id/register_icon"
+        app:layout_constraintEnd_toStartOf="@id/pre_end_guide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/location_icon"-->
+<!--        android:src="@drawable/location"-->
+<!--        android:alpha="0.6"-->
+<!--        app:layout_constraintStart_toEndOf="@id/start_guide"-->
+<!--        app:layout_constraintTop_toTopOf="@id/event_venue_duration"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/event_venue_duration"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/event_venue_duration"-->
+<!--        android:layout_width="16dp"-->
+<!--        android:layout_height="16dp"-->
+<!--        android:contentDescription="@string/location_icon_desc" />-->
 
     <TextView
         android:id="@+id/event_venue_duration"
         android:text="Shorbag / 40 mins"
         android:layout_marginTop="4dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintStart_toEndOf="@id/location_icon"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/pre_end_guide"
-        app:layout_constraintTop_toBottomOf="@id/event_name"
+        app:layout_constraintTop_toBottomOf="@id/register_label"
         android:textAlignment="viewStart"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />

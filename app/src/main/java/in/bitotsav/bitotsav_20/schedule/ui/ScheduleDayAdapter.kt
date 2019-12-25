@@ -7,6 +7,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -37,10 +38,14 @@ class ScheduleDayAdapter(
     ): RecyclerView.ViewHolder(inflater.inflate(R.layout.item_schedule, parent, false)), View.OnClickListener {
         private var eventName: TextView? = null
         private var eventVenueDuration: TextView? = null
+        private var registerLabelIcon: ImageView? = null
+        private var registerLabel: TextView? = null
 
         init {
             eventName = itemView.findViewById(R.id.event_name)
             eventVenueDuration = itemView.findViewById(R.id.event_venue_duration)
+            registerLabelIcon = itemView.findViewById(R.id.register_icon)
+            registerLabel = itemView.findViewById(R.id.register_label)
             itemView.setOnClickListener(this)
         }
 
@@ -54,6 +59,13 @@ class ScheduleDayAdapter(
         fun bind(event: Event) {
             eventName?.text = event.eventName
             eventVenueDuration?.text = "${event.venue} / ${event.duration}"
+            if (event.tag != "Formal") {
+                registerLabel?.visibility = View.GONE
+                registerLabelIcon?.visibility = View.GONE
+            } else {
+                registerLabel?.visibility = View.VISIBLE
+                registerLabelIcon?.visibility = View.VISIBLE
+            }
         }
     }
 }

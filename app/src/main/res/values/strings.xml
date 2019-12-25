@@ -11,4 +11,5 @@
     <string name="item_avatar_desc">item avatar</string>
     <string name="event_intent_pass_key">EVENT_EXTRA_PASS</string>
     <string name="location_icon_desc">Location icon</string>
+    <string name="register_icon_desc">register icon</string>
 </resources>
