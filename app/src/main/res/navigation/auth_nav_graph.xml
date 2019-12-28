@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="in.bitotsav.bitotsav_20.profile.ui.LoginFragment"
+        android:label="fragment_register_fragment_step_one"
+        tools:layout="@layout/fragment_register_fragment_step_one" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragmentStepOne"
+            app:destination="@id/registerFragmentStepOne" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragmentStepOne"
+        android:name="in.bitotsav.bitotsav_20.profile.ui.RegisterFragmentStepOne"
+        android:label="RegisterFragmentStepOne" >
+        <action
+            android:id="@+id/action_registerFragmentStepOne_to_registerFragmentStepTwo"
+            app:destination="@id/registerFragmentStepTwo" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registerFragmentStepTwo"
+        android:name="in.bitotsav.bitotsav_20.profile.ui.RegisterFragmentStepTwo"
+        android:label="fragment_register_fragment_step_two"
+        tools:layout="@layout/fragment_register_fragment_step_two" />
+</navigation>
