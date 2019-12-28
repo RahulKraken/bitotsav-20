@@ -8,19 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 
 /**
  * A simple [Fragment] subclass.
  */
-class LoginFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return inflater.inflate(R.layout.fragment_profile, container, false)
     }
+
+
 }

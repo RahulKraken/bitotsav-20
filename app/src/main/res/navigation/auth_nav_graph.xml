@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/profileFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragmentStepOne"
             app:destination="@id/registerFragmentStepOne" />
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
@@ -22,11 +25,27 @@
         <action
             android:id="@+id/action_registerFragmentStepOne_to_registerFragmentStepTwo"
             app:destination="@id/registerFragmentStepTwo" />
+        <action
+            android:id="@+id/action_registerFragmentStepOne_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/registerFragmentStepTwo"
         android:name="in.bitotsav.bitotsav_20.profile.ui.RegisterFragmentStepTwo"
         android:label="fragment_register_fragment_step_two"
-        tools:layout="@layout/fragment_register_fragment_step_two" />
+        tools:layout="@layout/fragment_register_fragment_step_two" >
+        <action
+            android:id="@+id/action_registerFragmentStepTwo_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="in.bitotsav.bitotsav_20.profile.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>
