@@ -1,4 +1,4 @@
-package `in`.bitotsav.bitotsav_20.authentication.ui
+package `in`.bitotsav.bitotsav_20.profile.ui
 
 
 import android.os.Bundle
@@ -12,14 +12,14 @@ import `in`.bitotsav.bitotsav_20.R
 /**
  * A simple [Fragment] subclass.
  */
-class RegisterFragmentStepTwo : Fragment() {
+class LoginFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_fragment_step_two, container, false)
+        return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
 

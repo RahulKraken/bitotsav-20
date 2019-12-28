@@ -1,6 +1,6 @@
 package `in`.bitotsav.bitotsav_20
 
-import `in`.bitotsav.bitotsav_20.authentication.ui.LoginActivity
+import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
 
 
 
-        startActivity(Intent(this, LoginActivity::class.java))
+        startActivity(Intent(this, ProfileActivity::class.java))
 
 
 

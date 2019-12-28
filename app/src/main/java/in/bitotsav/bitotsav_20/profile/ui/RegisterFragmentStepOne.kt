@@ -1,4 +1,4 @@
-package `in`.bitotsav.bitotsav_20.authentication.ui
+package `in`.bitotsav.bitotsav_20.profile.ui
 
 
 import android.os.Bundle
