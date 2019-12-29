@@ -131,9 +131,11 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
     }
 
     private fun checkVerificationStatusAndSave(user: User) {
+        // TODO: Replace with /getUserDashboard endpoint
         val request = object : StringRequest(Method.GET, "https://bitotsav.in/api/auth/getUserState",
             Response.Listener { response ->
                 println(response)
+                // TODO: Inside try-catch
                 val res = JSONObject(response)
                 if (res.get("verified") != null) {
                     saveAndNavigate(user)

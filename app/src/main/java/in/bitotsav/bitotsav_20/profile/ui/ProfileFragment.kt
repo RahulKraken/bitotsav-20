@@ -42,9 +42,13 @@ class ProfileFragment : Fragment() {
         else bindUser(SharedPrefUtils(context!!).getUser())
 
         profile_logout_btn.setOnClickListener {
-            SharedPrefUtils(context!!).setUser(null)
-            activity?.finish()
+            logout()
         }
+    }
+
+    private fun logout() {
+        SharedPrefUtils(context!!).setUser(null)
+        activity?.finish()
     }
 
     private fun bindUser(user: User?) {
