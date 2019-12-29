@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 
 @Database(
-    entities = [Event::class, Winner::class, User::class, Feed::class],
+    entities = [Event::class, Winner::class, Feed::class],
     version = 1,
     exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

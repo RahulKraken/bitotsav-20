@@ -1,17 +1,18 @@
 package `in`.bitotsav.bitotsav_20.profile.data
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "user")
 data class User(
-    @PrimaryKey
-    val id: String,
+    val bitotsavId: Int? = -1,
     val name: String,
     val email: String,
-    @ColumnInfo(name = "team_name")
+    val phoneNo: String,
+    val gender: Int,
+    val clgName: String,
+    val clgCity: String,
+    val clgState: String,
+    val clgId: String,
+    val isVerified: Boolean? = false,
     val teamName: String? = null,
     var score: Int,
     val day1: Boolean = false,
