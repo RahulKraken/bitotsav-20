@@ -8,20 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.VolleyService
 import `in`.bitotsav.bitotsav_20.config.Secret
-import `in`.bitotsav.bitotsav_20.profile.data.User
-import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
 import com.google.android.gms.safetynet.SafetyNet
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.login_email
-import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
-import java.util.concurrent.Executor
+import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
@@ -62,20 +59,54 @@ class LoginFragment : Fragment(), View.OnClickListener {
         email = login_email.text.toString()
         password = login_password.text.toString()
         if (email.isNotBlank() && password.isNotBlank()) {
-            verifyCaptcha(email, password)
+            verifyCaptcha()
         }
     }
 
-    private fun verifyCaptcha(email: String, password: String) {
+    private fun verifyCaptcha() {
         SafetyNet.getClient(activity!!).verifyWithRecaptcha(Secret.recptchaSiteKey)
-            .addOnSuccessListener(this as Executor, OnSuccessListener {response ->
-                println("recaptcha success: $response")
-                SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false))
-                navigateToProfile()
-            })
-            .addOnFailureListener(this as Executor, OnFailureListener {
+            .addOnSuccessListener(activity!!) { response ->
+                println("recaptcha success: ${response.tokenResult}")
+                if (response.tokenResult.isNotEmpty()) {
+                    attemptLogin(response.tokenResult)
+                }
+            }
+            .addOnFailureListener(activity!!) {
                 println("recaptcha failed: $it")
-            })
+            }
+    }
+
+    private fun attemptLogin(token: String) {
+        val loginRequest = object : StringRequest(Method.POST, "https://bitotsav.in/api/auth/login",
+            Response.Listener {response ->
+                val res = JSONObject(response)
+                println("login: ${res.get("status")}")
+                when (res.get("status")) {
+                    200 -> println(res)
+                    else -> println(res)
+                }
+            }, Response.ErrorListener {
+                println("Unknown error occurred")
+            }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                return mutableMapOf(
+                    "captcha" to token
+                )
+            }
+
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+
+            override fun getBody(): ByteArray {
+                val body = JSONObject()
+                body.put("email", email)
+                body.put("password", password)
+                return body.toString().toByteArray(Charsets.UTF_8)
+            }
+        }
+
+        VolleyService.getRequestQueue(context!!).add(loginRequest)
     }
 
     private fun navigateToProfile() {
