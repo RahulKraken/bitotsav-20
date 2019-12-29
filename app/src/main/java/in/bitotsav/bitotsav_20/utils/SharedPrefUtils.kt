@@ -23,4 +23,15 @@ class SharedPrefUtils(private val context: Context) {
             sharedPref.edit().putString(context.getString(R.string.logged_in_user), userString).apply()
         }
     }
+
+    fun setToken(token: String?) {
+        if (token.isNullOrBlank()) sharedPref.edit().remove(context.getString(R.string.token)).apply()
+        else sharedPref.edit().putString(context.getString(R.string.token), token).apply()
+    }
+
+    fun getToken(): String? {
+        return if (sharedPref.contains(context.getString(R.string.token)))
+            sharedPref.getString(context.getString(R.string.token), null)
+        else null
+    }
 }
