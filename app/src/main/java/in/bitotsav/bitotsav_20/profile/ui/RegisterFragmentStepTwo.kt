@@ -95,6 +95,7 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                 when (status) {
                     200 -> {
                         val user = User(-1, name, email, phone, gender, clgName, clgCity, clgState, clgId, res.getBoolean("isVerified"))
+                        SharedPrefUtils(context!!).setToken(res.getString("token"))
                         checkVerificationStatusAndSave(user)
                         println("token: ${res.get("token")}, isVerified: ${res.get("isVerified")}")
                     }

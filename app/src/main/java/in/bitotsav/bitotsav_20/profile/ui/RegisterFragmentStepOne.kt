@@ -105,6 +105,7 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
     private fun saveAndNavigate(res: JSONObject) {
         user = User(-1, null, email, phone, null, null, null, null, null, res.getBoolean("isVerified"))
         println("saving user: $user")
+        SharedPrefUtils(context!!).setToken(res.getString("token"))
         SharedPrefUtils(context!!).setUser(user)
         navController.navigate(R.id.action_registerFragmentStepOne_to_registerFragmentStepTwo,
             bundleOf("email" to email,
