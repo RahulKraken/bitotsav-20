@@ -2,6 +2,7 @@
   <dictionary name="Kraken">
     <words>
       <w>gson</w>
+      <w>recaptcha</w>
     </words>
   </dictionary>
 </component>
