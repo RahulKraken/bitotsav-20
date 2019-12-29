@@ -54,16 +54,16 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
     private fun tryToVerify() {
         val name = register_name.text.toString()
         val gender = register_gender.text.toString()
-        val phone = register_phone.text.toString()
         val clgName = register_clg_name.text.toString()
         val clgCity = register_clg_city.text.toString()
         val clgState = register_clg_state.text.toString()
         val clgId = register_clg_id.text.toString()
-        val otp = register_otp.text.toString()
+        val emailOtp = register_email_otp.text.toString()
+        val mobileOtp = register_mobile_otp.text.toString()
 
         // TODO: Check for not empty fields
 
-        SharedPrefUtils(context!!).setUser(User(93, name, email, phone, 54, clgName, clgCity, clgState, clgId, true))
+        SharedPrefUtils(context!!).setUser(User(93, name, email, "432145",54, clgName, clgCity, clgState, clgId, true))
         navigateToProfile()
     }
 

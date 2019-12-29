@@ -29,7 +29,7 @@
         android:layout_height="0dp" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/container_login_email"
+        android:id="@+id/container_register_email"
         android:hint="Email"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toEndOf="@id/end_guide"
@@ -46,12 +46,31 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/register_container_phone"
+        android:hint="Phone"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/container_register_email"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:layout_width="0dp"
+        android:layout_height="56dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_phone"
+            android:drawableStart="@drawable/ic_mobile"
+            android:drawableTint="@color/md_grey_600"
+            android:drawablePadding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/container_login_password"
         android:hint="Password"
         app:helperText="Must be 6 to 15 characters long"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toEndOf="@id/end_guide"
-        app:layout_constraintTop_toBottomOf="@id/container_login_email"
+        app:layout_constraintTop_toBottomOf="@id/register_container_phone"
         android:layout_marginTop="32dp"
         android:layout_width="0dp"
         android:layout_height="56dp">
