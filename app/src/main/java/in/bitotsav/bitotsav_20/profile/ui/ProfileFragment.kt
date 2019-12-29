@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -35,11 +36,19 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
+
         if (SharedPrefUtils(context!!).getUser() == null)
             navController.navigate(R.id.action_profileFragment_to_loginFragment)
+        else bindUser(SharedPrefUtils(context!!).getUser())
+
         profile_logout_btn.setOnClickListener {
             SharedPrefUtils(context!!).setUser(null)
             activity?.finish()
         }
+    }
+
+    private fun bindUser(user: User?) {
+        profile_email.text = user?.email
+        profile_phone.text = user?.phoneNo
     }
 }

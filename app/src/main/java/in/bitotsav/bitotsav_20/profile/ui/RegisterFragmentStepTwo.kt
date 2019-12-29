@@ -95,7 +95,7 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                 when (status) {
                     200 -> {
                         val user = User(-1, name, email, phone, gender, clgName, clgCity, clgState, clgId, res.getBoolean("isVerified"))
-                        saveAndNavigate(user)
+                        checkVerificationStatusAndSave(user)
                         println("token: ${res.get("token")}, isVerified: ${res.get("isVerified")}")
                     }
                     else -> println("message: ${res.get("message")}")
@@ -127,6 +127,27 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
             }
         }
 
+        VolleyService.getRequestQueue(context!!).add(request)
+    }
+
+    private fun checkVerificationStatusAndSave(user: User) {
+        val request = object : StringRequest(Method.GET, "https://bitotsav.in/api/auth/getUserState",
+            Response.Listener { response ->
+                println(response)
+                val res = JSONObject(response)
+                if (res.get("verified") != null) {
+                    saveAndNavigate(user)
+                }
+            },
+            Response.ErrorListener {
+                println("step two: error occure - ${it.message}")
+            }) {
+            override fun getHeaders(): MutableMap<String, String> {
+                return mutableMapOf(
+                    "x-access-token" to token
+                )
+            }
+        }
         VolleyService.getRequestQueue(context!!).add(request)
     }
 
