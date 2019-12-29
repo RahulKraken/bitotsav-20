@@ -4,14 +4,14 @@ import java.io.Serializable
 
 data class User(
     val bitotsavId: Int? = -1,
-    val name: String,
+    val name: String? = null,
     val email: String,
     val phoneNo: String,
-    val gender: Int,
-    val clgName: String,
-    val clgCity: String,
-    val clgState: String,
-    val clgId: String,
+    val gender: Int? = null,
+    val clgName: String? = null,
+    val clgCity: String? = null,
+    val clgState: String? = null,
+    val clgId: String? = null,
     val isVerified: Boolean? = false
 //    val teamName: String? = null,
 //    var score: Int
