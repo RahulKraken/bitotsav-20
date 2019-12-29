@@ -8,16 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.profile.data.User
+import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.button.MaterialButton
+import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.login_email
+import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
 
 /**
  * A simple [Fragment] subclass.
  */
 class LoginFragment : Fragment(), View.OnClickListener {
 
-    lateinit var navController: NavController
+    private lateinit var navController: NavController
+    private lateinit var email: String
+    private lateinit var password: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +44,17 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.login_btn -> navController.navigate(R.id.action_loginFragment_to_profileFragment)
+            R.id.login_btn -> performLogin()
             R.id.register_label -> navController.navigate(R.id.action_loginFragment_to_registerFragmentStepOne)
+        }
+    }
+
+    private fun performLogin() {
+        email = login_email.text.toString()
+
+        if (email.isNotBlank() && password.isNotBlank()) {
+            SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false, "adl", 75))
+            navController.navigate(R.id.action_loginFragment_to_profileFragment)
         }
     }
 }

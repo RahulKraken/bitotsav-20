@@ -38,7 +38,7 @@
         android:layout_height="56dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_email"
+            android:id="@+id/register_email"
             android:drawableStart="@drawable/ic_mail"
             android:drawablePadding="16dp"
             android:layout_width="match_parent"
@@ -57,7 +57,7 @@
         android:layout_height="56dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_password"
+            android:id="@+id/register_password"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="16dp"
             android:layout_width="match_parent"
@@ -76,7 +76,7 @@
         android:layout_height="56dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_password_confirm"
+            android:id="@+id/register_password_confirm"
             android:drawableStart="@drawable/ic_lock"
             android:drawablePadding="16dp"
             android:layout_width="match_parent"

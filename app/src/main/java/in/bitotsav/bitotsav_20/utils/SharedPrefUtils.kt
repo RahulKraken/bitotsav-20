@@ -14,4 +14,13 @@ class SharedPrefUtils(private val context: Context) {
             null
         }
     }
+
+    fun setUser(user: User?) {
+        if (user == null) {
+            sharedPref.edit().remove(context.getString(R.string.logged_in_user)).apply()
+        } else {
+            val userString = GsonUtils.serializeUser(user)
+            sharedPref.edit().putString(context.getString(R.string.logged_in_user), userString).apply()
+        }
+    }
 }

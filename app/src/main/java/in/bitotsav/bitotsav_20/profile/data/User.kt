@@ -14,10 +14,10 @@ data class User(
     val clgId: String,
     val isVerified: Boolean? = false,
     val teamName: String? = null,
-    var score: Int,
-    val day1: Boolean = false,
-    val day2: Boolean = false,
-    val day3: Boolean = false,
-    val merchandise: Boolean = false,
-    val accommodation: Boolean = false
+    var score: Int
+//    val day1: Boolean = false,
+//    val day2: Boolean = false,
+//    val day3: Boolean = false,
+//    val merchandise: Boolean = false,
+//    val accommodation: Boolean = false
 ) : Serializable
