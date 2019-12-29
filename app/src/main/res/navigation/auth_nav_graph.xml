@@ -44,6 +44,10 @@
             android:defaultValue="none" />
 
         <argument
+            android:name="phone"
+            android:defaultValue="none" />
+
+        <argument
             android:name="token"
             android:defaultValue="none" />
 

@@ -9,6 +9,8 @@ import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.VolleyService
+import `in`.bitotsav.bitotsav_20.profile.data.User
+import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -25,6 +27,11 @@ import org.json.JSONObject
 class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
+
+    var email = ""
+    var phone = ""
+
+    var user = User(-1, null, email, phone, null, null, null, null, null, null)
 
     companion object {
         fun newInstance() = RegisterFragmentStepOne()
@@ -53,12 +60,11 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
     }
 
     private fun tryToRegister() {
-        val email = register_email.text.toString()
-        val phone = register_phone.text.toString()
+        email = register_email.text.toString()
+        phone = register_phone.text.toString()
         val pass = register_password.text.toString()
         val confirmPass = register_password_confirm.text.toString()
 
-        // TODO: add pass == confirmPass check
         if (email.isNotBlank() && phone.isNotBlank() && pass.isNotBlank() && confirmPass.isNotBlank() && pass == confirmPass) {
             register(email, pass, phone)
         }
@@ -70,8 +76,9 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
             val obj = JSONObject(response)
             println(obj.get("status"))
             when (obj.get("status")) {
+                // TODO: replace with snackBar
                 500, 422, 401, 415, 400 -> println(obj.get("message"))
-                200 -> println(response)
+                200 -> saveAndNavigate(obj)
                 else -> println(obj.get("message"))
             }
         }, Response.ErrorListener {error ->
@@ -93,6 +100,16 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
         }
 
         VolleyService.getRequestQueue(context!!).add(request)
+    }
+
+    private fun saveAndNavigate(res: JSONObject) {
+        user = User(-1, null, email, phone, null, null, null, null, null, res.getBoolean("isVerified"))
+        println("saving user: $user")
+        SharedPrefUtils(context!!).setUser(user)
+        navController.navigate(R.id.action_registerFragmentStepOne_to_registerFragmentStepTwo,
+            bundleOf("email" to email,
+                "phone" to phone,
+                "token" to res.getString("token")))
     }
 
     private fun navigateToVerify() {
