@@ -63,7 +63,7 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
 
         // TODO: Check for not empty fields
 
-        SharedPrefUtils(context!!).setUser(User(93, name, email, phone, 54, clgName, clgCity, clgState, clgId, true, "lkds", 45))
+        SharedPrefUtils(context!!).setUser(User(93, name, email, phone, 54, clgName, clgCity, clgState, clgId, true))
         navigateToProfile()
     }
 

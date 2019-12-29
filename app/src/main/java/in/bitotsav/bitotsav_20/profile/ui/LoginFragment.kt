@@ -57,7 +57,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
         email = login_email.text.toString()
         password = login_password.text.toString()
         if (email.isNotBlank() && password.isNotBlank()) {
-            SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false, "adl", 75))
+            SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false))
             navController.navigate(R.id.action_loginFragment_to_profileFragment)
         }
     }
