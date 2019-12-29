@@ -8,15 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.config.Secret
 import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.google.android.gms.safetynet.SafetyNet
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.login_email
 import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
+import java.util.concurrent.Executor
 
 /**
  * A simple [Fragment] subclass.
@@ -48,17 +53,32 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.login_btn -> performLogin()
+            R.id.login_btn -> startLogin()
             R.id.register_label -> navController.navigate(R.id.action_loginFragment_to_registerFragmentStepOne)
         }
     }
 
-    private fun performLogin() {
+    private fun startLogin() {
         email = login_email.text.toString()
         password = login_password.text.toString()
         if (email.isNotBlank() && password.isNotBlank()) {
-            SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false))
-            navController.navigate(R.id.action_loginFragment_to_profileFragment)
+            verifyCaptcha(email, password)
         }
+    }
+
+    private fun verifyCaptcha(email: String, password: String) {
+        SafetyNet.getClient(activity!!).verifyWithRecaptcha(Secret.recptchaSiteKey)
+            .addOnSuccessListener(this as Executor, OnSuccessListener {response ->
+                println("recaptcha success: $response")
+                SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false))
+                navigateToProfile()
+            })
+            .addOnFailureListener(this as Executor, OnFailureListener {
+                println("recaptcha failed: $it")
+            })
+    }
+
+    private fun navigateToProfile() {
+        navController.navigate(R.id.action_loginFragment_to_profileFragment)
     }
 }

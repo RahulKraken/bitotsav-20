@@ -1,6 +1,7 @@
 package `in`.bitotsav.bitotsav_20.profile.ui
 
 
+import `in`.bitotsav.bitotsav_20.Bitotsav
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,8 @@ import `in`.bitotsav.bitotsav_20.R
 import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
 
@@ -53,8 +56,8 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
         val confirmPass = register_password_confirm.text.toString()
 
         // TODO: add pass == confirmPass check
-        if (email.isNotBlank() && pass.isNotBlank() && confirmPass.isNotBlank()) {
-            navigateToVerify()
+        if (email.isNotBlank() && pass.isNotBlank() && confirmPass.isNotBlank() && pass == confirmPass) {
+            register(email, pass)
         }
     }
 
