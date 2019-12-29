@@ -25,6 +25,10 @@ class FeedFragment : Fragment() {
     private lateinit var feeds: LiveData<List<Feed>>
     private lateinit var adapter: FeedAdapter
 
+    companion object {
+        fun newInstance() = FeedFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

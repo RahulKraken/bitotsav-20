@@ -27,6 +27,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private lateinit var email: String
     private lateinit var password: String
 
+    companion object {
+        fun newInstance() = LoginFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +55,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     private fun performLogin() {
         email = login_email.text.toString()
-
+        password = login_password.text.toString()
         if (email.isNotBlank() && password.isNotBlank()) {
             SharedPrefUtils(context!!).setUser(User(873, "name", "email", "7845221", 2, "alkd", "kdf;l", "kado", "kdlao", false, "adl", 75))
             navController.navigate(R.id.action_loginFragment_to_profileFragment)

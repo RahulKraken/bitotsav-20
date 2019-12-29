@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.fragment_schedule.*
  */
 class ScheduleFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = ScheduleFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,10 +36,10 @@ class ScheduleFragment : Fragment() {
     inner class DayPagerAdapter(fragmentManager: FragmentManager): FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getItem(position: Int): Fragment {
             return when(position) {
-                0 -> ScheduleDayFragment("1")
-                1 -> ScheduleDayFragment("2")
-                2 -> ScheduleDayFragment("3")
-                else -> ScheduleDayFragment("1")
+                0 -> ScheduleDayFragment.newInstance("1")
+                1 -> ScheduleDayFragment.newInstance("2")
+                2 -> ScheduleDayFragment.newInstance("3")
+                else -> ScheduleDayFragment.newInstance("1")
             }
         }
 

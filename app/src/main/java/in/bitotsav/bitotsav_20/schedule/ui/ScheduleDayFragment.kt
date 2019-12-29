@@ -16,11 +16,24 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_day.*
+import java.lang.IllegalStateException
 
 /**
  * A simple [Fragment] subclass.
  */
-class ScheduleDayFragment(private val day: String) : Fragment() {
+class ScheduleDayFragment : Fragment() {
+
+    companion object {
+        fun newInstance(day: String) = ScheduleDayFragment().apply {
+            arguments = Bundle().apply {
+                putString("day", day)
+            }
+        }
+    }
+
+    private val day: String by lazy {
+        arguments?.getString("day") ?: throw IllegalStateException("No day argument")
+    }
 
     private lateinit var events: LiveData<List<Event>>
     private lateinit var adapter: ScheduleDayAdapter

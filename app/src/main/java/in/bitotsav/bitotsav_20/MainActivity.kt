@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
     private lateinit var drawerLayout: DrawerLayout
 
     private var activeFragment = Fragment()
-    private val scheduleFragment = ScheduleFragment()
-    private val feedFragment = FeedFragment()
-    private val leaderboardFragment = LeaderboardFragment()
+    private val scheduleFragment = ScheduleFragment.newInstance()
+    private val feedFragment = FeedFragment.newInstance()
+    private val leaderboardFragment = LeaderboardFragment.newInstance()
 
     private var lastSelectedNavigationItem: Int = R.id.action_schedule
 

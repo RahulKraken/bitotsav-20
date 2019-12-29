@@ -12,6 +12,10 @@ import android.view.ViewGroup
  */
 class BitotsavFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = BitotsavFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

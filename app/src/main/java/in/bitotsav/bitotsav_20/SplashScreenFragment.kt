@@ -8,6 +8,10 @@ import androidx.fragment.app.Fragment
 
 class SplashScreenFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = SplashScreenFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

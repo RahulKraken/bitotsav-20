@@ -19,6 +19,10 @@ class ProfileFragment : Fragment() {
 
     lateinit var navController: NavController
 
+    companion object {
+        fun newInstance() = ProfileFragment()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

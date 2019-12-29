@@ -18,6 +18,10 @@ import kotlinx.android.synthetic.main.fragment_leaderboard.*
  */
 class LeaderboardFragment : Fragment() {
 
+    companion object {
+        fun newInstance() = LeaderboardFragment()
+    }
+
     private val teams = listOf(
         Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
         Team("12ks13dak", "teamName", "teamMembers", 222, 7847),

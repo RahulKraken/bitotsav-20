@@ -19,6 +19,10 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
 
     lateinit var navController: NavController
 
+    companion object {
+        fun newInstance() = RegisterFragmentStepOne()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
