@@ -38,6 +38,15 @@
         android:name="in.bitotsav.bitotsav_20.profile.ui.RegisterFragmentStepTwo"
         android:label="fragment_register_fragment_step_two"
         tools:layout="@layout/fragment_register_fragment_step_two" >
+
+        <argument
+            android:name="email"
+            android:defaultValue="none" />
+
+        <argument
+            android:name="token"
+            android:defaultValue="none" />
+
         <action
             android:id="@+id/action_registerFragmentStepTwo_to_profileFragment"
             app:destination="@id/profileFragment" />
