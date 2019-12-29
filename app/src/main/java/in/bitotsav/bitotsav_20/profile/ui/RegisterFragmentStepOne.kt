@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.google.android.material.button.MaterialButton
+import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
 
 /**
  * A simple [Fragment] subclass.
@@ -40,8 +42,26 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v!!.id) {
-            R.id.register_btn -> navController.navigate(R.id.action_registerFragmentStepOne_to_registerFragmentStepTwo)
+            R.id.register_btn -> tryToRegister()
             R.id.login_label -> navController.navigate(R.id.action_registerFragmentStepOne_to_loginFragment)
         }
+    }
+
+    private fun tryToRegister() {
+        val email = register_email.text.toString()
+        val pass = register_password.text.toString()
+        val confirmPass = register_password_confirm.text.toString()
+
+        // TODO: add pass == confirmPass check
+        if (email.isNotBlank() && pass.isNotBlank() && confirmPass.isNotBlank()) {
+            navigateToVerify()
+        }
+    }
+
+    private fun navigateToVerify() {
+        navController.navigate(R.id.action_registerFragmentStepOne_to_registerFragmentStepTwo,
+            bundleOf(
+                "email" to register_email.text.toString()
+            ))
     }
 }

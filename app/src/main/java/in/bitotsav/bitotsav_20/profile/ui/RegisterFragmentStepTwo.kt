@@ -28,6 +28,8 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val email = arguments?.get("email")
+        println("argument received step two $email")
         return inflater.inflate(R.layout.fragment_register_fragment_step_two, container, false)
     }
 
