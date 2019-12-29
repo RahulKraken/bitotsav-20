@@ -11,6 +11,7 @@ import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 /**
  * A simple [Fragment] subclass.
@@ -36,5 +37,9 @@ class ProfileFragment : Fragment() {
         navController = Navigation.findNavController(view)
         if (SharedPrefUtils(context!!).getUser() == null)
             navController.navigate(R.id.action_profileFragment_to_loginFragment)
+        profile_logout_btn.setOnClickListener {
+            SharedPrefUtils(context!!).setUser(null)
+            activity?.finish()
+        }
     }
 }
