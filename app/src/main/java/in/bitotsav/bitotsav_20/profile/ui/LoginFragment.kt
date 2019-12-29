@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.VolleyService
 import `in`.bitotsav.bitotsav_20.config.Secret
+import `in`.bitotsav.bitotsav_20.profile.data.User
+import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.android.volley.Response
@@ -82,7 +84,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 val res = JSONObject(response)
                 println("login: ${res.get("status")}")
                 when (res.get("status")) {
-                    200 -> println(res)
+                    200 -> {
+                        println(res)
+                        saveAndNavigate(res.getString("token"), res.getBoolean("isVerified"))
+                    }
                     else -> println(res)
                 }
             }, Response.ErrorListener {
@@ -109,6 +114,16 @@ class LoginFragment : Fragment(), View.OnClickListener {
         VolleyService.getRequestQueue(context!!).add(loginRequest)
     }
 
+    private fun saveAndNavigate(token: String, isVerified: Boolean) {
+        SharedPrefUtils(context!!).setToken(token)
+        // TODO: Replace with user dashboard data when /getUserDashboard is active
+        SharedPrefUtils(context!!).setUser(User(
+            -1, "Dummy", email, "56478392", 1, null, null, null, null, isVerified
+        ))
+        navController.navigate(R.id.action_loginFragment_to_profileFragment)
+    }
+
+    // TODO: Remove redundant method
     private fun navigateToProfile() {
         navController.navigate(R.id.action_loginFragment_to_profileFragment)
     }
