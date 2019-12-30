@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_generic.*
+import kotlinx.android.synthetic.main.layout_bitotsav.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -51,6 +52,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         app_bar_search_btn.setOnClickListener(this)
         app_bar_back_arrow.setOnClickListener(this)
+        user_detail_container.setOnClickListener(this)
+        bitotsav_menu_container.setOnClickListener(this)
+        rate_card.setOnClickListener(this)
+        contact_card.setOnClickListener(this)
+        info_card.setOnClickListener(this)
+        sponsor_card.setOnClickListener(this)
+        faq_card.setOnClickListener(this)
+        night_card.setOnClickListener(this)
+        bitotsav_card.setOnClickListener(this)
+        web_card.setOnClickListener(this)
+        share_card.setOnClickListener(this)
 
         setKeyboardModeOnSearch()
     }
@@ -112,6 +124,17 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 app_bar_title.visibility = View.VISIBLE
                 app_bar_search_btn.visibility = View.VISIBLE
             }
+            R.id.user_detail_container -> println("profile btn clicked")
+            R.id.rate_card -> println("rating btn selected")
+            R.id.contact_card -> println("contact btn selected")
+            R.id.info_card -> println("info btn selected")
+            R.id.sponsor_card -> println("sponsor btn selected")
+            R.id.faq_card -> println("faq btn selected")
+            R.id.night_card -> println("night btn selected")
+            R.id.bitotsav_card -> println("bitotsav btn selected")
+            R.id.web_card -> println("web btn selected")
+            R.id.share_card -> println("share btn selected")
+            R.id.bitotsav_menu_container -> println("bitotsav card clicked")
             else -> Unit
         }
     }
