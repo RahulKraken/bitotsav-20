@@ -2,8 +2,10 @@ package `in`.bitotsav.bitotsav_20
 
 import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
+import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -124,7 +126,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 app_bar_title.visibility = View.VISIBLE
                 app_bar_search_btn.visibility = View.VISIBLE
             }
-            R.id.user_detail_container -> println("profile btn clicked")
+            R.id.user_detail_container -> {
+                println("profile btn clicked")
+                startActivity(Intent(this, ProfileActivity::class.java))
+            }
             R.id.rate_card -> println("rating btn selected")
             R.id.contact_card -> println("contact btn selected")
             R.id.info_card -> println("info btn selected")
