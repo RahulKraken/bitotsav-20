@@ -52,6 +52,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun bindUser(user: User?) {
+        if (user?.isVerified == true) profile_verify_btn.visibility = View.GONE
         profile_email.text = user?.email
         profile_phone.text = user?.phoneNo
     }
