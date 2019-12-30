@@ -3,9 +3,11 @@ package `in`.bitotsav.bitotsav_20
 import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
+import android.animation.ObjectAnimator
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
@@ -18,14 +20,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_generic.*
 
 
-class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
-
-    private lateinit var drawerLayout: DrawerLayout
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var activeFragment = Fragment()
     private val scheduleFragment = ScheduleFragment.newInstance()
     private val feedFragment = FeedFragment.newInstance()
     private val leaderboardFragment = LeaderboardFragment.newInstance()
+
+    private var isBitotsavMenuOpen = true
 
     private var lastSelectedNavigationItem: Int = R.id.action_schedule
 
@@ -37,10 +39,10 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         }
 
-        drawerLayout = findViewById(R.id.drawer_layout)
-
         setSupportActionBar(app_bar)
         setupBottomNavigation()
+
+        hideBitotsavMenu()
 
         supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "Leaderboard").hide(leaderboardFragment).commit()
@@ -51,8 +53,6 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
         app_bar_back_arrow.setOnClickListener(this)
 
         setKeyboardModeOnSearch()
-
-        drawerLayout.addDrawerListener(this)
     }
 
     private fun setKeyboardModeOnSearch() {
@@ -70,7 +70,8 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
             when(it.itemId) {
                 R.id.action_bitotsav -> {
                     println("Bitotsav selected")
-                    drawerLayout.openDrawer(GravityCompat.START, true)
+                    // TODO: Add the transition of fragment
+                    showBitotsavMenu()
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.action_schedule -> {
@@ -116,32 +117,34 @@ class MainActivity : AppCompatActivity(), DrawerListener, View.OnClickListener {
     }
 
     override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) drawerLayout.closeDrawer(GravityCompat.END, true)
+        if (isBitotsavMenuOpen) hideBitotsavMenu()
         else super.onBackPressed()
     }
 
+    private fun hideBitotsavMenu() {
+        if (isBitotsavMenuOpen)
+            ObjectAnimator.ofFloat(bitotsav_menu_container, "translationX", -1000f).apply {
+                duration = 300
+                start()
+            }
+        isBitotsavMenuOpen = false
+    }
+
+    private fun showBitotsavMenu() {
+        if (!isBitotsavMenuOpen)
+            ObjectAnimator.ofFloat(bitotsav_menu_container, "translationX", 0f).apply {
+                duration = 300
+                start()
+            }
+        isBitotsavMenuOpen = true
+    }
+
     private fun setFragment(fragment: Fragment) {
+        hideBitotsavMenu()
+        supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
+        activeFragment = fragment
         supportActionBar?.let {
             app_bar_title.text = fragment.tag
         }
-        supportFragmentManager.beginTransaction().hide(activeFragment).show(fragment).commit()
-        activeFragment = fragment
-    }
-
-    override fun onDrawerStateChanged(newState: Int) {
-        // do nothing
-    }
-
-    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
-        // do nothing
-    }
-
-    override fun onDrawerClosed(drawerView: View) {
-        bottom_navigation.selectedItemId = lastSelectedNavigationItem
-
-    }
-
-    override fun onDrawerOpened(drawerView: View) {
-        // do nothing
     }
 }
