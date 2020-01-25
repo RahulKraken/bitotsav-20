@@ -23,15 +23,15 @@ interface EventDao {
     @Query("DELETE FROM events")
     suspend fun deleteAll()
 
-    @Query("SELECT * FROM events ORDER BY timestamp")
+    @Query("SELECT * FROM events ORDER BY timestamp DESC")
     fun getAllEvents() : LiveData<List<Event>>
 
-    @Query("SELECT * FROM events WHERE day LIKE :day ORDER BY timestamp")
+    @Query("SELECT * FROM events WHERE day LIKE :day ORDER BY timestamp DESC")
     fun getEventsForDay(day: String) : LiveData<List<Event>>
 
     @Query("SELECT * FROM events WHERE id = :id")
     suspend fun getEvent(id: Int) : Event?
 
-    @Query("SELECT * FROM events WHERE category = 'flagship' ORDER BY timestamp")
+    @Query("SELECT * FROM events WHERE category = 'flagship' ORDER BY timestamp DESC")
     fun getAllFlagshipEvents() : LiveData<List<Event>>
 }

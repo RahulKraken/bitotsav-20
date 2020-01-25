@@ -73,7 +73,7 @@ class ScheduleDayAdapter(
 
             // populate categories list
             val categories = event.eventCategory
-            if (categories.isNotEmpty()) {
+            if (categories!!.isNotEmpty()) {
                 categoryList?.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                     adapter = CategoriesListAdapter(context, listOf(categories))

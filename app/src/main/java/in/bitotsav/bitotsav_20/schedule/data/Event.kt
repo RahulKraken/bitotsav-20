@@ -16,24 +16,24 @@ data class Event(
     val name: String,
     val description: String,
     @ColumnInfo(name = "rules")
-    val rulesAndRegulations: String,
-    val minParticipants: Int,
-    val maxParticipants: Int,
-    val individual: String,
-    val imageName: String,
-    val status: String,
-    val timing: String,
-    val venue: String,
-    val day: Int,
+    var rulesAndRegulations: String?,
+    var minParticipants: Int?,
+    var maxParticipants: Int?,
+    var individual: Int?,
+    var imageName: String?,
+    var status: String?,
+    var timing: String,
+    var venue: String,
+    var day: Int?,
     @ColumnInfo(name = "team_size")
-    val teamSize: String,
-    val contactInformation: String,
-    val eventCategory: String,
-    val category: String,
-    val cashPrize: String,
-    val duration: String,
-    var isStarred: Boolean,
-    val points: String
+    var teamSize: String?,
+    var contactInformation: String?,
+    var eventCategory: String?,
+    var category: String?,
+    var cashPrize: String?,
+    var duration: String?,
+    var isStarred: Boolean?,
+    var points: String?
 ) : Serializable {
     @Expose(serialize = false, deserialize = false)
     var timestamp = getTimestampFromString(day, timing)
@@ -43,10 +43,17 @@ data class Event(
         this.timestamp = getTimestampFromString(day, timing)
     }
 
-    private fun getTimestampFromString(day: Int, timeString: String): Long {
-        val (hours, minutes) = timeString.split(":").map { it.toInt() }
+    private fun getTimestampFromString(day: Int?, timeString: String?): Long {
+        if (day == null || timeString == null || !timeString.matches("((1[0-2]|0?[1-9]):([0-5][0-9]) ([AaPp][Mm]))".toRegex())) {
+            this.day = 50
+            return 0L
+        }
+        println("timestring: $timeString")
+        var (hours, minutes) = timeString.split(" ")[0].split(":").map { it.toInt() }
+        if (timeString.split(" ")[1].contentEquals("PM")) hours += 12
         val timestamp = GregorianCalendar(TimeZone.getTimeZone("Asia/Kolkata"))
         timestamp.set(2020, 1, day + 14, hours, minutes)
+        println("timestamp: $day, $timeString -> ${timestamp.timeInMillis}")
         return timestamp.timeInMillis
     }
 }

@@ -44,8 +44,8 @@ class FeedRepositoryTest {
         feedDao.insert(feed)
 
         val f = feedDao.get(1)
-        assertEquals(f.id, feed.id)
-        assertEquals(f.title, feed.title)
-        assertEquals(f.timestamp, feed.timestamp)
+        assertEquals(f?.id, feed.id)
+        assertEquals(f?.title, feed.title)
+        assertEquals(f?.timestamp, feed.timestamp)
     }
 }

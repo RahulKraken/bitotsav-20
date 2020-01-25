@@ -66,12 +66,14 @@ class ScheduleTimeHeaderDecoration (
     }
 
     private val distinctTimes =
-        events.mapIndexed {
-                index, event -> index to event.timing
+        events.mapIndexed { index, event ->
+            println("event.timing ${event.timing}")
+            index to event.timing
         }.distinctBy { it.second }
 
     private val timeSlots: Map<Int, StaticLayout> =
         distinctTimes.map {
+            println("it.second: ${it.second}")
             it.first to createHeader(it.second)
         }.toMap()
 
