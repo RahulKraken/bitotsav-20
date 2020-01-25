@@ -61,9 +61,9 @@ class ScheduleDayAdapter(
         }
 
         fun bind(event: Event) {
-            eventName?.text = event.eventName
+            eventName?.text = event.name
             eventVenueDuration?.text = "${event.venue} / ${event.duration}"
-            if (event.tag != "Formal") {
+            if (event.category != "Formal") {
                 registerLabel?.visibility = View.GONE
                 registerLabelIcon?.visibility = View.GONE
             } else {
@@ -72,11 +72,11 @@ class ScheduleDayAdapter(
             }
 
             // populate categories list
-            val categories = event.categories.split(",")
+            val categories = event.eventCategory
             if (categories.isNotEmpty()) {
                 categoryList?.apply {
                     layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-                    adapter = CategoriesListAdapter(context, categories)
+                    adapter = CategoriesListAdapter(context, listOf(categories))
                 }
             } else {
                 categoryList?.visibility = View.GONE

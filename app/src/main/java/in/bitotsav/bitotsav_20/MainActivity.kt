@@ -3,6 +3,7 @@ package `in`.bitotsav.bitotsav_20
 import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
+import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import android.animation.ObjectAnimator
 import android.content.Intent
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         hideBitotsavMenu()
 
+        fetchEvents()
+
         supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "Leaderboard").hide(leaderboardFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "Schedule").commit()
@@ -67,6 +70,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         share_card.setOnClickListener(this)
 
         setKeyboardModeOnSearch()
+    }
+
+    private fun fetchEvents() {
+        getAllEvents(this)
     }
 
     private fun setKeyboardModeOnSearch() {

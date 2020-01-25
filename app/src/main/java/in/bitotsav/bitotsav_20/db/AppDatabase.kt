@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 @Database(
     entities = [Event::class, Winner::class, Feed::class],
-    version = 1,
+    version = 2,
     exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -59,7 +59,7 @@ abstract class AppDatabase : RoomDatabase() {
             val eventDao = instance?.eventDao()
             // events
             var i = 1
-            for (j in 0 until 4) {
+            /*for (j in 0 until 4) {
                 eventDao?.insert(Event(i, "A decent event one", "a brief description", "not completed", "10:00 AM", "IC Arena", "1", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Formal", "40 min"))
                 i++
             }
@@ -106,7 +106,7 @@ abstract class AppDatabase : RoomDatabase() {
             for (j in 0 until 4) {
                 eventDao?.insert(Event(i, "A decent event three", "a brief description", "not completed", "4:00 PM", "Sports Complex", "3", "2-3", "coordinators with phone separated by comma", "Music,Dance", "Informal", "40 min"))
                 i++
-            }
+            }*/
 
             // feeds
             val feedDao = instance?.feedDao()

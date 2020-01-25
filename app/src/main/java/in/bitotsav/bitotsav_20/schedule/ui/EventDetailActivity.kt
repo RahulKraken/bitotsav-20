@@ -22,7 +22,7 @@ class EventDetailActivity : AppCompatActivity() {
 
     // TODO: bind more views
     private fun bindData(event: Event) {
-        event_detail_title.text = event.eventName
+        event_detail_title.text = event.name
 //        event_detail_rules.text = event.description
         event_detail_day_time.text = "Day ${event.day}, ${event.timing}"
         event_detail_venue.text = event.venue
@@ -31,11 +31,11 @@ class EventDetailActivity : AppCompatActivity() {
     }
 
     private fun populateRecyclerView(event: Event) {
-        val categories = event.categories.split(",")
+        val categories = event.eventCategory
         if (categories.isNullOrEmpty()) event_detail_category_rv.visibility = View.GONE
         else event_detail_category_rv?.let {
             it.apply {
-                adapter = CategoriesListAdapter(context, categories)
+                adapter = CategoriesListAdapter(context, listOf(categories))
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             }
         }

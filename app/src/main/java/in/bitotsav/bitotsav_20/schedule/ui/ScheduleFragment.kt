@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.fragment_schedule.*
  * A simple [Fragment] subclass.
  */
 class ScheduleFragment : Fragment() {
-
     companion object {
         fun newInstance() = ScheduleFragment()
     }
