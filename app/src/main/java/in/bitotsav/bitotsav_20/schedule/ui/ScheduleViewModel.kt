@@ -24,9 +24,9 @@ class ScheduleViewModel(
     private var event = MutableLiveData<Event>()
     private var allEvents = repository.getAllEvents()
     private var allEventsForDay = arrayOf(
-        repository.getAllEventsForDay("1"),
-        repository.getAllEventsForDay("2"),
-        repository.getAllEventsForDay("3")
+        repository.getAllEventsForDay(1),
+        repository.getAllEventsForDay(2),
+        repository.getAllEventsForDay(3)
     )
     private var allFlagshipEvents = repository.getAllFlagshipEvents()
 
@@ -43,9 +43,9 @@ class ScheduleViewModel(
         uiScope.launch {
             allEvents = repository.getAllEvents()
             allEventsForDay = arrayOf(
-                repository.getAllEventsForDay("1"),
-                repository.getAllEventsForDay("2"),
-                repository.getAllEventsForDay("3")
+                repository.getAllEventsForDay(1),
+                repository.getAllEventsForDay(2),
+                repository.getAllEventsForDay(3)
             )
             event.value = getEventAsync(1)
             allFlagshipEvents = repository.getAllFlagshipEvents()
@@ -144,9 +144,9 @@ class ScheduleViewModel(
     private suspend fun getAllEventsForDayAsync(): Array<LiveData<List<Event>>> {
         return withContext(Dispatchers.IO) {
             arrayOf(
-                repository.getAllEventsForDay("1"),
-                repository.getAllEventsForDay("2"),
-                repository.getAllEventsForDay("3")
+                repository.getAllEventsForDay(1),
+                repository.getAllEventsForDay(2),
+                repository.getAllEventsForDay(3)
             )
         }
     }

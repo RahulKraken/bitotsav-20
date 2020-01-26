@@ -53,7 +53,6 @@ class ScheduleDayFragment : Fragment() {
         }
         events.observe(this,
             Observer {
-                println("dayFragment $day: ${events.value}")
                 updateRecyclerView()
             })
 

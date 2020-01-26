@@ -45,15 +45,15 @@ data class Event(
 
     private fun getTimestampFromString(day: Int?, timeString: String?): Long {
         if (day == null || timeString == null || !timeString.matches("((1[0-2]|0?[1-9]):([0-5][0-9]) ([AaPp][Mm]))".toRegex())) {
+            println("$day: timeInMillis error")
             this.day = 50
             return 0L
         }
-        println("timestring: $timeString")
         var (hours, minutes) = timeString.split(" ")[0].split(":").map { it.toInt() }
         if (timeString.split(" ")[1].contentEquals("PM")) hours += 12
         val timestamp = GregorianCalendar(TimeZone.getTimeZone("Asia/Kolkata"))
         timestamp.set(2020, 1, day + 14, hours, minutes)
-        println("timestamp: $day, $timeString -> ${timestamp.timeInMillis}")
+        println("id: $id, day: $day, timeString: $timeString, timestamp: ${timestamp.timeInMillis}")
         return timestamp.timeInMillis
     }
 }

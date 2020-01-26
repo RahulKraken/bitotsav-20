@@ -23,7 +23,7 @@ class EventRepository(private val eventDao: EventDao) {
     fun getAllEvents() = eventDao.getAllEvents()
 
     @WorkerThread
-    fun getAllEventsForDay(day: String) = eventDao.getEventsForDay(day)
+    fun getAllEventsForDay(day: Int) = eventDao.getEventsForDay(day)
 
     @WorkerThread
     fun getAllFlagshipEvents() = eventDao.getAllFlagshipEvents()

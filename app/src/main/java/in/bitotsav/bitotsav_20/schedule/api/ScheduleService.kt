@@ -21,17 +21,23 @@ val BASE_URL = "https://bitotsav.in"
 
 fun getAllEvents(context: Context) {
     var events = ArrayList<Event>()
-    val req = StringRequest(Request.Method.GET, BASE_URL + "/api/events/allEvents", Response.Listener {res ->
+    val req = StringRequest(Request.Method.GET, "$BASE_URL/api/events/allEvents", Response.Listener { res ->
         val obj = JSONObject(res)
         val arr = obj.getJSONArray("events")
         for (i in 0 until arr.length()) {
             val event = GsonUtils.deserializeEvent(arr.getString(i))
             @Suppress("SENSELESS_COMPARISON")
+            if (event.duration!!.contains("@Online")) {
+                println("event.duration: ${event.duration}")
+                continue
+            }
             val daytime = parseDayTime(event.duration!!)
             if (event.day == null) event.day = daytime.first
             if (event.timing == null) event.timing = daytime.second
+            event.setProperties(false)
             events.add(event)
         }
+        for (e in events) println("event ${e.id}: ${e.duration}")
         addToEventDb(context, events)
     }, Response.ErrorListener { err ->
         println("ERR: $err")
