@@ -56,8 +56,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "Schedule").commit()
         supportActionBar?.let { app_bar_title.text = "Schedule" }
 
-        app_bar_search_btn.setOnClickListener(this)
-        app_bar_back_arrow.setOnClickListener(this)
+//        app_bar_search_btn.setOnClickListener(this)
+//        app_bar_back_arrow.setOnClickListener(this)
         user_detail_container.setOnClickListener(this)
         bitotsav_menu_container.setOnClickListener(this)
         rate_card.setOnClickListener(this)
@@ -70,13 +70,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         web_card.setOnClickListener(this)
         share_card.setOnClickListener(this)
 
-        setKeyboardModeOnSearch()
+//        setKeyboardModeOnSearch()
     }
 
     private fun fetchEvents() {
         getAllEvents(this)
     }
 
+/*
     private fun setKeyboardModeOnSearch() {
         app_bar_search_box.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -86,6 +87,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             false
         })
     }
+*/
 
     private fun setupBottomNavigation() {
         bottom_navigation.setOnNavigationItemSelectedListener(BottomNavigationView.OnNavigationItemSelectedListener {
@@ -122,7 +124,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         return when(v?.id) {
-            R.id.app_bar_search_btn -> {
+            /*R.id.app_bar_search_btn -> {
                 app_bar_search_btn.visibility = View.GONE
                 app_bar_title.visibility = View.GONE
                 app_bar_search_box.visibility = View.VISIBLE
@@ -133,7 +135,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 app_bar_search_box.visibility = View.GONE
                 app_bar_title.visibility = View.VISIBLE
                 app_bar_search_btn.visibility = View.VISIBLE
-            }
+            }*/
             R.id.user_detail_container -> {
                 println("profile btn clicked")
                 startActivity(Intent(this, ProfileActivity::class.java))

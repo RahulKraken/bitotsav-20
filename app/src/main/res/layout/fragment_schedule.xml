@@ -41,6 +41,7 @@
         </com.google.android.material.tabs.TabLayout>
     </androidx.viewpager.widget.ViewPager>
 
+<!--
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/filter_fab"
         android:src="@drawable/ic_filter_list_black_24dp"
@@ -53,4 +54,6 @@
         android:elevation="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+-->
+
 </androidx.constraintlayout.widget.ConstraintLayout >
