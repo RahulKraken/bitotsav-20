@@ -9,6 +9,7 @@ import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.VolleyService
+import `in`.bitotsav.bitotsav_20.config.Secret
 import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.core.os.bundleOf
@@ -17,6 +18,7 @@ import androidx.navigation.Navigation
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.gms.safetynet.SafetyNet
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
 import org.json.JSONObject
@@ -66,11 +68,31 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
         val confirmPass = register_password_confirm.text.toString()
 
         if (email.isNotBlank() && phone.isNotBlank() && pass.isNotBlank() && confirmPass.isNotBlank() && pass == confirmPass) {
-            register(email, pass, phone)
+            validateCaptcha(email, pass, phone)
         }
     }
 
-    private fun register(email: String, password: String, phone: String) {
+    private fun validateCaptcha(
+        email: String,
+        password: String,
+        phone: String
+    ) {
+        SafetyNet.getClient(activity!!).verifyWithRecaptcha(Secret.recptchaSiteKey)
+            .addOnSuccessListener(activity!!) {response ->
+                println("recaptcha success: ${response.tokenResult}")
+                if (response.tokenResult.isNotEmpty()) register(email, password, phone, response.tokenResult)
+            }
+            .addOnFailureListener(activity!!) {
+                println("recaptcha failed: $it")
+            }
+    }
+
+    private fun register(
+        email: String,
+        password: String,
+        phone: String,
+        token: String
+    ) {
         val request = object : StringRequest(Method.POST, "https://bitotsav.in/api/auth/register", Response.Listener { response ->
             println("success: $response")
             val obj = JSONObject(response)
@@ -95,6 +117,7 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
                 body.put("confPassword", password)
                 body.put("phoneNo", phone)
                 body.put("client", "app")
+                body.put("captchaToken", token)
                 return body.toString().toByteArray(Charsets.UTF_8)
             }
         }

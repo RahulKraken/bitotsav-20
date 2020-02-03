@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
+import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -43,6 +44,17 @@ class ProfileFragment : Fragment() {
 
         profile_logout_btn.setOnClickListener {
             logout()
+        }
+
+        profile_verify_btn.setOnClickListener {
+            verifyAccount()
+        }
+    }
+
+    private fun verifyAccount() {
+        if (SharedPrefUtils(context!!).getUser() != null) {
+            val user = SharedPrefUtils(context!!).getUser()
+            navController.navigate(R.id.action_profileFragment_to_registerFragmentStepTwo)
         }
     }
 

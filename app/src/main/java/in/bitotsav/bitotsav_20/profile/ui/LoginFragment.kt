@@ -93,11 +93,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }, Response.ErrorListener {
                 println("Unknown error occurred")
             }) {
-            override fun getHeaders(): MutableMap<String, String> {
+            // captcha token to be passed in request body
+            /*override fun getHeaders(): MutableMap<String, String> {
                 return mutableMapOf(
-                    "captcha" to token
+                    "captchaToken" to token
                 )
-            }
+            }*/
 
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"
@@ -107,6 +108,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 val body = JSONObject()
                 body.put("email", email)
                 body.put("password", password)
+                body.put("client", "app")
+                body.put("captchaToken", token)
                 return body.toString().toByteArray(Charsets.UTF_8)
             }
         }

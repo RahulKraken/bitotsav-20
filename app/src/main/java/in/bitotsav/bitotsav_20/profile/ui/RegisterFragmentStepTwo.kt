@@ -9,14 +9,17 @@ import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.VolleyService
+import `in`.bitotsav.bitotsav_20.config.Secret
 import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
+import com.google.android.gms.safetynet.SafetyNet
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.fragment_register_fragment_step_two.*
+import org.json.JSONException
 import org.json.JSONObject
 import java.lang.NumberFormatException
 
@@ -42,7 +45,7 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         email = arguments?.get("email") as String
         phone = arguments?.get("phone") as String
-        token = arguments?.get("token") as String
+        token = SharedPrefUtils(context!!).getToken()!!
         println("argument received step two email: $email, phone: $phone and token: $token")
         return inflater.inflate(R.layout.fragment_register_fragment_step_two, container, false)
     }
@@ -71,8 +74,28 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
 
         // TODO: add else block
         if (name.isNotBlank() && (gender == 1 || gender == 2) && clgName.isNotBlank() && clgCity.isNotBlank() && clgState.isNotBlank() && clgId.isNotBlank() && emailOtp.isNotBlank() && mobileOtp.isNotBlank()) {
-            sendVerificationRequest(name, gender, clgName, clgCity, clgState, clgId, emailOtp, mobileOtp)
+            validateCaptcha(name, gender, clgName, clgCity, clgState, clgId, emailOtp, mobileOtp)
         }
+    }
+
+    private fun validateCaptcha(
+        name: String,
+        gender: Int,
+        clgName: String,
+        clgCity: String,
+        clgState: String,
+        clgId: String,
+        emailOtp: String,
+        mobileOtp: String
+    ) {
+        SafetyNet.getClient(activity!!).verifyWithRecaptcha(Secret.recptchaSiteKey)
+            .addOnSuccessListener(activity!!) {response ->
+                println("recaptcha success: ${response.tokenResult}")
+                sendVerificationRequest(name, gender, clgName, clgCity, clgState, clgId, emailOtp, mobileOtp, response.tokenResult)
+            }
+            .addOnFailureListener(activity!!) {
+                println("recaptcha failure: $it")
+            }
     }
 
     private fun sendVerificationRequest(
@@ -83,23 +106,39 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
         clgState: String,
         clgId: String,
         emailOtp: String,
-        mobileOtp: String
+        mobileOtp: String,
+        captchaToken: String
     ) {
         val request = object : StringRequest(Method.POST, "https://bitotsav.in/api/auth/verify",
             Response.Listener {response ->
                 println("response: $response")
                 // TODO: enclose in try-catch : JSONException
-                val res = JSONObject(response)
-                val status = res.get("status")
-                println("status: $status")
-                when (status) {
-                    200 -> {
-                        val user = User(-1, name, email, phone, gender, clgName, clgCity, clgState, clgId, res.getBoolean("isVerified"))
-                        SharedPrefUtils(context!!).setToken(res.getString("token"))
-                        checkVerificationStatusAndSave(user)
-                        println("token: ${res.get("token")}, isVerified: ${res.get("isVerified")}")
+                try {
+                    val res = JSONObject(response)
+                    val status = res.get("status")
+                    println("status: $status")
+                    when (status) {
+                        200 -> {
+                            val user = User(
+                                -1,
+                                name,
+                                email,
+                                phone,
+                                gender,
+                                clgName,
+                                clgCity,
+                                clgState,
+                                clgId,
+                                res.getBoolean("isVerified")
+                            )
+                            SharedPrefUtils(context!!).setToken(res.getString("token"))
+                            println("token: ${res.get("token")}, isVerified: ${res.get("isVerified")}")
+                            checkVerificationStatusAndSave(user)
+                        }
+                        else -> println("message: ${res.get("message")}")
                     }
-                    else -> println("message: ${res.get("message")}")
+                } catch (e: JSONException) {
+                    e.printStackTrace()
                 }
         }, Response.ErrorListener {
                 println("Unknown error occurred!!")
@@ -124,6 +163,8 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                 body.put("clgCity", clgCity)
                 body.put("clgState", clgState)
                 body.put("clgId", clgId)
+                body.put("client", "app")
+                body.put("captchaToken", captchaToken)
                 return body.toString().toByteArray(Charsets.UTF_8)
             }
         }
@@ -143,7 +184,7 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                 }
             },
             Response.ErrorListener {
-                println("step two: error occure - ${it.message}")
+                println("step two: error occurred - ${it.message}")
             }) {
             override fun getHeaders(): MutableMap<String, String> {
                 return mutableMapOf(

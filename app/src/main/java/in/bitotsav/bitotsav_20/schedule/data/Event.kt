@@ -53,7 +53,6 @@ data class Event(
         if (timeString.split(" ")[1].contentEquals("PM")) hours += 12
         val timestamp = GregorianCalendar(TimeZone.getTimeZone("Asia/Kolkata"))
         timestamp.set(2020, 1, day + 14, hours, minutes)
-        println("id: $id, day: $day, timeString: $timeString, timestamp: ${timestamp.timeInMillis}")
         return timestamp.timeInMillis
     }
 }
