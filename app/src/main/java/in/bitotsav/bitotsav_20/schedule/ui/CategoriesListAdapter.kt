@@ -46,11 +46,17 @@ class CategoriesListAdapter(
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val gradientDrawable = text?.background as GradientDrawable
                 gradientDrawable.color = when (category) {
-                    "Music" -> ColorStateList.valueOf(context.getColor(R.color.music))
-                    "Dance" -> ColorStateList.valueOf(context.getColor(R.color.dance))
-                    "Sports" -> ColorStateList.valueOf(context.getColor(R.color.sports))
-                    "Action" -> ColorStateList.valueOf(context.getColor(R.color.action))
-                    else -> ColorStateList.valueOf(context.getColor(R.color.music))
+                    "swaang" -> ColorStateList.valueOf(context.getColor(R.color.swaang))
+                    "rhetoric" -> ColorStateList.valueOf(context.getColor(R.color.rhetoric))
+                    "digitales" -> ColorStateList.valueOf(context.getColor(R.color.digitales))
+                    "herald" -> ColorStateList.valueOf(context.getColor(R.color.herald))
+                    "taabir" -> ColorStateList.valueOf(context.getColor(R.color.taabir))
+                    "meraki" -> ColorStateList.valueOf(context.getColor(R.color.meraki))
+                    "euphoria" -> ColorStateList.valueOf(context.getColor(R.color.euphoria))
+                    "dansation" -> ColorStateList.valueOf(context.getColor(R.color.dansation))
+                    "dhwani" -> ColorStateList.valueOf(context.getColor(R.color.dhwani))
+                    "adaa" -> ColorStateList.valueOf(context.getColor(R.color.adaa))
+                    else -> ColorStateList.valueOf(context.getColor(R.color.swaang))
                 }
             }
         }

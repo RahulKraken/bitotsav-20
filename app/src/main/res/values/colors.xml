@@ -5,10 +5,16 @@
     <color name="colorAccent">@color/md_cyan_600</color>
 
     <!-- Category chip colors -->
-    <color name="music">@color/md_orange_200</color>
-    <color name="dance">@color/md_purple_200</color>
-    <color name="sports">@color/md_light_blue_200</color>
-    <color name="action">@color/md_light_green_200</color>
+    <color name="swaang">@color/md_orange_200</color>
+    <color name="rhetoric">@color/md_purple_200</color>
+    <color name="digitales">@color/md_light_blue_200</color>
+    <color name="herald">@color/md_red_200</color>
+    <color name="taabir">@color/md_deep_purple_200</color>
+    <color name="meraki">@color/md_amber_200</color>
+    <color name="euphoria">@color/md_pink_200</color>
+    <color name="dansation">@color/md_cyan_200</color>
+    <color name="dhwani">@color/md_teal_200</color>
+    <color name="adaa">@color/md_lime_200</color>
 
     <!-- google's material design colours from http://www.google.com/design/spec/style/color.html#color-ui-color-palette -->
 
