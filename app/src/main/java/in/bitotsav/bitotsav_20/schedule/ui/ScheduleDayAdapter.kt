@@ -62,7 +62,9 @@ class ScheduleDayAdapter(
 
         fun bind(event: Event) {
             eventName?.text = event.name
-            eventVenueDuration?.text = "${event.venue} / ${event.duration}"
+            // format datetime and venue
+            val evd = "${event.venue} - ${event.duration!!.split(":", limit = 2)[1].trim()}"
+            eventVenueDuration?.text = evd
             if (event.category != "Formal") {
                 registerLabel?.visibility = View.GONE
                 registerLabelIcon?.visibility = View.GONE
