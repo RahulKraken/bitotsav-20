@@ -61,7 +61,6 @@ class EventDetailActivity : AppCompatActivity() {
     private fun getNameAndPhone(s: String): Pair<String, String> {
         val name = s.split(":")[0].split(".")[1].trim()
         val phone = s.split(":")[1].trim()
-        println("name $name, phone $phone")
         return Pair(name, phone)
     }
 

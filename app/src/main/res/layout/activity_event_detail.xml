@@ -437,7 +437,6 @@
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="0dp"
         android:layout_height="wrap_content">
@@ -499,25 +498,25 @@
             android:layout_width="56dp"
             android:layout_height="wrap_content" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/register_btn"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            android:backgroundTint="@color/md_teal_200"
-            android:elevation="2dp"
-            app:cornerRadius="28dp"
-            app:iconTint="@color/md_white_1000"
-            app:iconPadding="4dp"
-            app:iconGravity="textStart"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textSize="18sp"
-            android:textColor="@color/md_white_1000"
-            android:text="REGISTER"
-            android:layout_margin="16dp"
-            app:icon="@drawable/ic_ticket_black_24dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/register_btn"-->
+<!--            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"-->
+<!--            android:backgroundTint="@color/md_teal_200"-->
+<!--            android:elevation="2dp"-->
+<!--            app:cornerRadius="28dp"-->
+<!--            app:iconTint="@color/md_white_1000"-->
+<!--            app:iconPadding="4dp"-->
+<!--            app:iconGravity="textStart"-->
+<!--            android:paddingTop="8dp"-->
+<!--            android:paddingBottom="8dp"-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:paddingEnd="16dp"-->
+<!--            android:textSize="18sp"-->
+<!--            android:textColor="@color/md_white_1000"-->
+<!--            android:text="REGISTER"-->
+<!--            android:layout_margin="16dp"-->
+<!--            app:icon="@drawable/ic_ticket_black_24dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
