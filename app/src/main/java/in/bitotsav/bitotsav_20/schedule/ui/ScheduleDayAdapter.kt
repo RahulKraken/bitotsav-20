@@ -61,7 +61,9 @@ class ScheduleDayAdapter(
         }
 
         fun bind(event: Event) {
-            eventName?.text = event.name
+            // format event name format: All caps to first letter caps
+            val ename = event.name[0].toUpperCase() + event.name.substring(1, event.name.length).toLowerCase()
+            eventName?.text = ename
             // format datetime and venue
             val evd = "${event.venue} - ${event.duration!!.split(":", limit = 2)[1].trim()}"
             eventVenueDuration?.text = evd
