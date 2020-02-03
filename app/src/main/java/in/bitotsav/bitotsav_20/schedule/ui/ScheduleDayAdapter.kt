@@ -2,6 +2,9 @@ package `in`.bitotsav.bitotsav_20.schedule.ui
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import android.app.Activity
+import android.app.ActivityOptions
+import android.util.Pair
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -15,7 +18,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 
 class ScheduleDayAdapter(
     private var events: List<Event>?,
-    private var context: Context) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
+    private var context: Activity) : RecyclerView.Adapter<ScheduleDayAdapter.DayViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayViewHolder {
         val inflater = LayoutInflater.from(context)
@@ -57,7 +60,14 @@ class ScheduleDayAdapter(
             val event = events?.get(adapterPosition)
             val intent = Intent(context, EventDetailActivity::class.java)
             intent.putExtra(context.getString(R.string.event_intent_pass_key), event)
-            context.startActivity(intent)
+            // shared element transition of title and category rv
+            val name = itemView.findViewById<TextView>(R.id.event_name)
+            val category = itemView.findViewById<RecyclerView>(R.id.rv_categories)
+            val options = ActivityOptions.makeSceneTransitionAnimation(context,
+                Pair<View, String>(name, "eventTitle"),
+                Pair<View, String>(category, "categoryTitle")
+            )
+            context.startActivity(intent, options.toBundle())
         }
 
         fun bind(event: Event) {

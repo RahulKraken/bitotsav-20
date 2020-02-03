@@ -51,7 +51,9 @@
         <TextView
             android:id="@+id/event_detail_title"
             android:text="Famous Event Cultural or Something"
-            style="@style/font_semi_bold_24_black"
+            style="@style/font_regular_black_20"
+            android:textColor="@color/md_black_1000"
+            android:transitionName="eventTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -89,6 +91,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/event_detail_category_rv"
+            android:transitionName="eventCategory"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
