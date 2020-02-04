@@ -6,6 +6,8 @@ import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import android.animation.ObjectAnimator
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -45,6 +47,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+
+        // create notification channel for BUILD_VERSION >= ANDROID.O
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel("Bitotsav20", "Bitotsav20", NotificationManager.IMPORTANCE_HIGH)
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(channel)
         }
 
         setSupportActionBar(app_bar)
