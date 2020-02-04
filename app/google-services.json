@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "808282602800",
+    "firebase_url": "https://bitotsav-20.firebaseio.com",
+    "project_id": "bitotsav-20",
+    "storage_bucket": "bitotsav-20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808282602800:android:cefe0f7384756fd4089cf5",
+        "android_client_info": {
+          "package_name": "in.bitotsav.bitotsav_20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808282602800-mv0kmfatbjl089l0ud63jsok4ff85ur5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "in.bitotsav.bitotsav_20",
+            "certificate_hash": "b4c6a2b4edc2ee8db8b89ff3db2161885f7ee83b"
+          }
+        },
+        {
+          "client_id": "808282602800-l37dthdbavafv0limk36v3cu4aekgitj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAII55ju7-HBQizZ4RW1qTVeq8sO19g2yE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808282602800-l37dthdbavafv0limk36v3cu4aekgitj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
