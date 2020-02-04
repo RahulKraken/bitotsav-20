@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //        app_bar_back_arrow.setOnClickListener(this)
         user_detail_container.setOnClickListener(this)
         bitotsav_menu_container.setOnClickListener(this)
+        bitotsav_menu_large_container.setOnClickListener(this)
         rate_card.setOnClickListener(this)
         contact_card.setOnClickListener(this)
         info_card.setOnClickListener(this)
@@ -164,18 +165,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.web_card -> println("web btn selected")
             R.id.share_card -> println("share btn selected")
             R.id.bitotsav_menu_container -> println("bitotsav card clicked")
+            R.id.bitotsav_menu_large_container -> onBackPressed()
             else -> Unit
         }
     }
 
     override fun onBackPressed() {
-        if (isBitotsavMenuOpen) hideBitotsavMenu()
-        else super.onBackPressed()
+        if (isBitotsavMenuOpen) {
+            hideBitotsavMenu()
+            bottom_navigation.selectedItemId = lastSelectedNavigationItem
+        } else super.onBackPressed()
     }
 
     private fun hideBitotsavMenu() {
         if (isBitotsavMenuOpen)
-            ObjectAnimator.ofFloat(bitotsav_menu_container, "translationX", -1000f).apply {
+            ObjectAnimator.ofFloat(bitotsav_menu_large_container, "translationX", -1200f).apply {
                 duration = 300
                 start()
             }
@@ -184,7 +188,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun showBitotsavMenu() {
         if (!isBitotsavMenuOpen)
-            ObjectAnimator.ofFloat(bitotsav_menu_container, "translationX", 0f).apply {
+            ObjectAnimator.ofFloat(bitotsav_menu_large_container, "translationX", 0f).apply {
                 duration = 300
                 start()
             }
