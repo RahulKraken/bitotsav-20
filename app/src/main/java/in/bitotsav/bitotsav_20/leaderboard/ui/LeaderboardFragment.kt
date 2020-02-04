@@ -8,10 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 
 import `in`.bitotsav.bitotsav_20.R
+import `in`.bitotsav.bitotsav_20.VolleyService
 import `in`.bitotsav.bitotsav_20.feed.ui.ItemDividerDecoration
 import `in`.bitotsav.bitotsav_20.leaderboard.data.Team
+import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
+import org.json.JSONObject
 
 /**
  * A simple [Fragment] subclass.
@@ -21,33 +27,6 @@ class LeaderboardFragment : Fragment() {
     companion object {
         fun newInstance() = LeaderboardFragment()
     }
-
-    private val teams = listOf(
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847),
-        Team("12ks13dak", "teamName", "teamMembers", 222, 7847)
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,10 +39,37 @@ class LeaderboardFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // display user scorecard
+        if(SharedPrefUtils(context!!).getUser() == null) {
+            user_score_card.visibility = View.GONE
+        }
+
+        val LEADERBOARD_URL = "https://bitotsav.in/api/admin/leaderboard"
+        val leaderboardRequest = StringRequest(Request.Method.POST, LEADERBOARD_URL,
+            Response.Listener {response ->
+                val res = JSONObject(response)
+                val leaderboard = res.getJSONArray("leaderboard")
+                val teams = ArrayList<Team>()
+                for (i in 0 until leaderboard.length()) {
+                    val curr = leaderboard.getJSONObject(i)
+                    teams.add(Team(curr.getInt("teamId"), curr.getString("teamName"), null, i + 1, curr.getInt("points")))
+                }
+                leaderboard_rv.apply {
+                    layoutManager = LinearLayoutManager(activity)
+                    adapter = LeaderboardAdapter(teams)
+                    addItemDecoration(ItemDividerDecoration(context, 32, 32))
+                }
+        }, Response.ErrorListener {
+                println("leaderboard: error")
+        })
+
+        VolleyService.getRequestQueue(context!!).add(leaderboardRequest)
+        /*
         leaderboard_rv.apply {
             layoutManager = LinearLayoutManager(activity)
             adapter = LeaderboardAdapter(teams)
             addItemDecoration(ItemDividerDecoration(context, 32, 32))
         }
+        */
     }
 }
