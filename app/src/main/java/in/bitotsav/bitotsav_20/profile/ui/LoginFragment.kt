@@ -14,6 +14,7 @@ import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.google.android.gms.safetynet.SafetyNet
@@ -86,7 +87,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 when (res.get("status")) {
                     200 -> {
                         println(res)
-                        saveAndNavigate(res.getString("token"), res.getBoolean("isVerified"))
+                        getUserData(res.getString("token"), res.getBoolean("isVerified"))
                     }
                     else -> println(res)
                 }
@@ -117,12 +118,34 @@ class LoginFragment : Fragment(), View.OnClickListener {
         VolleyService.getRequestQueue(context!!).add(loginRequest)
     }
 
-    private fun saveAndNavigate(token: String, isVerified: Boolean) {
+    private fun getUserData(token: String, isVerified: Boolean) {
+        val dataReq = object : StringRequest(
+            Method.GET, "https://bitotsav.in/api/dash/getProfile",
+            Response.Listener {response ->
+                val res = JSONObject(response)
+                saveAndNavigate(token, isVerified, res.getJSONObject("user"))
+            }, Response.ErrorListener {error ->
+                println("getUserData: $error")
+            }) {
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+
+            override fun getHeaders(): MutableMap<String, String> {
+                return mutableMapOf(
+                    "x-access-token" to token
+                )
+            }
+        }
+
+        VolleyService.getRequestQueue(context!!).add(dataReq)
+    }
+
+    private fun saveAndNavigate(token: String, isVerified: Boolean, user: JSONObject) {
         SharedPrefUtils(context!!).setToken(token)
-        // TODO: Replace with user dashboard data when /getUserDashboard is active
-        SharedPrefUtils(context!!).setUser(User(
-            -1, "Dummy", email, "56478392", 1, null, null, null, null, isVerified
-        ))
+        val u = User(user.getInt("bitotsavId"), user.getString("name"), user.getString("email"), user.getString("phoneNo"), user.getInt("gender"), user.getString("clgName"), user.getString("clgCity"), user.getString("clgState"), user.getString("clgId"), isVerified)
+        println("user found: $u")
+        SharedPrefUtils(context!!).setUser(u)
         navController.navigate(R.id.action_loginFragment_to_profileFragment)
     }
 
