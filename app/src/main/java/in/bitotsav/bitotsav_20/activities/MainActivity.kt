@@ -174,12 +174,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
             R.id.rate_card -> println("rating btn selected")
-            R.id.contact_card -> println("contact btn selected")
-            R.id.info_card -> println("info btn selected")
-            R.id.sponsor_card -> println("sponsor btn selected")
-            R.id.faq_card -> println("faq btn selected")
-            R.id.night_card -> println("night btn selected")
-            R.id.bitotsav_card -> println("bitotsav btn selected")
+            R.id.contact_card -> {
+                println("contact btn selected")
+                startActivity(Intent(this, ContactUsActivity::class.java))
+            }
+            R.id.info_card -> {
+                println("info btn selected")
+                startActivity(Intent(this, InfoActivity::class.java))
+            }
+            R.id.sponsor_card -> {
+                println("sponsor btn selected")
+                startActivity(Intent(this, SponsorActivity::class.java))
+            }
+            R.id.faq_card -> {
+                println("faq btn selected")
+                startActivity(Intent(this, FaqActivity::class.java))
+            }
+            R.id.night_card -> {
+                println("night btn selected")
+                startActivity(Intent(this, NightsActivity::class.java))
+            }
+            R.id.bitotsav_card -> {
+                println("bitotsav btn selected")
+                startActivity(Intent(this, BitotsavActivity::class.java))
+            }
             R.id.web_card -> println("web btn selected")
             R.id.share_card -> println("share btn selected")
             R.id.bitotsav_menu_container -> println("bitotsav card clicked")
