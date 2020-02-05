@@ -5,6 +5,7 @@ import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
+import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -54,6 +55,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val channel = NotificationChannel("Bitotsav20", "Bitotsav20", NotificationManager.IMPORTANCE_HIGH)
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(channel)
+        }
+
+        // set bitotsav menu contents
+        // TODO: on logout replace text
+        menu_team_name.visibility = View.GONE
+        if (SharedPrefUtils(this).getUser() != null) {
+            menu_username.text = SharedPrefUtils(this).getUser()?.name
+        } else {
+            menu_username.text = "Login/Register"
+            menu_user_avatar.visibility = View.GONE
         }
 
         setSupportActionBar(app_bar)
