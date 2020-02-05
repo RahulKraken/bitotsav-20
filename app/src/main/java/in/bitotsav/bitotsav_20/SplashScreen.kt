@@ -1,5 +1,6 @@
 package `in`.bitotsav.bitotsav_20
 
+import `in`.bitotsav.bitotsav_20.activities.MainActivity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
