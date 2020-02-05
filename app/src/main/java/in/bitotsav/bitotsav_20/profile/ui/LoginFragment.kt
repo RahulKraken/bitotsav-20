@@ -148,9 +148,4 @@ class LoginFragment : Fragment(), View.OnClickListener {
         SharedPrefUtils(context!!).setUser(u)
         navController.navigate(R.id.action_loginFragment_to_profileFragment)
     }
-
-    // TODO: Remove redundant method
-    private fun navigateToProfile() {
-        navController.navigate(R.id.action_loginFragment_to_profileFragment)
-    }
 }

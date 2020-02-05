@@ -67,5 +67,10 @@ class ProfileFragment : Fragment() {
         if (user?.isVerified == true) profile_verify_btn.visibility = View.GONE
         profile_email.text = user?.email
         profile_phone.text = user?.phoneNo
+        profile_bitotsav_id.text = user?.bitotsavId.toString()
+        profile_name.text = user?.name
+        profile_clg_id.text = user?.clgId
+        profile_clg_name.text = user?.clgName
+        profile_clg_city.text = user?.clgCity
     }
 }
