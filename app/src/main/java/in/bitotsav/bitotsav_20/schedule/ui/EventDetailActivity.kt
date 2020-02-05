@@ -47,15 +47,25 @@ class EventDetailActivity : AppCompatActivity() {
 
         // coordinators
         val coordinators = event.contactInformation?.split("\n")
-        if (!coordinators.isNullOrEmpty() && coordinators[0].isNotEmpty()) {
-            val v = getNameAndPhone(coordinators[0])
-            coordinator_one_label.text = v.first
-            coordinator_one.text = v.second
+        try {
+            if (!coordinators.isNullOrEmpty() && coordinators[0].isNotEmpty()) {
+                val v = getNameAndPhone(coordinators[0])
+                coordinator_one_label.text = v.first
+                coordinator_one.text = v.second
+            }
+        } catch (e: Exception) {
+            coordinator_one.visibility = View.GONE
+            coordinator_one_label.visibility = View.GONE
         }
-        if (!coordinators.isNullOrEmpty() && coordinators[1].isNotEmpty()) {
-            val v = getNameAndPhone(coordinators[1])
-            coordinator_two_label.text = v.first
-            coordinator_two.text = v.second
+        try {
+            if (!coordinators.isNullOrEmpty() && coordinators[1].isNotEmpty()) {
+                val v = getNameAndPhone(coordinators[1])
+                coordinator_two_label.text = v.first
+                coordinator_two.text = v.second
+            }
+        } catch (e: Exception) {
+            coordinator_two.visibility = View.GONE
+            coordinator_two_label.visibility = View.GONE
         }
 
         populateRecyclerView(event)
