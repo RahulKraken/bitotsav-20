@@ -43,6 +43,7 @@ class EventDetailActivity : AppCompatActivity() {
         // TODO: get winners, format then parse and display
         // for now it's not visible
         event_detail_winner_container.visibility = View.GONE
+        event_detail_winner_label.visibility = View.GONE
 
         // coordinators
         val coordinators = event.contactInformation?.split("\n")

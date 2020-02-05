@@ -438,7 +438,6 @@
         android:orientation="horizontal"
         android:translationZ="8dp"
         android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_width="0dp"
@@ -468,9 +467,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/share_btn"
             app:cornerRadius="28dp"
-            style="@style/Widget.MaterialComponents.Button.Icon"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
             app:icon="@drawable/ic_share_black_24dp"
-            app:iconTint="@color/md_grey_800"
+            app:iconTint="@color/md_grey_50"
+            android:elevation="4dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:paddingTop="16dp"
@@ -478,28 +478,33 @@
             android:layout_margin="16dp"
             android:gravity="center"
             app:iconSize="24dp"
-            android:backgroundTint="@color/md_white_1000"
-            android:maxWidth="56dp"
-            android:layout_width="56dp"
+            android:text="Share"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/md_grey_50"
+            app:iconPadding="16dp"
+            android:backgroundTint="@color/md_teal_200"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/star_btn"
-            app:cornerRadius="28dp"
-            style="@style/Widget.MaterialComponents.Button.Icon"
-            app:icon="@drawable/ic_rate_star_button_stroke"
-            app:iconTint="@color/md_grey_800"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            app:iconSize="24dp"
-            android:backgroundTint="@color/md_white_1000"
-            android:maxWidth="56dp"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content" />
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/star_btn"-->
+<!--            app:cornerRadius="28dp"-->
+<!--            style="@style/Widget.MaterialComponents.Button.Icon"-->
+<!--            app:icon="@drawable/ic_rate_star_button_stroke"-->
+<!--            app:iconTint="@color/md_grey_800"-->
+<!--            android:paddingStart="16dp"-->
+<!--            android:paddingEnd="16dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:layout_margin="16dp"-->
+<!--            android:gravity="center"-->
+<!--            app:iconSize="24dp"-->
+<!--            android:backgroundTint="@color/md_white_1000"-->
+<!--            android:maxWidth="56dp"-->
+<!--            android:layout_width="56dp"-->
+<!--            android:layout_height="wrap_content" />-->
 
 <!--        <com.google.android.material.button.MaterialButton-->
 <!--            android:id="@+id/register_btn"-->

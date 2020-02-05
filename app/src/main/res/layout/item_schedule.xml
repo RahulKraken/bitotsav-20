@@ -88,17 +88,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
-    <ImageView
-        android:src="@drawable/ic_rate_star_button_stroke"
-        android:alpha="0.5"
-        android:contentDescription="@string/grade_icon_desc"
-        android:layout_marginTop="2dp"
-        app:layout_constraintStart_toEndOf="@id/pre_end_guide"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/event_venue_duration"
-        android:layout_width="18dp"
-        android:layout_height="18dp" />
+<!--    <ImageView-->
+<!--        android:src="@drawable/ic_rate_star_button_stroke"-->
+<!--        android:alpha="0.5"-->
+<!--        android:contentDescription="@string/grade_icon_desc"-->
+<!--        android:layout_marginTop="2dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/pre_end_guide"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/end_guide"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/event_venue_duration"-->
+<!--        android:layout_width="18dp"-->
+<!--        android:layout_height="18dp" />-->
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
