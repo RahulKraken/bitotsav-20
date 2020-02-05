@@ -19,6 +19,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.google.android.gms.safetynet.SafetyNet
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.login_email
 import org.json.JSONObject
@@ -76,6 +77,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
             .addOnFailureListener(activity!!) {
                 println("recaptcha failed: $it")
+                Snackbar.make(parent_login_frag, it.toString(), Snackbar.LENGTH_SHORT).show()
             }
     }
 
@@ -89,10 +91,14 @@ class LoginFragment : Fragment(), View.OnClickListener {
                         println(res)
                         getUserData(res.getString("token"), res.getBoolean("isVerified"))
                     }
-                    else -> println(res)
+                    else -> {
+                        println(res)
+                        Snackbar.make(login_btn, res.getString("message"), Snackbar.LENGTH_SHORT).show()
+                    }
                 }
             }, Response.ErrorListener {
                 println("Unknown error occurred")
+                Snackbar.make(login_btn, "Unknown error occurred", Snackbar.LENGTH_SHORT).show()
             }) {
             // captcha token to be passed in request body
             /*override fun getHeaders(): MutableMap<String, String> {
@@ -126,6 +132,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 saveAndNavigate(token, isVerified, res.getJSONObject("user"))
             }, Response.ErrorListener {error ->
                 println("getUserData: $error")
+                Snackbar.make(login_btn, "Unknown error occurred", Snackbar.LENGTH_SHORT).show()
             }) {
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"

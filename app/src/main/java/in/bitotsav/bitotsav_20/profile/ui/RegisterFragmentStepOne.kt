@@ -20,6 +20,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.safetynet.SafetyNet
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_register_fragment_step_one.*
 import org.json.JSONObject
 
@@ -84,6 +85,7 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
             }
             .addOnFailureListener(activity!!) {
                 println("recaptcha failed: $it")
+                Snackbar.make(parent_reg_one_frag, "recaptcha failed", Snackbar.LENGTH_SHORT).show()
             }
     }
 
@@ -99,12 +101,15 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
             println(obj.get("status"))
             when (obj.get("status")) {
                 // TODO: replace with snackBar
-                500, 422, 401, 415, 400 -> println(obj.get("message"))
                 200 -> saveAndNavigate(obj)
-                else -> println(obj.get("message"))
+                else -> {
+                    println(obj.get("message"))
+                    Snackbar.make(parent_reg_one_frag, obj.getString("message"), Snackbar.LENGTH_SHORT).show()
+                }
             }
         }, Response.ErrorListener {error ->
             println("error: $error")
+            Snackbar.make(parent_reg_one_frag, "Unknown error occurred!", Snackbar.LENGTH_SHORT).show()
         }) {
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"

@@ -18,6 +18,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.google.android.gms.safetynet.SafetyNet
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_register_fragment_step_two.*
 import org.json.JSONException
 import org.json.JSONObject
@@ -95,6 +96,7 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
             }
             .addOnFailureListener(activity!!) {
                 println("recaptcha failure: $it")
+                Snackbar.make(parent_register_two_frag, "Recaptcha failed", Snackbar.LENGTH_SHORT).show()
             }
     }
 
@@ -135,13 +137,17 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                             println("token: ${res.get("token")}, isVerified: ${res.get("isVerified")}")
                             checkVerificationStatusAndSave(user)
                         }
-                        else -> println("message: ${res.get("message")}")
+                        else -> {
+                            println("message: ${res.get("message")}")
+                            Snackbar.make(parent_register_two_frag, res.getString("message"), Snackbar.LENGTH_SHORT).show()
+                        }
                     }
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
         }, Response.ErrorListener {
                 println("Unknown error occurred!!")
+                Snackbar.make(parent_register_two_frag, "Unknown error occurred!!", Snackbar.LENGTH_SHORT).show()
         }) {
             override fun getHeaders(): MutableMap<String, String> {
                 return mutableMapOf(
@@ -181,10 +187,13 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                 val res = JSONObject(response)
                 if (res.get("verified") != null) {
                     saveAndNavigate(user)
+                } else {
+                    Snackbar.make(parent_register_two_frag, "Unknown error occurred!!", Snackbar.LENGTH_SHORT).show()
                 }
             },
             Response.ErrorListener {
                 println("step two: error occurred - ${it.message}")
+                Snackbar.make(parent_register_two_frag, "Unknown error occurred!!", Snackbar.LENGTH_SHORT).show()
             }) {
             override fun getHeaders(): MutableMap<String, String> {
                 return mutableMapOf(
