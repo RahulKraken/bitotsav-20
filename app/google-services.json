@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "149482826237",
-    "firebase_url": "https://bitotsav-20-4f62e.firebaseio.com",
-    "project_id": "bitotsav-20-4f62e",
-    "storage_bucket": "bitotsav-20-4f62e.appspot.com"
+    "project_number": "73797275451",
+    "firebase_url": "https://bitotsav-20-77cab.firebaseio.com",
+    "project_id": "bitotsav-20-77cab",
+    "storage_bucket": "bitotsav-20-77cab.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:149482826237:android:fe7a354001e890e9361194",
+        "mobilesdk_app_id": "1:73797275451:android:ad683fee2d67c5b91b711e",
         "android_client_info": {
           "package_name": "in.bitotsav.bitotsav_20"
         }
       },
       "oauth_client": [
         {
-          "client_id": "149482826237-em1lhatjreugqo2s4ub92dkuifug945c.apps.googleusercontent.com",
+          "client_id": "73797275451-tqlvkt9vkeqoaqroj4jd5q8e1akj7bv1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "in.bitotsav.bitotsav_20",
@@ -23,20 +23,20 @@
           }
         },
         {
-          "client_id": "149482826237-165mba60i9ht4eb3mnmkkd1hc7tbe10l.apps.googleusercontent.com",
+          "client_id": "73797275451-81tjf2td0qffjfmsrfna2cdm0tqb8ksb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB_ZsERy-fzd7QeaY2cblW9TnfCve2QiuI"
+          "current_key": "AIzaSyAkk_qj4wxLcCpDywgflKLkI36chFv_FJc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "149482826237-165mba60i9ht4eb3mnmkkd1hc7tbe10l.apps.googleusercontent.com",
+              "client_id": "73797275451-81tjf2td0qffjfmsrfna2cdm0tqb8ksb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
