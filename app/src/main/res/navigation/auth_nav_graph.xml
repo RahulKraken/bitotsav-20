@@ -14,6 +14,7 @@
             android:id="@+id/action_loginFragment_to_registerFragmentStepOne"
             app:destination="@id/registerFragmentStepOne" />
         <action
+            app:popUpTo="@id/profileFragment"
             android:id="@+id/action_loginFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
@@ -26,9 +27,11 @@
             android:id="@+id/action_registerFragmentStepOne_to_registerFragmentStepTwo"
             app:destination="@id/registerFragmentStepTwo" />
         <action
+            app:popUpTo="@id/profileFragment"
             android:id="@+id/action_registerFragmentStepOne_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
+            app:popUpTo="@id/loginFragment"
             android:id="@+id/action_registerFragmentStepOne_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
@@ -52,6 +55,7 @@
             android:defaultValue="none" />
 
         <action
+            app:popUpTo="@id/profileFragment"
             android:id="@+id/action_registerFragmentStepTwo_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
