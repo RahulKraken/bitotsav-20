@@ -3,7 +3,7 @@
     <item
         android:id="@+id/action_bitotsav"
         android:title="Bitotsav"
-        android:icon="@drawable/ic_extension_black_24dp" />
+        android:icon="@drawable/black_lotus" />
     <item
         android:id="@+id/action_schedule"
         android:title="Schedule"

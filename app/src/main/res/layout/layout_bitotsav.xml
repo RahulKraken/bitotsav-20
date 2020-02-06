@@ -169,7 +169,7 @@
             android:layout_height="56dp">
 
             <ImageView
-                android:src="@drawable/lotus_flower_color"
+                android:src="@drawable/colorful_icon"
                 android:layout_gravity="center"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
