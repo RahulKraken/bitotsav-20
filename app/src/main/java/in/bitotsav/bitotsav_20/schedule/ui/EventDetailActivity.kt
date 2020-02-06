@@ -2,9 +2,12 @@ package `in`.bitotsav.bitotsav_20.schedule.ui
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_event_detail.*
 
@@ -15,14 +18,68 @@ class EventDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_event_detail)
 
         val event = intent.getSerializableExtra(resources.getString(R.string.event_intent_pass_key)) as Event
-
         bindData(event)
     }
 
     private fun bindData(event: Event) {
+        // event image
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        event_detail_image.setImageResource(when(event.eventCategory?.toLowerCase()) {
+            "swaang" -> {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_purple_300)
+                R.drawable.swaang
+            }
+            "rhetoric" -> {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_light_blue_400)
+                R.drawable.rhetoric
+            }
+            "digitales" -> {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_orange_400)
+                R.drawable.digitales
+            }
+            "meraki" -> {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//                }
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_deep_purple_400)
+                R.drawable.meraki
+            }
+            "euphoria" -> {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//                }
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_deep_purple_800)
+                R.drawable.euphoriia
+            }
+            "dansation" -> {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_pink_400)
+                R.drawable.dansation
+            }
+            "dhwani" -> {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//                }
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_teal_400)
+                R.drawable.dhwani
+            }
+            "adaa" -> {
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//                }
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_pink_700)
+                R.drawable.adaa
+            }
+            else -> {
+                window.statusBarColor = ContextCompat.getColor(this, R.color.md_amber_400)
+                R.drawable.detail_placeholder
+            }
+        })
+
         // text details
         // format event name format: All caps to first letter caps
         val ename = event.name[0].toUpperCase() + event.name.substring(1, event.name.length).toLowerCase()
+        println("ename: $ename")
         event_detail_title.text = ename
         event_detail_desc.text = event.description
         event_detail_rules.text = event.rulesAndRegulations
