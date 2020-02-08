@@ -2,6 +2,7 @@ package `in`.bitotsav.bitotsav_20.schedule.ui
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.schedule.data.Event
+import `in`.bitotsav.bitotsav_20.utils.share
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,9 @@ class EventDetailActivity : AppCompatActivity() {
 
         val event = intent.getSerializableExtra(resources.getString(R.string.event_intent_pass_key)) as Event
         bindData(event)
+        share_btn.setOnClickListener {
+            share(this, "Checkout ${event.name} at Bitotsav BIT Mesra.", "Venue: ${event.venue}, time: ${event.timing} on day ${event.day}")
+        }
     }
 
     private fun bindData(event: Event) {

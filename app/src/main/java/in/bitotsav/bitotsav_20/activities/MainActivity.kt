@@ -7,6 +7,7 @@ import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
+import `in`.bitotsav.bitotsav_20.utils.share
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -206,7 +207,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(Intent(this, BitotsavActivity::class.java))
             }
             R.id.web_card -> println("web btn selected")
-            R.id.share_card -> println("share btn selected")
+            R.id.share_card -> {
+                println("share btn selected")
+                share(this, "Check out the app for Bitotsav 20 on google play!", "Bitotsav 20 at Birla Instiute of Technology from 14th to 16th of February, 2020.")
+            }
             R.id.bitotsav_menu_container -> println("bitotsav card clicked")
             R.id.bitotsav_menu_large_container -> onBackPressed()
             else -> Unit
