@@ -7,6 +7,7 @@ import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
 import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
+import `in`.bitotsav.bitotsav_20.utils.openCustomTab
 import `in`.bitotsav.bitotsav_20.utils.share
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
@@ -96,6 +97,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         bitotsav_card.setOnClickListener(this)
         web_card.setOnClickListener(this)
         share_card.setOnClickListener(this)
+        ic_facebook.setOnClickListener(this)
+        ic_twitter.setOnClickListener(this)
+        ic_instagram.setOnClickListener(this)
+        ic_youtube.setOnClickListener(this)
 
 //        setKeyboardModeOnSearch()
 
@@ -206,13 +211,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 println("bitotsav btn selected")
                 startActivity(Intent(this, BitotsavActivity::class.java))
             }
-            R.id.web_card -> println("web btn selected")
+            R.id.web_card -> {
+                println("web btn selected")
+                openCustomTab(this, getString(R.string.website_url))
+            }
             R.id.share_card -> {
                 println("share btn selected")
-                share(this, "Check out the app for Bitotsav 20 on google play!", "Bitotsav 20 at Birla Instiute of Technology from 14th to 16th of February, 2020.")
+                share(this, "Check out the app for Bitotsav 20 on google play!", "Bitotsav 20 at Birla Institute of Technology from 14th to 16th of February, 2020.")
             }
             R.id.bitotsav_menu_container -> println("bitotsav card clicked")
             R.id.bitotsav_menu_large_container -> onBackPressed()
+            R.id.ic_facebook -> openCustomTab(this, getString(R.string.facebook_url))
+            R.id.ic_twitter -> openCustomTab(this, getString(R.string.twitter_url))
+            R.id.ic_instagram -> openCustomTab(this, getString(R.string.instagram_url))
+            R.id.ic_youtube -> openCustomTab(this, getString(R.string.youtube_url))
             else -> Unit
         }
     }

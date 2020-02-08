@@ -2,6 +2,8 @@ package `in`.bitotsav.bitotsav_20.utils
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
+import androidx.browser.customtabs.CustomTabsIntent
 
 fun parseDayTime(daytime: String): Pair<Int, String> {
     val parts = daytime.split(":", limit = 2).map { it.trim() }
@@ -22,4 +24,12 @@ fun share(context: Context, subject: String, message: String) {
     shareIntent.putExtra(Intent.EXTRA_SUBJECT, subject)
     shareIntent.putExtra(Intent.EXTRA_TEXT, message)
     context.startActivity(Intent.createChooser(shareIntent, "Share via..."))
+}
+
+fun openCustomTab(context: Context, url: String) {
+    val customTab = CustomTabsIntent.Builder()
+        .setShowTitle(true)
+        .build()
+    val uri = Uri.parse(url)
+    customTab.launchUrl(context, uri)
 }

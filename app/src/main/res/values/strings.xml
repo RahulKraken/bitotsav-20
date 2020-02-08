@@ -3,7 +3,11 @@
     <string name="splash_screen_image_desc">Splash screen image</string>
     <string name="splash_screen">Splash screen</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="website_url">https://bitotsav.in/</string>
+    <string name="facebook_url">https://www.facebook.com/bitotsav</string>
+    <string name="twitter_url">https://twitter.com/bitotsav</string>
+    <string name="instagram_url">https://www.instagram.com/bitotsav_20/</string>
+    <string name="youtube_url">https://www.youtube.com/channel/UCnQ43YDh1dXKtTFBrERkhYw</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_icon_desc">search icon</string>
     <string name="grade_icon_desc">grade icon</string>
