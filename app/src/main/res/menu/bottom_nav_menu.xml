@@ -8,10 +8,10 @@
         android:id="@+id/action_schedule"
         android:title="Schedule"
         android:icon="@drawable/ic_schedule_black_24dp" />
-    <item
-        android:id="@+id/action_feed"
-        android:title="Feed"
-        android:icon="@drawable/ic_rss_feed_black_24dp" />
+<!--    <item-->
+<!--        android:id="@+id/action_feed"-->
+<!--        android:title="Feed"-->
+<!--        android:icon="@drawable/ic_rss_feed_black_24dp" />-->
     <item
         android:id="@+id/action_leaderboard"
         android:title="Leaderboard"
