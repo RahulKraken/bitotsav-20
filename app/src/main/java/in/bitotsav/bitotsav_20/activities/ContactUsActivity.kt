@@ -6,13 +6,26 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
+import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_contact_us.*
+import kotlinx.android.synthetic.main.app_bar_generic.*
 
 class ContactUsActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_us)
+
+        val toolbar = findViewById<Toolbar>(R.id.app_bar)
+        setSupportActionBar(toolbar)
+        app_bar_title.text = "Contact Us"
+
+        // set status bar color
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.md_red_800)
 
         email.setOnClickListener(this)
     }

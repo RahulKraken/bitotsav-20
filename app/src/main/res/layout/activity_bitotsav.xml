@@ -25,12 +25,16 @@
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
+        <include
+            android:id="@+id/bitotsav_app_bar"
+            layout="@layout/app_bar_generic" />
+
         <ImageView
             android:id="@+id/color_icon"
             android:src="@drawable/colorful_icon"
             android:contentDescription="@string/bitotsav_color_icon_desc"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bitotsav_app_bar"
             app:layout_constraintStart_toEndOf="@id/start_guide"
             app:layout_constraintEnd_toStartOf="@id/end_guide"
             android:layout_width="0dp"
