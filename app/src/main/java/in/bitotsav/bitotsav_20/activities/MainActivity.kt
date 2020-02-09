@@ -64,16 +64,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.statusBarColor = ContextCompat.getColor(this, R.color.md_red_800)
 
-        // set bitotsav menu contents
-        // TODO: on logout replace text
-        menu_team_name.visibility = View.GONE
-        if (SharedPrefUtils(this).getUser() != null) {
-            menu_username.text = SharedPrefUtils(this).getUser()?.name
-        } else {
-            menu_username.text = "Login/Register"
-            menu_user_avatar.visibility = View.GONE
-        }
-
         setSupportActionBar(app_bar)
         setupBottomNavigation()
 
@@ -121,6 +111,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun fetchEvents() {
         getAllEvents(this)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // set bitotsav menu contents
+        menu_team_name.visibility = View.GONE
+        if (SharedPrefUtils(this).getUser() != null) {
+            menu_user_avatar.visibility = View.VISIBLE
+            menu_username.text = SharedPrefUtils(this).getUser()?.name
+        } else {
+            menu_username.text = "Login/Register"
+            menu_user_avatar.visibility = View.GONE
+        }
     }
 
 /*

@@ -37,7 +37,7 @@ public class FeedMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
-        showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
+        //showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
     }
 
     private void showNotification(String title, String desc) {

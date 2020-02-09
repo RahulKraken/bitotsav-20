@@ -40,9 +40,9 @@ class LeaderboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // display user scorecard
-        if(SharedPrefUtils(context!!).getUser() == null) {
-            user_score_card.visibility = View.GONE
-        }
+//        if(SharedPrefUtils(context!!).getUser() == null) {
+//            user_score_card.visibility = View.GONE
+//        }
 
         val LEADERBOARD_URL = "https://bitotsav.in/api/admin/leaderboard"
         val leaderboardRequest = StringRequest(Request.Method.POST, LEADERBOARD_URL,
