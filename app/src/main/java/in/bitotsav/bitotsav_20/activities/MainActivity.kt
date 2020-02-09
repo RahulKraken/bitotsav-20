@@ -9,6 +9,7 @@ import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import `in`.bitotsav.bitotsav_20.utils.openCustomTab
 import `in`.bitotsav.bitotsav_20.utils.share
+import `in`.bitotsav.bitotsav_20.OneSignal.MyApplication;
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -30,6 +31,7 @@ import kotlinx.android.synthetic.main.layout_bitotsav.*
 
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
+    internal lateinit var myApplication: MyApplication
 
     private var activeFragment = Fragment()
     private val scheduleFragment = ScheduleFragment.newInstance()
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        myApplication = MyApplication.getInstance()
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 //            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
 //        }
