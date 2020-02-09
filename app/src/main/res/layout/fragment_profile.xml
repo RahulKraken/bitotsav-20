@@ -20,7 +20,7 @@
         app:layout_constraintGuide_end="16dp"
         android:layout_width="0dp"
         android:layout_height="0dp" />
-
+leader
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guide"
         android:orientation="horizontal"
@@ -30,7 +30,7 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:src="@color/md_grey_300"
+        android:src="@drawable/user_avatar_normal"
         app:layout_constraintTop_toBottomOf="@id/top_guide"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
@@ -52,12 +52,27 @@
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/profile_bitotsav_id"
-        android:text="24156987"
-        app:layout_constraintTop_toBottomOf="@id/profile_name"
+        android:id="@+id/profile_bitotsav_id_label"
+        android:text="Bitotsav Id:  "
+        style="@style/font_regular_black_20"
+        android:textSize="18sp"
+        android:textColor="@color/md_black_1000"
+        android:textAlignment="viewEnd"
+        app:layout_constraintTop_toTopOf="@id/profile_bitotsav_id"
+        app:layout_constraintBottom_toBottomOf="@id/profile_bitotsav_id"
+        app:layout_constraintEnd_toStartOf="@id/profile_bitotsav_id"
         app:layout_constraintStart_toEndOf="@id/start_guide"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/profile_bitotsav_id"
+        android:text="7895643210"
+        android:textSize="18sp"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toBottomOf="@id/profile_name"
+        app:layout_constraintStart_toEndOf="@id/profile_bitotsav_id_label"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
-        android:gravity="center_horizontal"
         android:layout_marginTop="8dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />

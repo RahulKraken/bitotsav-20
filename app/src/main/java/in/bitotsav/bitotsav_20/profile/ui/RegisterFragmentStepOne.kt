@@ -78,13 +78,16 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
         password: String,
         phone: String
     ) {
+        reg_one_progress_bar.visibility = View.VISIBLE
         SafetyNet.getClient(activity!!).verifyWithRecaptcha(Secret.recptchaSiteKey)
             .addOnSuccessListener(activity!!) {response ->
                 println("recaptcha success: ${response.tokenResult}")
+                reg_one_progress_bar.visibility = View.GONE
                 if (response.tokenResult.isNotEmpty()) register(email, password, phone, response.tokenResult)
             }
             .addOnFailureListener(activity!!) {
                 println("recaptcha failed: $it")
+                reg_one_progress_bar.visibility = View.GONE
                 Snackbar.make(parent_reg_one_frag, "recaptcha failed", Snackbar.LENGTH_SHORT).show()
             }
     }
@@ -95,12 +98,13 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
         phone: String,
         token: String
     ) {
+        reg_one_progress_bar.visibility = View.VISIBLE
         val request = object : StringRequest(Method.POST, "https://bitotsav.in/api/auth/register", Response.Listener { response ->
+            reg_one_progress_bar.visibility = View.GONE
             println("success: $response")
             val obj = JSONObject(response)
             println(obj.get("status"))
             when (obj.get("status")) {
-                // TODO: replace with snackBar
                 200 -> saveAndNavigate(obj)
                 else -> {
                     println(obj.get("message"))
@@ -108,6 +112,7 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
                 }
             }
         }, Response.ErrorListener {error ->
+            reg_one_progress_bar.visibility = View.GONE
             println("error: $error")
             Snackbar.make(parent_reg_one_frag, "Unknown error occurred!", Snackbar.LENGTH_SHORT).show()
         }) {

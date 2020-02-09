@@ -82,8 +82,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun attemptLogin(token: String) {
+        login_progress_bar.visibility = View.VISIBLE
         val loginRequest = object : StringRequest(Method.POST, "https://bitotsav.in/api/auth/login",
             Response.Listener {response ->
+                login_progress_bar.visibility = View.GONE
                 val res = JSONObject(response)
                 println("login: ${res.get("status")}")
                 when (res.get("status")) {
@@ -97,6 +99,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
                     }
                 }
             }, Response.ErrorListener {
+                login_progress_bar.visibility = View.GONE
                 println("Unknown error occurred")
                 Snackbar.make(login_btn, "Unknown error occurred", Snackbar.LENGTH_SHORT).show()
             }) {
@@ -125,12 +128,15 @@ class LoginFragment : Fragment(), View.OnClickListener {
     }
 
     private fun getUserData(token: String, isVerified: Boolean) {
+        login_progress_bar.visibility = View.VISIBLE
         val dataReq = object : StringRequest(
             Method.GET, "https://bitotsav.in/api/dash/getProfile",
             Response.Listener {response ->
+                login_progress_bar.visibility = View.GONE
                 val res = JSONObject(response)
                 saveAndNavigate(token, isVerified, res.getJSONObject("user"))
             }, Response.ErrorListener {error ->
+                login_progress_bar.visibility = View.GONE
                 println("getUserData: $error")
                 Snackbar.make(login_btn, "Unknown error occurred", Snackbar.LENGTH_SHORT).show()
             }) {

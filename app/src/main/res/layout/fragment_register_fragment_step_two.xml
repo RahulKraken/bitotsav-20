@@ -39,6 +39,16 @@
         phone no
      -->
 
+    <ProgressBar
+        android:id="@+id/reg_two_progress_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        android:layout_width="56dp"
+        android:layout_height="56dp" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/register_container_name"
         android:layout_width="0dp"
@@ -58,7 +68,7 @@
         android:id="@+id/register_container_gender"
         android:layout_width="100dp"
         android:layout_height="56dp"
-        android:hint="Gender"
+        android:hint="M/F Gender"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintStart_toEndOf="@id/register_container_name"
         app:layout_constraintTop_toBottomOf="@id/top_guide">

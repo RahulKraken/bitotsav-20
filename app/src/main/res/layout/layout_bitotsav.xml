@@ -234,7 +234,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/menu_user_avatar"
-            android:src="@color/md_grey_500"
+            android:src="@drawable/user_avatar_normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -285,6 +285,7 @@
         android:src="@drawable/facebook"
         app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
         app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/ic_instagram"
         android:layout_width="22dp"
         android:layout_height="22dp"
         tools:ignore="ContentDescription" />
@@ -295,6 +296,7 @@
         android:layout_marginStart="24dp"
         app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
         app:layout_constraintStart_toEndOf="@id/ic_facebook"
+        app:layout_constraintEnd_toStartOf="@id/ic_twitter"
         android:layout_width="22dp"
         android:layout_height="22dp"
         tools:ignore="ContentDescription" />
@@ -305,6 +307,7 @@
         android:layout_marginStart="24dp"
         app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
         app:layout_constraintStart_toEndOf="@id/ic_instagram"
+        app:layout_constraintEnd_toStartOf="@id/ic_youtube"
         android:layout_width="24dp"
         android:layout_height="24dp"
         tools:ignore="ContentDescription" />
@@ -315,6 +318,7 @@
         android:layout_marginStart="24dp"
         app:layout_constraintTop_toBottomOf="@id/bottom_footer_guide"
         app:layout_constraintStart_toEndOf="@id/ic_twitter"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
         android:layout_width="24dp"
         android:layout_height="24dp"
         tools:ignore="ContentDescription" />
