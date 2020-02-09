@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/item_category"
     android:text="Cultural Arts"
+    android:textColor="@android:color/white"
+    android:textStyle="bold"
     android:textSize="14sp"
     android:layout_margin="4dp"
     android:layout_width="wrap_content"

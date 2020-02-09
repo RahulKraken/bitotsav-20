@@ -18,10 +18,10 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
-            android:background="@color/md_red_800"
-            app:tabIndicatorColor="@color/md_yellow_300"
-            app:tabSelectedTextColor="@color/md_yellow_300"
-            app:tabTextColor="@color/md_yellow_800"
+            android:background="@color/md_red_600"
+            app:tabIndicatorColor="@color/md_red_50"
+            app:tabSelectedTextColor="@color/md_indigo_50"
+            app:tabTextColor="@color/md_red_50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
