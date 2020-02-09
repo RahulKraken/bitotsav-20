@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         // set status bar color
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        window.statusBarColor = ContextCompat.getColor(this, R.color.md_teal_300)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.md_red_800)
 
         // set bitotsav menu contents
         // TODO: on logout replace text
