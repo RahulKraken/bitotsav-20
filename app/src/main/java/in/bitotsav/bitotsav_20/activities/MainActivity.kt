@@ -154,13 +154,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     setFragment(scheduleFragment)
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.action_feed -> {
-                    println("Feed selected")
-                    lastSelectedNavigationItem =
-                        R.id.action_feed
-                    setFragment(feedFragment)
-                    return@OnNavigationItemSelectedListener true
-                }
+//                R.id.action_feed -> {
+//                    println("Feed selected")
+//                    lastSelectedNavigationItem =
+//                        R.id.action_feed
+//                    setFragment(feedFragment)
+//                    return@OnNavigationItemSelectedListener true
+//                }
                 R.id.action_leaderboard -> {
                     println("Leaderboard selected")
                     lastSelectedNavigationItem =
