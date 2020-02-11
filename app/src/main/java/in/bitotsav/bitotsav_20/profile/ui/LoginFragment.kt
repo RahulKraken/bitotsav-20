@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.VolleyService
 import `in`.bitotsav.bitotsav_20.config.Secret
+import `in`.bitotsav.bitotsav_20.profile.data.TeamMember
 import `in`.bitotsav.bitotsav_20.profile.data.User
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import androidx.navigation.NavController
@@ -20,6 +21,7 @@ import com.android.volley.toolbox.StringRequest
 import com.google.android.gms.safetynet.SafetyNet
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_login.login_email
 import org.json.JSONObject
@@ -133,8 +135,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
             Method.GET, "https://bitotsav.in/api/dash/getProfile",
             Response.Listener {response ->
                 login_progress_bar.visibility = View.GONE
+                println("response: $response")
                 val res = JSONObject(response)
-                saveAndNavigate(token, isVerified, res.getJSONObject("user"))
+                saveAndNavigate(token, isVerified, res)
             }, Response.ErrorListener {error ->
                 login_progress_bar.visibility = View.GONE
                 println("getUserData: $error")
@@ -154,9 +157,22 @@ class LoginFragment : Fragment(), View.OnClickListener {
         VolleyService.getRequestQueue(context!!).add(dataReq)
     }
 
-    private fun saveAndNavigate(token: String, isVerified: Boolean, user: JSONObject) {
+    private fun saveAndNavigate(token: String, isVerified: Boolean, res: JSONObject) {
         SharedPrefUtils(context!!).setToken(token)
-        val u = User(user.getInt("bitotsavId"), user.getString("name"), user.getString("email"), user.getString("phoneNo"), user.getInt("gender"), user.getString("clgName"), user.getString("clgCity"), user.getString("clgState"), user.getString("clgId"), isVerified)
+        val user = res.getJSONObject("user")
+        val u = User(user.getInt("bitotsavId"), user.getString("name"), user.getString("email"), user.getString("phoneNo"), user.getInt("gender"), user.getString("clgName"), user.getString("clgCity"), user.getString("clgState"), user.getString("clgId"), isVerified, false, null, null, null)
+        if (res.getBoolean("isInTeam")) {
+            u.teamId = res.getJSONObject("team").getInt("teamId")
+            u.teamName = res.getJSONObject("team").getString("teamName")
+            val gson = Gson()
+            u.teamMembers = gson.fromJson(res.getJSONObject("team").getJSONArray("teamMembers").toString(), Array<TeamMember>::class.java).asList()
+//            for (x in gson.fromJson(res.getJSONObject("team").getJSONArray("teamMembers").toString(), Array<TeamMember>::class.java)) {
+//                println("x: $x")
+//                teamMembers.add(TeamMember(x.name))
+//            }
+
+            println("team details: ${u.teamName}, ${u.teamMembers}")
+        }
         println("user found: $u")
         SharedPrefUtils(context!!).setUser(u)
         navController.navigate(R.id.action_loginFragment_to_profileFragment)

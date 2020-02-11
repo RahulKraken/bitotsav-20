@@ -25,6 +25,7 @@ data class Event(
     var timing: String,
     var venue: String,
     var day: Int?,
+    val dummy1: String? = null,
     @ColumnInfo(name = "team_size")
     var teamSize: String?,
     var contactInformation: String?,

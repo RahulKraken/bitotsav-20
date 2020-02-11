@@ -141,7 +141,11 @@ class RegisterFragmentStepTwo : Fragment(), View.OnClickListener {
                                 clgCity,
                                 clgState,
                                 clgId,
-                                res.getBoolean("isVerified")
+                                res.getBoolean("isVerified"),
+                                false,
+                                null,
+                                null,
+                                null
                             )
                             SharedPrefUtils(context!!).setToken(res.getString("token"))
                             println("token: ${res.get("token")}, isVerified: ${res.get("isVerified")}")

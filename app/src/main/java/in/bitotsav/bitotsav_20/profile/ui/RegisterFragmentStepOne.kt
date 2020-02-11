@@ -34,7 +34,7 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
     var email = ""
     var phone = ""
 
-    var user = User(-1, null, email, phone, null, null, null, null, null, null)
+    var user = User(-1, null, email, phone, null, null, null, null, null, null, false, null, null, null)
 
     companion object {
         fun newInstance() = RegisterFragmentStepOne()
@@ -136,7 +136,7 @@ class RegisterFragmentStepOne : Fragment(), View.OnClickListener {
     }
 
     private fun saveAndNavigate(res: JSONObject) {
-        user = User(-1, null, email, phone, null, null, null, null, null, res.getBoolean("isVerified"))
+        user = User(-1, null, email, phone, null, null, null, null, null, res.getBoolean("isVerified"), false, null, null, null)
         println("saving user: $user")
         SharedPrefUtils(context!!).setToken(res.getString("token"))
         SharedPrefUtils(context!!).setUser(user)
