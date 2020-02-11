@@ -13,7 +13,10 @@ import `in`.bitotsav.bitotsav_20.feed.oneSignal.MyApplication;
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +27,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_generic.*
@@ -58,6 +62,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val manager = getSystemService(NotificationManager::class.java)
             manager.createNotificationChannel(channel)
         }
+
+        if (!isOnline(this)) Snackbar.make(container, "No internet connection found!", Snackbar.LENGTH_SHORT).show()
 
         // set status bar color
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -266,6 +272,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         activeFragment = fragment
         supportActionBar?.let {
             app_bar_title.text = fragment.tag
+        }
+    }
+
+    private fun isOnline(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                return nc!!.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+            }
+            return false
+        } else {
+            val netInfo = cm.activeNetworkInfo
+            return netInfo != null && netInfo.isConnectedOrConnecting
         }
     }
 }
