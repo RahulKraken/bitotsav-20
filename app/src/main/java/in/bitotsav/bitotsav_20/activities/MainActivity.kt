@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var activeFragment = Fragment()
     private val scheduleFragment = ScheduleFragment.newInstance()
-    private val feedFragment = FeedFragment.newInstance()
+//    private val feedFragment = FeedFragment.newInstance()
     private val leaderboardFragment = LeaderboardFragment.newInstance()
 
     private var isBitotsavMenuOpen = true
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         fetchEvents()
 
-        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
+//        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "Leaderboard").hide(leaderboardFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "Schedule").commit()
         supportActionBar?.let { app_bar_title.text = "Schedule" }

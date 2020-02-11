@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class CategoriesListAdapter(
@@ -58,6 +60,23 @@ class CategoriesListAdapter(
                     "adaa" -> ColorStateList.valueOf(context.getColor(R.color.adaa))
                     else -> ColorStateList.valueOf(context.getColor(R.color.swaang))
                 }
+            } else {
+                val drawable = context.getDrawable(R.drawable.tv_rounded_corners)
+                val color = when (category) {
+                    "swaang" -> ContextCompat.getColor(context, R.color.swaang)
+                    "rhetoric" -> ContextCompat.getColor(context, R.color.rhetoric)
+                    "digitales" -> ContextCompat.getColor(context, R.color.digitales)
+                    "herald" -> ContextCompat.getColor(context, R.color.herald)
+                    "taabir" -> ContextCompat.getColor(context, R.color.taabir)
+                    "meraki" -> ContextCompat.getColor(context, R.color.meraki)
+                    "euphoria" -> ContextCompat.getColor(context, R.color.euphoria)
+                    "dansation" -> ContextCompat.getColor(context, R.color.dansation)
+                    "dhwani" -> ContextCompat.getColor(context, R.color.dhwani)
+                    "adaa" -> ContextCompat.getColor(context, R.color.adaa)
+                    else -> ContextCompat.getColor(context, R.color.swaang)
+                }
+                DrawableCompat.setTint(drawable!!, color)
+                text?.background = drawable
             }
         }
     }
