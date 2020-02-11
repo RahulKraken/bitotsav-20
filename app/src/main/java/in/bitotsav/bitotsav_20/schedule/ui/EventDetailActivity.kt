@@ -43,16 +43,10 @@ class EventDetailActivity : AppCompatActivity() {
                 R.drawable.digitales
             }
             "meraki" -> {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//                }
                 window.statusBarColor = ContextCompat.getColor(this, R.color.md_deep_purple_400)
                 R.drawable.meraki
             }
             "euphoria" -> {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//                }
                 window.statusBarColor = ContextCompat.getColor(this, R.color.md_deep_purple_800)
                 R.drawable.euphoriia
             }
@@ -61,16 +55,10 @@ class EventDetailActivity : AppCompatActivity() {
                 R.drawable.dansation
             }
             "dhwani" -> {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//                }
                 window.statusBarColor = ContextCompat.getColor(this, R.color.md_teal_400)
                 R.drawable.dhwani
             }
             "adaa" -> {
-//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                    window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-//                }
                 window.statusBarColor = ContextCompat.getColor(this, R.color.md_pink_700)
                 R.drawable.adaa
             }
@@ -101,10 +89,16 @@ class EventDetailActivity : AppCompatActivity() {
             event_detail_prizes_container.visibility = View.GONE
         }
 
-        // TODO: get winners, format then parse and display
-        // for now it's not visible
-        event_detail_winner_container.visibility = View.GONE
-        event_detail_winner_label.visibility = View.GONE
+        // winners
+        if (event.dummy1.isNullOrEmpty()) {
+            event_detail_winner_container.visibility = View.GONE
+            event_detail_winner_label.visibility = View.GONE
+        } else {
+            val winners = event.dummy1.split("!@#$%")
+            if (winners[0].isNotEmpty()) winner_one.text = winners[0]
+            if (winners[1].isNotEmpty()) winner_two.text = winners[1]
+            if (winners[2].isNotEmpty()) winner_three.text = winners[2]
+        }
 
         // coordinators
         val coordinators = event.contactInformation?.split("\n")
