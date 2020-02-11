@@ -160,7 +160,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private fun saveAndNavigate(token: String, isVerified: Boolean, res: JSONObject) {
         SharedPrefUtils(context!!).setToken(token)
         val user = res.getJSONObject("user")
-        val u = User(user.getInt("bitotsavId"), user.getString("name"), user.getString("email"), user.getString("phoneNo"), user.getInt("gender"), user.getString("clgName"), user.getString("clgCity"), user.getString("clgState"), user.getString("clgId"), isVerified, false, null, null, null)
+        val u = User(user.getInt("bitotsavId"), user.getString("name"), user.getString("email"), user.getString("phoneNo"), user.getInt("gender"), user.getString("clgName"), user.getString("clgCity"), user.getString("clgState"), user.getString("clgId"), isVerified, res.getBoolean("isInTeam"), null, null, null)
         if (res.getBoolean("isInTeam")) {
             u.teamId = res.getJSONObject("team").getInt("teamId")
             u.teamName = res.getJSONObject("team").getString("teamName")

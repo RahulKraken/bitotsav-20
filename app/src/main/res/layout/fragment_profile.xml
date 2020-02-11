@@ -20,7 +20,7 @@
         app:layout_constraintGuide_end="16dp"
         android:layout_width="0dp"
         android:layout_height="0dp" />
-leader
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/top_guide"
         android:orientation="horizontal"
@@ -51,93 +51,274 @@ leader
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/profile_bitotsav_id_label"
-        android:text="Bitotsav Id:  "
-        style="@style/font_regular_black_20"
-        android:textSize="18sp"
-        android:textColor="@color/md_black_1000"
-        android:textAlignment="viewEnd"
-        app:layout_constraintTop_toTopOf="@id/profile_bitotsav_id"
-        app:layout_constraintBottom_toBottomOf="@id/profile_bitotsav_id"
-        app:layout_constraintEnd_toStartOf="@id/profile_bitotsav_id"
-        app:layout_constraintStart_toEndOf="@id/start_guide"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/profile_bitotsav_id"
-        android:text="7895643210"
-        android:textSize="18sp"
-        android:textAlignment="viewStart"
+    <LinearLayout
+        android:id="@+id/bitotsav_id_container"
         app:layout_constraintTop_toBottomOf="@id/profile_name"
-        app:layout_constraintStart_toEndOf="@id/profile_bitotsav_id_label"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        android:layout_marginTop="8dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/profile_email"
-        android:text="dummy dummy dummy"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profile_bitotsav_id"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
         android:layout_marginTop="8dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/profile_phone"
-        android:text="9999999999"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profile_email"
+        <TextView
+            android:id="@+id/profile_bitotsav_id_label"
+            android:text="Bitotsav Id:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_bitotsav_id"
+            android:text="7895643210"
+            android:textSize="18sp"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_email_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_id_container"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
-        android:layout_marginTop="16dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:id="@+id/profile_clg_id"
-        android:text="be/524163/2020"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profile_phone"
-        app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
         android:layout_marginTop="8dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/profile_email_label"
+            android:text="Email:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:textAlignment="viewEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/profile_clg_name"
-        android:text="birla institute of technology"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profile_clg_id"
+        <TextView
+            android:id="@+id/profile_email"
+            android:text="dummy dummy dummy"
+            android:textSize="18sp"
+            android:gravity="start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_phone_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_email_container"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
         android:layout_marginTop="8dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_phone_label"
+            android:text="Phone:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/profile_clg_city"
-        android:text="ranchi"
-        android:textSize="18sp"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@id/profile_clg_name"
+            android:id="@+id/profile_phone"
+            android:text="9999999999"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_clg_id_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_phone_container"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
         android:layout_marginTop="8dp"
         android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_clg_id_label"
+            android:text="College ID:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_clg_id"
+            android:text="be/524163/2020"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_clg_name_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_clg_id_container"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_clg_name_label"
+            android:text="College Name:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_clg_name"
+            android:text="birla institute of technology"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/profile_clg_id"
+            app:layout_constraintStart_toEndOf="@id/start_guide"
+            app:layout_constraintEnd_toStartOf="@id/end_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_clg_city_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_clg_name_container"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_clg_city_label"
+            android:text="College City:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_clg_city"
+            android:text="ranchi"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/profile_clg_name"
+            app:layout_constraintStart_toEndOf="@id/start_guide"
+            app:layout_constraintEnd_toStartOf="@id/end_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_team_id_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_clg_city_container"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_team_id_label"
+            android:text="Team ID:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_team_id"
+            android:text="ranchi"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/profile_clg_name"
+            app:layout_constraintStart_toEndOf="@id/start_guide"
+            app:layout_constraintEnd_toStartOf="@id/end_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_team_name_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_team_id_container"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_team_name_label"
+            android:text="Team Name:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_team_name"
+            android:text="ranchi"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/profile_clg_name"
+            app:layout_constraintStart_toEndOf="@id/start_guide"
+            app:layout_constraintEnd_toStartOf="@id/end_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bitotsav_team_members_container"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_team_name_container"
+        app:layout_constraintStart_toEndOf="@id/start_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
+        android:gravity="center|center_vertical"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/profile_team_members_label"
+            android:text="Team Members:  "
+            style="@style/font_regular_black_20"
+            android:textSize="18sp"
+            android:textColor="@color/md_black_1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/profile_team_members"
+            android:text="ranchi"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            app:layout_constraintTop_toBottomOf="@id/profile_clg_name"
+            app:layout_constraintStart_toEndOf="@id/start_guide"
+            app:layout_constraintEnd_toStartOf="@id/end_guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/profile_verify_btn"
@@ -148,7 +329,7 @@ leader
         android:backgroundTint="@color/md_red_500"
         android:fontFamily="@font/product_sans_regular"
         android:layout_marginTop="32dp"
-        app:layout_constraintTop_toBottomOf="@id/profile_clg_city"
+        app:layout_constraintTop_toBottomOf="@id/bitotsav_team_members_container"
         app:layout_constraintStart_toEndOf="@id/start_guide"
         app:layout_constraintEnd_toStartOf="@id/end_guide"
         android:layout_width="wrap_content"

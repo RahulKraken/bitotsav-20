@@ -72,5 +72,22 @@ class ProfileFragment : Fragment() {
         profile_clg_id.text = user?.clgId
         profile_clg_name.text = user?.clgName
         profile_clg_city.text = user?.clgCity
+        println("user is in team: ${user?.isInTeam}")
+        if(user?.isInTeam!!) {
+            profile_team_id.text = user.teamId.toString()
+            profile_team_name.text = user.teamName.toString()
+
+            // TODO: team members
+            var mem = ""
+            for (x in user.teamMembers!!) {
+                mem += "\n${x.bitotsavId}: ${x.name}"
+            }
+            println("mem: $mem")
+            profile_team_members.text = mem
+        } else {
+            bitotsav_team_id_container.visibility = View.GONE
+            bitotsav_team_name_container.visibility = View.GONE
+            bitotsav_team_members_container.visibility = View.GONE
+        }
     }
 }
