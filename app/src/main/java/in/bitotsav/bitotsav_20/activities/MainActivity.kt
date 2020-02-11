@@ -9,7 +9,7 @@ import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import `in`.bitotsav.bitotsav_20.utils.openCustomTab
 import `in`.bitotsav.bitotsav_20.utils.share
-import `in`.bitotsav.bitotsav_20.OneSignal.MyApplication;
+import `in`.bitotsav.bitotsav_20.feed.oneSignal.MyApplication;
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager

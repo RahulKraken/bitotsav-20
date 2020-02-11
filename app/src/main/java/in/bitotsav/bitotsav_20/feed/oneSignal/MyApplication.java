@@ -1,4 +1,4 @@
-package in.bitotsav.bitotsav_20.OneSignal;
+package in.bitotsav.bitotsav_20.feed.oneSignal;
 
 import android.app.Application;
 
