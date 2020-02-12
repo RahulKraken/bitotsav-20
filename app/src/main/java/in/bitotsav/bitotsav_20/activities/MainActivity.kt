@@ -1,7 +1,7 @@
 package `in`.bitotsav.bitotsav_20.activities
 
 import `in`.bitotsav.bitotsav_20.R
-import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
+import `in`.bitotsav.bitotsav_20.feed.oneSignal.MyApplication
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
@@ -9,14 +9,15 @@ import `in`.bitotsav.bitotsav_20.schedule.ui.ScheduleFragment
 import `in`.bitotsav.bitotsav_20.utils.SharedPrefUtils
 import `in`.bitotsav.bitotsav_20.utils.openCustomTab
 import `in`.bitotsav.bitotsav_20.utils.share
-import `in`.bitotsav.bitotsav_20.feed.oneSignal.MyApplication;
 import android.animation.ObjectAnimator
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -198,7 +199,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 println("profile btn clicked")
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
-            R.id.rate_card -> println("rating btn selected")
+            R.id.rate_card -> {
+                println("rating btn selected")
+                val appPackageName =
+                    packageName // getPackageName() from Context or Activity object
+
+                try {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("market://details?id=$appPackageName")
+                        )
+                    )
+                } catch (anfe: ActivityNotFoundException) {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")
+                        )
+                    )
+                }
+            }
             R.id.contact_card -> {
                 println("contact btn selected")
                 startActivity(Intent(this, ContactUsActivity::class.java))
