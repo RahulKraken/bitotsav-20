@@ -250,7 +250,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.share_card -> {
                 println("share btn selected")
-                share(this, "Check out the app for Bitotsav 20 on google play!", "Bitotsav 20 at Birla Institute of Technology from 14th to 16th of February, 2020.")
+                share(this, "Bitotsav 20 Android app", "Check out the app for Bitotsav 20 on google play! https://play.google.com/store/apps/details?id=in.bitotsav.bitotsav_20. Bitotsav 20 at Birla Institute of Technology from 14th to 16th of February, 2020.")
             }
             R.id.bitotsav_menu_container -> println("bitotsav card clicked")
             R.id.bitotsav_menu_large_container -> onBackPressed()

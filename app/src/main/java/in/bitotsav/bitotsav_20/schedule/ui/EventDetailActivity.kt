@@ -89,15 +89,19 @@ class EventDetailActivity : AppCompatActivity() {
             event_detail_prizes_container.visibility = View.GONE
         }
 
-        // winners
-        if (event.dummy1.isNullOrEmpty()) {
-            event_detail_winner_container.visibility = View.GONE
-            event_detail_winner_label.visibility = View.GONE
-        } else {
-            val winners = event.dummy1.split("!@#$%")
-            if (winners[0].isNotEmpty()) winner_one.text = winners[0]
-            if (winners[1].isNotEmpty()) winner_two.text = winners[1]
-            if (winners[2].isNotEmpty()) winner_three.text = winners[2]
+        try {
+            // winners
+            if (event.dummy1.isNullOrEmpty()) {
+                event_detail_winner_container.visibility = View.GONE
+                event_detail_winner_label.visibility = View.GONE
+            } else {
+                val winners = event.dummy1.split("!@#$%")
+                if (winners[0].isNotEmpty()) winner_one.text = winners[0]
+                if (winners[1].isNotEmpty()) winner_two.text = winners[1]
+                if (winners[2].isNotEmpty()) winner_three.text = winners[2]
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
 
         // coordinators
