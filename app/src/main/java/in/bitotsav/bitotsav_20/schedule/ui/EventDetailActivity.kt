@@ -21,7 +21,7 @@ class EventDetailActivity : AppCompatActivity() {
         val event = intent.getSerializableExtra(resources.getString(R.string.event_intent_pass_key)) as Event
         bindData(event)
         share_btn.setOnClickListener {
-            share(this, "Checkout ${event.name} at Bitotsav BIT Mesra.", "Venue: ${event.venue}, time: ${event.timing} on day ${event.day}")
+            share(this, event.name, "Checkout ${event.name} at Bitotsav BIT Mesra. Venue: ${event.venue}, time: ${event.timing} on day ${event.day}")
         }
     }
 
