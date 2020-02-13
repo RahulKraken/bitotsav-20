@@ -44,6 +44,8 @@ class LeaderboardFragment : Fragment() {
 //            user_score_card.visibility = View.GONE
 //        }
 
+        leaderboard_progress_bar.visibility = View.VISIBLE
+
         val LEADERBOARD_URL = "https://bitotsav.in/api/admin/leaderboard"
         val leaderboardRequest = StringRequest(Request.Method.POST, LEADERBOARD_URL,
             Response.Listener {response ->
@@ -54,6 +56,7 @@ class LeaderboardFragment : Fragment() {
                     val curr = leaderboard.getJSONObject(i)
                     teams.add(Team(curr.getInt("teamId"), curr.getString("teamName"), null, i + 1, curr.getInt("points")))
                 }
+                leaderboard_progress_bar.visibility = View.GONE
                 leaderboard_rv.apply {
                     layoutManager = LinearLayoutManager(activity)
                     adapter = LeaderboardAdapter(teams)

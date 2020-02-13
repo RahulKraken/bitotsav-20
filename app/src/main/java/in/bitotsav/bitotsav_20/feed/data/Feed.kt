@@ -8,7 +8,7 @@ data class Feed(
     @PrimaryKey
     val id: Int,
     val title: String,
-    val detail: String,
+    val message: String,
     val type: String,
     val timestamp: Long
 )

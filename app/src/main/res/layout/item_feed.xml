@@ -34,7 +34,7 @@
         style="@style/font_regular_black_20"
         android:textColor="@color/md_grey_800"
         app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintEnd_toStartOf="@id/pre_end_guide"
+        app:layout_constraintEnd_toStartOf="@id/end_guide"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
@@ -49,35 +49,35 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/announcement_type"
-        android:text="Announcement"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/announcement_details"
-        app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        android:layout_marginTop="4dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+<!--    <TextView-->
+<!--        android:id="@+id/announcement_type"-->
+<!--        android:text="Announcement"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/announcement_details"-->
+<!--        app:layout_constraintStart_toEndOf="@id/start_guide"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/end_guide"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content" />-->
 
-    <TextView
-        android:id="@+id/announcement_timestamp"
-        android:text="12:39 PM on 15th Feb, 2020"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/announcement_type"
-        app:layout_constraintStart_toEndOf="@id/start_guide"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+<!--    <TextView-->
+<!--        android:id="@+id/announcement_timestamp"-->
+<!--        android:text="12:39 PM on 15th Feb, 2020"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/announcement_type"-->
+<!--        app:layout_constraintStart_toEndOf="@id/start_guide"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/end_guide"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content" />-->
 
-    <ImageView
-        android:id="@+id/share_btn"
-        android:src="@drawable/ic_share_black_24dp"
-        android:alpha="0.5"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toEndOf="@id/pre_end_guide"
-        app:layout_constraintEnd_toStartOf="@id/end_guide"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+<!--    <ImageView-->
+<!--        android:id="@+id/share_btn"-->
+<!--        android:src="@drawable/ic_share_black_24dp"-->
+<!--        android:alpha="0.5"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        app:layout_constraintStart_toEndOf="@id/pre_end_guide"-->
+<!--        app:layout_constraintEnd_toStartOf="@id/end_guide"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

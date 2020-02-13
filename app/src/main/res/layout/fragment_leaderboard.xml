@@ -103,4 +103,14 @@
                 android:background="@color/md_grey_100"/>
         </com.google.android.material.card.MaterialCardView>
 
+    <ProgressBar
+        android:id="@+id/leaderboard_progress_bar"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

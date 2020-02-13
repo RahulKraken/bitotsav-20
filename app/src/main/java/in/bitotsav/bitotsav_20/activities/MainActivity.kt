@@ -2,6 +2,7 @@ package `in`.bitotsav.bitotsav_20.activities
 
 import `in`.bitotsav.bitotsav_20.R
 import `in`.bitotsav.bitotsav_20.feed.oneSignal.MyApplication
+import `in`.bitotsav.bitotsav_20.feed.ui.FeedFragment
 import `in`.bitotsav.bitotsav_20.leaderboard.ui.LeaderboardFragment
 import `in`.bitotsav.bitotsav_20.profile.ui.ProfileActivity
 import `in`.bitotsav.bitotsav_20.schedule.api.getAllEvents
@@ -40,7 +41,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private var activeFragment = Fragment()
     private val scheduleFragment = ScheduleFragment.newInstance()
-//    private val feedFragment = FeedFragment.newInstance()
+    private val feedFragment = FeedFragment.newInstance()
     private val leaderboardFragment = LeaderboardFragment.newInstance()
 
     private var isBitotsavMenuOpen = true
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         fetchEvents()
 
-//        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
+        supportFragmentManager.beginTransaction().add(R.id.container, feedFragment, "Feed").hide(feedFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, leaderboardFragment, "Leaderboard").hide(leaderboardFragment).commit()
         supportFragmentManager.beginTransaction().add(R.id.container, scheduleFragment, "Schedule").commit()
         supportActionBar?.let { app_bar_title.text = "Schedule" }
@@ -161,13 +162,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     setFragment(scheduleFragment)
                     return@OnNavigationItemSelectedListener true
                 }
-//                R.id.action_feed -> {
-//                    println("Feed selected")
-//                    lastSelectedNavigationItem =
-//                        R.id.action_feed
-//                    setFragment(feedFragment)
-//                    return@OnNavigationItemSelectedListener true
-//                }
+                R.id.action_feed -> {
+                    println("Feed selected")
+                    lastSelectedNavigationItem =
+                        R.id.action_feed
+                    setFragment(feedFragment)
+                    return@OnNavigationItemSelectedListener true
+                }
                 R.id.action_leaderboard -> {
                     println("Leaderboard selected")
                     lastSelectedNavigationItem =
